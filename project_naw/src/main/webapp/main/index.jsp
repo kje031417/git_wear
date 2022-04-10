@@ -6,84 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>NAW</title>
-<style type="text/css">
-body {
-	background: #fff;
-	margin: 40px 0;
-	padding: 0;
-	height: 100%;
-}
-#header {
-	width: 100%;
-	background: #fff;
-}
-#container {
-	width: 100%;
-	height: 2000px; 	/* 임시 */
-	background: #1B1717;
-}
-#footer {
-	width: 100%;
-	height: 10%;
-	clear: both;
-	text-align: center;
-	font: 11px '나눔바른고딕';
-}
-/* 메뉴바 */
-.top_menu a {
-	text-decoration: none;
-	color: #262222;
-}
-.menu_sub a {
-	text-decoration: none;
-	color: #262222;
-}
-.top_menu {		/* 상위 카테고리 */
-	margin: 0 30%;
-	width: 30%; 
-	height: 40px;
-	list-style: none;
-	text-align: center; 
-	display: table;
-}
-.top_menu li {
-	display: table-cell;
-	padding: 0 10px;
-	margin: 0 0 0 0;
-	background: #fff;
-}
-.top_menu li a {
-	font-size: 20px;
-}
-.menu_pan {		/* 하위 카테고리 */
-	width: 100%;
-	top: 80px;					/* 40px + 40px */
-	background: #fff;
-	position: absolute;
-	display: none;
-}
-.c {
-	margin: 0 35%;
-}
-.menu_sub {
-	float: left;
-	margin: 30px 0;
-}
-.category:nth-child(1) {
-	font-weight: bold;
-}
-.category {
-	padding: 9px 0;
-	margin-right: 100px;
-}
-.category:hover {
-	text-decoration: underline;
-}
-#logo {
-	position: absolute;
-	top: 0;
-}
-</style>
+<link rel="stylesheet" href="../css/index.css">
 <script type="text/javascript" src="../script/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	$(function(){
@@ -99,7 +22,7 @@ body {
 			}
 		});
 		
-		$(".menu_pan").mouseleave(function(){		// menu_pan과 top_menu를 다 떠나야 접기	
+		$(".menu_pan").mouseleave(function(){
 			$(".menu_pan").slideUp();
 		});
 	});
@@ -122,13 +45,21 @@ body {
 				<li><a href="#">KIDS</a></li>
 			</ul>
 		</div>
-		
-		<!-- 아이콘 -->
-		<div>
-		
+		<!-- 검색창 -->
+		<div id="search">
+			<input type="text" id="search_box" placeholder="search">
+			<img id="search_img" alt="search" src="../img/search.png" width="17" height="17">	<!-- 검색 버튼 : 이벤트 추가 -->
 		</div>
 		
-		<!-- 하위 메뉴 카테고리 (디폴트값은 none이었다가 부모 태그 hover시 보임)-->
+		<!-- 아이콘 -->
+		<div id="icon">
+			<a href="#"><img alt="heart" src="../img/heart.png" width="27" height="27"></a>
+			<a href="#"><img alt="user" src="../img/user.png" width="27" height="27"></a>
+			<a href="#"><img alt="cart" src="../img/shopping-cart.png" width="27" height="27"></a>
+			<a href="#"><img alt="list" src="../img/check-list.png" width="27" height="27"></a>
+		</div>
+		
+		<!-- 하위 메뉴 카테고리 : 신발 의류 용품 -->
 		<div class="menu_pan">
 			<div class="c">
 				<!-- MEN 하위 메뉴 -->
@@ -217,20 +148,14 @@ body {
 		</div>
 		
 	</div>								
-	<!-- 신상품 -->
-	<div id="new_release">
-		<!-- 자동으로 이미지가 넘어가는 기능 -->
-		
-	</div>
 	
 <!---- CONTAINER ---->	
 	<div id="container">
-		<div id="nav">
-		
-		</div>
 		<!-- view -->
 		<div id="section">
-			
+			<c:if test="${req == null }">
+				<jsp:include page="../main/body.jsp"/>
+			</c:if>
 		</div>
 	</div>
 	
@@ -238,7 +163,7 @@ body {
 	<div id="footer">
 	<!-- 사이트 정보 -->
 		<p>서울 서초구 서초대로77길 55 에이프로스퀘어 3층</p>
-		<p>member: KJE&nbsp;YHJ&nbsp;LHW&nbsp;CYJ&nbsp;&nbsp;tel: 02)1111-2222</p>
+		<p>team3: KJE&nbsp;YHJ&nbsp;LHW&nbsp;CYJ&nbsp;&nbsp;tel: 032)3333-3333</p>
 	</div>
 </body>
 </html>
