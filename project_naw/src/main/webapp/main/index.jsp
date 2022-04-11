@@ -156,6 +156,9 @@
 			<c:if test="${req == null }">
 				<jsp:include page="../main/body.jsp"/>
 			</c:if>
+			<c:if test="">
+				<jsp:include page="../item/itemList.jsp"/>
+			</c:if>
 		</div>
 	</div>
 	
