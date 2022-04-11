@@ -10,27 +10,89 @@
 <script type="text/javascript" src="../script/jquery.bxslider.js"></script>
 <script type="text/javascript">
 	$(function(){
-		
+	  var $slider = $('#new_release_slider'),
+	      $firstSlide = $slider.find('li').first() // 첫번째 슬라이드
+	      .stop(true).animate({'opacity':1},200);  // 첫번째 슬라이드만 보이게 하기
+
+	  function PrevSlide(){ 						//이전버튼 함수
+		stopSlide();startSlide(); 					//타이머 초기화
+	    var $lastSlide = $slider.find('li').last() 	//마지막 슬라이드
+	    .prependTo($slider); 						//마지막 슬라이드를 맨 앞으로 보내기  
+	    $secondSlide = $slider.find('li').eq(1)		//두 번째 슬라이드 구하기
+	    .stop(true).animate({'opacity':0},400);		//밀려난 두 번째 슬라이드는 fadeOut 시키고
+	    $firstSlide = $slider.find('li').first()	//맨 처음 슬라이드 다시 구하기
+	    .stop(true).animate({'opacity':1},400);		//새로 들어온 첫 번째 슬라이드는 fadeIn 시키기
+	  }
+	  
+	  function NextSlide(){ 						// 다음 버튼 함수
+	    stopSlide();startSlide(); 					//타이머 초기화
+	    $firstSlide = $slider.find('li').first() 	// 첫 번째 슬라이드
+	    .appendTo($slider); 						// 맨 마지막으로 보내기
+	    var $lastSlide = $slider.find('li').last() 	// 맨 마지막으로 보낸 슬라이드
+	    .stop(true).animate({'opacity':0},400); 	// fadeOut시키기
+	    $firstSlide = $slider.find('li').first()	// 맨 처음 슬라이드
+	    .stop(true).animate({'opacity':1},400);		// fadeIn 시키기
+	  }
+	  
+	  $('#next').on('click', function(){ 		//다음버튼 클릭
+	    NextSlide();
+	  });
+	  $('#prev').on('click', function(){ 		//이전 버튼 클릭
+	    PrevSlide();
+	  });
+
+	  startSlide(); 							// 자동 슬라이드 시작
+	  
+	  var theInterval;
+
+	  function startSlide() {
+	    theInterval = setInterval(NextSlide, 3000); //자동 슬라이드 설정
+	  }
+
+	  function stopSlide() { 						//자동 멈추기
+	    clearInterval(theInterval);
+	  }
+	  
+	  $('#new_release_slider').hover(function(){ //마우스 오버시 슬라이드 멈춤
+	    stopSlide();
+	  }, function (){
+	    startSlide();
+	  });
 	});
 </script>
 </head>
 <body>
-	<!-- 공지 (include)-->
+	<!-- 공지 (include) 최신 글 하나 보여주기 -->
 	<div id="notice">
-	
+		<table>
+			<tr>
+				<td>공지 : <a href="#"></a></td>	<!-- 공지 제목 -->
+				<td></td>	<!-- 등록일 -->
+			</tr>
+		</table>
 	</div>
 	
-	<!-- 신상품 : 1350x350? -->
+	<!-- 신상품 : 1350x350 -->
 	<div id="new_release">
-		<div id="new_release_inner">
+		<div id="new_release_inner">		
 			<!-- 자동으로 이미지가 넘어가는 기능 -->
-			<p class="title">신상품</p><br>
-			
-			<!-- 임시 이미지 : 하나씩만 보여주기 -->
-			<div class="new_release_img">
-				<div><img alt="" src="../img/kirby_main.jpg" width="300"></div>
-				<div><img alt="" src="../img/kirby_spring.jpg" width="300"></div>
-			</div>
+			<div id="new_release_img">
+				<ul id="new_release_slider">
+				    <li>
+				      <div style="background-image:url(../img/new_release1.jpg);"></div>
+				    </li>
+				    <li>
+				      <div style="background-image:url(../img/new_release2.jpg);"></div>
+				    </li>
+				    <li>
+				      <div style="background-image:url(../img/new_release3.jpg);"></div>
+				    </li>
+			    </ul>
+		    </div>
+  <div class="btn">
+    <button type="button" id="prev"><</button>
+    <button type="button" id="next">></button>
+  </div>
 		</div>
 	</div>
 
@@ -54,7 +116,7 @@
 		</div>
 	</div>
 	
-	<!-- 인기상품소개 : like 잡지 -->
+	<!-- 인기상품소개 -->
 	<div id="best">
 		<div id="best_inner">
 		<p class="title">인기상품</p><br>
@@ -62,9 +124,9 @@
 		<div id="best_item">
 			<!-- 6:4 -->
 			<div class="best_content">
-				<p style="font-size: 30px; font-weight: bold;">3-스트라이프로 이어진 전 세계</p>
+				<p style="font-size: 30px; font-weight: bold;"><span style="font-size: 55px;">3</span>-스트라이프로 이어진 전 세계</p>
 				<p>아디다스 커뮤니티와 하나로 연결하는 화합의 힘을 담아낸 클래식 윈드브레이커입니다.</p>
-				<p>넉넉한 핏과 가벼운 소재의 조화로 날씨에 따라 티셔츠 또는 스웨트셔츠 위로 편안하게 레이어드할 수 있습니다.</p>
+				<p>넉넉한 핏과 가벼운 소재의 조화로 날씨에 따라<br>티셔츠 또는 스웨트셔츠 위로 편안하게 레이어드할 수 있습니다.</p>
 			</div>
 			<div class="best_img">
 				<img alt="" src="../img/w_cloth_001_a.png" width="500px" height="500px">
@@ -74,8 +136,8 @@
 				<img alt="" src="../img/나이키스포츠웨어스우시_남성풀집리버서블재킷AS_hotcurry_1.jpg" width="500px" height="500px">
 			</div>
 			<div class="best_content">
-				<p style="font-size: 30px; font-weight: bold;">추운 날씨를 위한 스테이트먼트 룩</p>
-				<p>나이키 스포츠웨어 재킷은 뒤집을 수 있는 디자인의 오버사이즈 로고로 개성을 표현하고, 이동 중에도 룩을 바꿀 수 있습니다.</p> 
+				<p style="font-size: 30px; font-weight: bold;"><span style="font-size: 55px;">추</span>운 날씨를 위한 스테이트먼트 룩</p>
+				<p>나이키 스포츠웨어 재킷은 뒤집을 수 있는 디자인의 오버사이즈 로고로 개성을 표현하고,<br>이동 중에도 룩을 바꿀 수 있습니다.</p> 
 				<p>프렌치 테리와 태피터 소재를 사용하여 쌀쌀한 날씨에 보온성을 제공합니다.</p>
 			</div>
 		</div>

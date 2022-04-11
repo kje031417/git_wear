@@ -7,15 +7,27 @@
 <meta charset="UTF-8">
 <title>문의 게시판</title>
 <script type="text/javascript" src="../script/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+//입력검사
+
+</script>
 <style type="text/css">
 	
 </style>
 </head>
 <body>
-	<div>
+	<!-- 문의글 작성폼 -->
+	<div id="inquiry_writeForm">
+		<form action="">
+			
+		</form>
+	</div>
+	
+	<!-- 문의글 게시판 -->
+	<div id="inquiry_list">
 		<table>
 			<tr>
-				<td>No.</td>	<!-- 글번호 -->
+				<td>No.</td>		<!-- 글번호 -->
 				<td>제목</td>		<!-- 글제목 -->
 				<td>작성자</td>		<!-- 작성자 -->
 				<td>작성일</td>		<!-- 작성일 -->
