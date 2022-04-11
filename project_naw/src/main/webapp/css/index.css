@@ -4,6 +4,7 @@ body {
 	margin: 40px 0;
 	padding: 0;
 	height: 100%;
+	font-family: '나눔바른고딕';
 }
 #header {
 	width: 100%;
@@ -12,6 +13,9 @@ body {
 #container {
 	width: 100%;
 }
+#section {
+	width: 100%;
+}	
 #footer {
 	width: 100%;
 	height: 15%;
@@ -20,7 +24,6 @@ body {
 	background: #262222;
 	color: #ECECEC;
 	font-size: 11px;
-	font-family: '나눔바른고딕';
 	padding: 3px;
 }
 /* 메뉴바 */
@@ -55,6 +58,7 @@ body {
 	background: #fff;
 	position: absolute;
 	display: none;
+	z-index: 2;
 }
 .c {
 	width: 500px;

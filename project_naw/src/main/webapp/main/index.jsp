@@ -48,15 +48,14 @@
 		<!-- 검색창 -->
 		<div id="search">
 			<input type="text" id="search_box" placeholder="search">
-			<img id="search_img" alt="search" src="../img/search.png" width="17" height="17">	<!-- 검색 버튼 : 이벤트 추가 -->
+			<img id="search_img" alt="search" src="../img/search.jpg" width="18" height="18">	<!-- 검색 버튼 : 이벤트 추가 -->
 		</div>
 		
 		<!-- 아이콘 -->
 		<div id="icon">
-			<a href="#"><img alt="heart" src="../img/heart.png" width="27" height="27"></a>
-			<a href="#"><img alt="user" src="../img/user.png" width="27" height="27"></a>
-			<a href="#"><img alt="cart" src="../img/shopping-cart.png" width="27" height="27"></a>
-			<a href="#"><img alt="list" src="../img/check-list.png" width="27" height="27"></a>
+			<a href="#"><img alt="heart" src="../img/star.jpg" width="30" height="30"></a>
+			<a href="#"><img alt="user" src="../img/user.jpg" width="30" height="30"></a>
+			<a href="#"><img alt="cart" src="../img/shopping-cart.jpg" width="30" height="30"></a>
 		</div>
 		
 		<!-- 하위 메뉴 카테고리 : 신발 의류 용품 -->
@@ -157,7 +156,7 @@
 				<jsp:include page="../main/body.jsp"/>
 			</c:if>
 			<c:if test="">
-				<jsp:include page="../item/itemList.jsp"/>
+				
 			</c:if>
 		</div>
 	</div>
@@ -166,7 +165,7 @@
 	<div id="footer">
 	<!-- 사이트 정보 -->
 		<p>서울 서초구 서초대로77길 55 에이프로스퀘어 3층</p>
-		<p>team3: KJE&nbsp;YHJ&nbsp;LHW&nbsp;CYJ&nbsp;&nbsp;tel: 032)3333-3333</p>
+		<p>project_NAW: KJE&nbsp;YHJ&nbsp;LHW&nbsp;CYJ&nbsp;&nbsp;TEL: 032)3333-3333</p>
 	</div>
 </body>
 </html>
