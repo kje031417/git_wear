@@ -53,9 +53,9 @@
 			
 			<!-- 아이콘 -->
 			<div id="icon">
-				<a href="#"><img alt="star" src="../img/star.jpg" width="30" height="30"></a>
-				<a href="#"><img alt="user" src="../img/user.jpg" width="30" height="30"></a>
-				<a href="#"><img alt="cart" src="../img/shopping-cart.jpg" width="30" height="30"></a>
+				<a href="#"><img alt="star" src="../img/star.jpg" width="33" height="33"></a>
+				<a href="#"><img alt="user" src="../img/user.jpg" width="33" height="33"></a>
+				<a href="#"><img alt="cart" src="../img/shopping-cart.jpg" width="33" height="33"></a>
 			</div>		
 	
 		<!-- 하위 메뉴 카테고리 : 신발 의류 용품 -->

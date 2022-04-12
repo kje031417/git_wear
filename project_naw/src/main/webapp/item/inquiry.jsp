@@ -23,7 +23,6 @@
 			// DB로 보내기 : 05-json exam03
 			
 		});
-
 	});
 	
 </script>
