@@ -29,44 +29,35 @@
 </script>
 </head>
 <body>
-	<!-- 공지 (include) 최신 글 하나 보여주기 -->
-	<div id="notice">
-		<table>
-			<tr>
-				<td>공지 : <a href="#"></a></td>	<!-- 공지 제목 -->
-				<td></td>	<!-- 등록일 -->
-			</tr>
-		</table>
-	</div>
 <!---- HEADER ---->
 	<div id="header">
-		<!-- 로고 이미지 -->
-		<div id="logo">
-			<a href="#">
-				<img alt="NAW" src="../img/NAW_main.jpg" width="80" height="80">
-			</a>
-		</div>
-		<!-- 메뉴 바 : MEN WOMEN KIDS -->
-		<div class="menu_bar">
-			<ul class="top_menu">
-				<li><a href="#">MEN</a></li>
-				<li><a href="#">WOMEN</a></li>
-				<li><a href="#">KIDS</a></li>
-			</ul>
-		</div>
-		<!-- 검색창 -->
-		<div id="search">
-			<input type="text" id="search_box" placeholder="search">
-			<img id="search_img" alt="search" src="../img/search.jpg" width="17.5" height="17.5">	<!-- 검색 버튼 : 이벤트 추가 -->
-		</div>
-		
-		<!-- 아이콘 -->
-		<div id="icon">
-			<a href="#"><img alt="star" src="../img/star.jpg" width="30" height="30"></a>
-			<a href="#"><img alt="user" src="../img/user.jpg" width="30" height="30"></a>
-			<a href="#"><img alt="cart" src="../img/shopping-cart.jpg" width="30" height="30"></a>
-		</div>
-		
+			<!-- 로고 이미지 -->
+			<div id="logo">
+				<a href="#">
+					<img alt="NAW" src="../img/NAW_main.jpg" width="80" height="80">
+				</a>
+			</div>
+			<!-- 메뉴 바 : MEN WOMEN KIDS -->
+			<div class="menu_bar">
+				<ul class="top_menu">
+					<li><a href="#">MEN</a></li>
+					<li><a href="#">WOMEN</a></li>
+					<li><a href="#">KIDS</a></li>
+				</ul>
+			</div>
+			<!-- 검색창 -->
+			<div id="search">
+				<input type="text" id="search_box" placeholder="search">
+				<img id="search_img" alt="search" src="../img/search.png" width="17" height="17">	<!-- 검색 버튼 : 이벤트 추가 -->
+			</div>
+			
+			<!-- 아이콘 -->
+			<div id="icon">
+				<a href="#"><img alt="star" src="../img/star.jpg" width="30" height="30"></a>
+				<a href="#"><img alt="user" src="../img/user.jpg" width="30" height="30"></a>
+				<a href="#"><img alt="cart" src="../img/shopping-cart.jpg" width="30" height="30"></a>
+			</div>		
+	
 		<!-- 하위 메뉴 카테고리 : 신발 의류 용품 -->
 		<div class="menu_pan">
 			<div class="c">
@@ -154,7 +145,6 @@
 				</div>
 			</div>
 		</div>
-		
 	</div>								
 	
 <!---- CONTAINER ---->	
@@ -164,8 +154,9 @@
 			<c:if test="${req == null }">
 				<jsp:include page="../main/body.jsp"/>
 			</c:if>
-			<c:if test="">
-				
+			<!-- req로 정보 보내기 -->
+			<c:if test="${req != null }">
+				<jsp:include page="${req }"/>
 			</c:if>
 		</div>
 	</div>

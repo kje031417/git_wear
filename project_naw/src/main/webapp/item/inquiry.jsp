@@ -49,11 +49,11 @@
 		<div id="inquiry_list">
 			<table id="inquiry_table">
 				<tr>
-					<th id="inquiry_code">No.</th>		<!-- 글번호 -->
+					<th id="inquiry_code">No.</th>			<!-- 글번호 -->
 					<th id="inquiry_subject">제목</th>		<!-- 글제목 -->
-					<th id="inquiry_id">작성자</th>		<!-- 작성자 -->
+					<th id="inquiry_id">작성자</th>			<!-- 작성자 -->
 					<th id="inquiry_date">작성일</th>		<!-- 작성일 -->
-					<th id="inquiry_readcount">조회수</th>		<!-- 조회수 -->
+					<th id="inquiry_readcount">조회수</th>	<!-- 조회수 -->
 				</tr>
 				<!-- 목록 -->
 				<c:forEach var="vo" items="${list }">

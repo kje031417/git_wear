@@ -61,9 +61,8 @@
 	});
 </script>
 </head>
-<body>
-	
-	<!-- 신상품 : 1350x350 -->
+<body>	
+	<!-- 신상품 : 1350x500 -->
 	<div id="new_release">
 		<div id="new_release_inner">		
 			<!-- 자동으로 이미지가 넘어가는 기능 -->
@@ -86,13 +85,19 @@
 				    </li>
 			    </ul>
 		    </div>
-  <div class="btn">
-    <button type="button" id="prev">&#10094;</button>
-    <button type="button" id="next">&#10095;</button>
-  </div>
+			<div class="btn">
+			  <button type="button" id="prev">&#10094;</button>
+			  <button type="button" id="next">&#10095;</button>
+			</div>
 		</div>
 	</div>
-
+	
+	<!-- 공지 (include) 최신 글 하나 보여주기 -->
+	<div id="notice">
+		<div id="first_notice">
+			<p>공지 : <a href="#">$</a> &nbsp;&nbsp; 등록일 : $</p>
+		</div>
+	</div>
 	<!-- 추천상품 : 이미지 3개 -->
 	<div id="recommend">
 		<div id="recommend_inner">
