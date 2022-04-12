@@ -29,6 +29,15 @@
 </script>
 </head>
 <body>
+	<!-- 공지 (include) 최신 글 하나 보여주기 -->
+	<div id="notice">
+		<table>
+			<tr>
+				<td>공지 : <a href="#"></a></td>	<!-- 공지 제목 -->
+				<td></td>	<!-- 등록일 -->
+			</tr>
+		</table>
+	</div>
 <!---- HEADER ---->
 	<div id="header">
 		<!-- 로고 이미지 -->
@@ -48,12 +57,12 @@
 		<!-- 검색창 -->
 		<div id="search">
 			<input type="text" id="search_box" placeholder="search">
-			<img id="search_img" alt="search" src="../img/search.jpg" width="18" height="18">	<!-- 검색 버튼 : 이벤트 추가 -->
+			<img id="search_img" alt="search" src="../img/search.jpg" width="17.5" height="17.5">	<!-- 검색 버튼 : 이벤트 추가 -->
 		</div>
 		
 		<!-- 아이콘 -->
 		<div id="icon">
-			<a href="#"><img alt="heart" src="../img/star.jpg" width="30" height="30"></a>
+			<a href="#"><img alt="star" src="../img/star.jpg" width="30" height="30"></a>
 			<a href="#"><img alt="user" src="../img/user.jpg" width="30" height="30"></a>
 			<a href="#"><img alt="cart" src="../img/shopping-cart.jpg" width="30" height="30"></a>
 		</div>

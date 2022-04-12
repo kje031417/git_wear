@@ -62,15 +62,6 @@
 </script>
 </head>
 <body>
-	<!-- 공지 (include) 최신 글 하나 보여주기 -->
-	<div id="notice">
-		<table>
-			<tr>
-				<td>공지 : <a href="#"></a></td>	<!-- 공지 제목 -->
-				<td></td>	<!-- 등록일 -->
-			</tr>
-		</table>
-	</div>
 	
 	<!-- 신상품 : 1350x350 -->
 	<div id="new_release">
@@ -87,11 +78,17 @@
 				    <li>
 				      <div style="background-image:url(../img/new_release3.jpg);"></div>
 				    </li>
+				    <li>
+				      <div style="background-image:url(../img/new_release4.jpg);"></div>
+				    </li>
+				    <li>
+				      <div style="background-image:url(../img/new_release5.jpg);"></div>
+				    </li>
 			    </ul>
 		    </div>
   <div class="btn">
-    <button type="button" id="prev"><</button>
-    <button type="button" id="next">></button>
+    <button type="button" id="prev">&#10094;</button>
+    <button type="button" id="next">&#10095;</button>
   </div>
 		</div>
 	</div>

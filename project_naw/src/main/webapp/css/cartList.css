@@ -59,16 +59,13 @@ body {
 	clear: both;
 	margin: auto;
 	display: table;
-	background: #ccc;
 }
 #cartList_recommend_inner {
 	display: table-cell;
 	text-align: center;
 	vertical-align: middle;
 }
-#cartList_recommend_inner2 {
-	margin: auto;
-}
+
 .cartList_recommend_title {
 	font-size: 24px;
 	font-weight: bold;

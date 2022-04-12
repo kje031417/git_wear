@@ -78,9 +78,9 @@
 	<div id="cartList_recommend">	
 		<div id="cartList_recommend_inner">		
 			<p class="cartList_recommend_title">추천상품</p><br>
-			<!-- 리스트 : 같은 카테고리의 상품들 select로 불러오기 -->
+			<!-- 리스트 : 같은 카테고리의 상품들 select로 불러오기 : 5개 -->
 			<!-- c:forEach로 div 생성 -->
-			<div id="cartList_recommend_inner2">
+
 			<div class="cartList_recommend_item">
 				<a href="#"><img alt="" src="../img/나이키머큐리얼에어줌베이퍼14프로TF_footballgrey_1.jpg" width="200" height="200"></a>
 				<p>나이키 머큐리얼 에어<br>줌 베이퍼 14 프로 TF</p>	<!-- 상품명 -->
@@ -93,7 +93,15 @@
 				<a href="#"><img alt="3" src="../img/조던시리즈ES_sail_1.jpg" width="200" height="200"></a>
 				<p>조던 시리즈 ES</p>
 			</div>	
+			<div class="cartList_recommend_item">	
+				<a href="#"><img alt="2" src="../img/w_shoes_011_a.png" width="200" height="200"></a>
+				<p>나이키 와플 데뷰</p>
 			</div>			
+			<div class="cartList_recommend_item">
+				<a href="#"><img alt="3" src="../img/조던시리즈ES_sail_1.jpg" width="200" height="200"></a>
+				<p>조던 시리즈 ES</p>
+			</div>	
+						
 		</div>
 	</div>
 </body>

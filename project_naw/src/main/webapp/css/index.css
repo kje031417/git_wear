@@ -1,10 +1,19 @@
 @charset "UTF-8";
 body {
 	background: #fff;
-	margin: 40px 0;
+	margin: 0;
 	padding: 0;
 	height: 100%;
 	font-family: '나눔바른고딕';
+}
+#notice {	/* 수정 */
+	width: 700px;
+	height: 30px;
+	background: #ccc;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	font-size: 11px;
 }
 #header {
 	width: 100%;
@@ -38,7 +47,7 @@ body {
 .top_menu {		/* 상위 카테고리 */
 	margin: auto;
 	width: 30%; 
-	height: 40px;
+	height: 80px;	/* 수정 */
 	list-style: none;
 	text-align: center; 
 	display: table;
@@ -86,7 +95,7 @@ body {
 	position: absolute;
 	width: 200px;
 	top: 40px;
-	left: 70%;
+	left: 74%;
 }
 #search_box {
 	width: 100%;
