@@ -7,19 +7,6 @@
 <meta charset="UTF-8">
 <title>NAW - 공지</title>
 <style type="text/css">
-
-/* noticeView.jsp에 작성
-#notice_view {
-	
-}
-*/
-
-/* noticeWriteForm.jsp에 작성
-#notice_write_form {
-
-}
-*/
-
 #notice_list {
 	width: 100%;
 	display: inline-flex;
@@ -52,7 +39,7 @@
 	margin-bottom: 50px;
 }
 
-button {	/* noticeList, noticeWritForm */
+#notice_write_button_div > button {
 	width: 120px;
 	height: 40px;
 	border: 1px solid black;
@@ -66,11 +53,11 @@ button {	/* noticeList, noticeWritForm */
 	color: black;
 }
 
-#submit_button {	/* noticeList, noticeWritForm */
+#submit_button {
 	background-color: black;
 	color: white;
 }
-#reset_button {	/* noticeList, noticeWritForm */
+#reset_button {
 	background-color: white;
 	color: black;
 }

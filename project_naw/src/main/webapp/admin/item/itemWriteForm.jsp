@@ -86,7 +86,7 @@ label {
 	margin-top: 30px;
 	margin-bottom: 50px;
 }
-button {
+#item_write_form_buttons_div > button {
 	width: 120px;
 	height: 40px;
 	border: 1px solid black;

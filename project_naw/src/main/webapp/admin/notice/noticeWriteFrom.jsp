@@ -48,7 +48,7 @@
 	height: 300px;
 }
 
-button {
+#notice_write_form_buttons_div > button {
 	width: 120px;
 	height: 40px;
 	border: 1px solid black;

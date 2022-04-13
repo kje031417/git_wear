@@ -46,7 +46,7 @@
 	display: inline;
 }
 
-select {
+#sales_search_div > select {
 	height: 100%;
 }
 #sales_search_by_word_input_div > input[type="text"] {
