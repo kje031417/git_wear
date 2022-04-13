@@ -1,0 +1,67 @@
+@charset "UTF-8";
+body {
+	margin-top: 100px;
+	font-family: 'Trebuchet MS', serif;
+	line-height: 1.6;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.allOrderdetails {
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	width: 800px;
+	height: 1200px;
+}
+
+.text-box-is-top-only-orderDetailContianer {
+	background-color: #ffffff;
+	border: 3px solid #2c3d51;
+	text-align: left;
+	height: 300px;
+}
+.text-box-orderContainer {
+	background: #ededed;
+	border-color: 0 3px 0 #2c3d51;
+	-webkit-box-shadow: 0 3px 0 #080c0f;
+	box-shadow: 0 3px 0 #080c0f;
+	height: 300px;
+}
+.container {
+	width: 500px;
+	margin: 0 auto;
+	background: #ededed;
+	color: #222;
+}
+.customer__block {
+	color: black;
+	text-align: left;
+	border: 3px solid gray;
+	display: inline-block; 
+	width: 380px;
+	padding: 5px;
+}
+.cart-prices {
+	width: 780px;
+	height: 300px;
+}
+
+.rs-ol-tile-list-as-grid {
+	list-style:none;
+	background: gray;
+	width: 100px;
+	height: 300px;
+}
+.rs-ol-tile-as-grid-item {
+	float: left;
+	background: #ededed;
+}
+
+.rs-ol-tile-image {
+	resize: none;
+	width: 100px;
+	height: 90px;
+}
