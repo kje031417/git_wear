@@ -198,6 +198,11 @@ a {
 		<!-- view -->
 		<div id="section">
 			<p>container</p>
+			
+			<!-- admin -->
+			<!-- <jsp:include page="../admin/item/itemWriteForm.jsp" /> -->
+			<jsp:include page="../admin/notice/noticeList.jsp" />
+			
 		</div>
 	</div>
 	
