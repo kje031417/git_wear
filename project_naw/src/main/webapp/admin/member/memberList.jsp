@@ -154,10 +154,10 @@
 				
 				<tr>
 					<td><input type="checkbox" name=""></td>
-					<td>yeajoon</td>
-					<td><a id="subjectA" href="#">최예준</a></td>
+					<td>id</td>
+					<td><a id="subjectA" href="#">이름</a></td>
 					<td>여자</td>
-					<td>1992.01.17</td>
+					<td>1111.22.33</td>
 					<td>010-1111-2222</td>
 					<td>id@email.com</td>
 					<td>11111</td>
