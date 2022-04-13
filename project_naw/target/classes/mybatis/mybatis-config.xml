@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- java beans 별명 짓기 -->
+	<typeAliases>
+		
+	</typeAliases>
+	<!-- mapper 설정 -->
+	<mappers>
+	
+	</mappers>
+	
+</configuration>

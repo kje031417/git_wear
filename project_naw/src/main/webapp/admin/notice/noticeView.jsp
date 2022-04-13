@@ -54,9 +54,22 @@
 	display: inline-flex;
 	justify-content: center;
 }
+#notice_view_buttons_div > button {
+	width: 120px;
+	height: 40px;
+	border: 1px solid black;
+	font-weight: bold;
+	margin-left: 5px;
+	margin-right: 5px;
+}
 #notice_modify_button {
 	background-color: white;
 	color: black;
+}
+#notice_modify_button:hover {
+	color: #767677;
+	border: 1px solid #767677;
+	cursor: pointer;
 }
 
 </style>

@@ -64,8 +64,7 @@
 
 #notice_write_button:hover, 
 #submit_button:hover, 
-#reset_button:hover,
-#notice_modify_button:hover {	/* noticeList, noticeWritForm, noticeView */
+#reset_button:hover {
 	color: #767677;
 	border: 1px solid #767677;
 	cursor: pointer;
