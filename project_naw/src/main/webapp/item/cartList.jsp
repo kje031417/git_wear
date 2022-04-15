@@ -8,6 +8,12 @@
 <title>장바구니</title>
 </head>
 <script type="text/javascript" src="../script/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	/* 삭제 이벤트 */
+	$(function(){
+		
+	});
+</script>
 <link rel="stylesheet" href="../css/cartList.css">
 <body>
 	<div id="cartList_title">
@@ -18,6 +24,7 @@
 	<div id="cartList_list">
 		<!-- 상품 목록 : 70% -->
 		<div id="cartList_item">
+			<!-- 목록 : 3개, 블럭 3개 -->
 			<!-- c:forEach로 테이블 추가생성 -->
 			<div id="cartList_item_img">	<!-- 상품이미지 -->
 				<img alt="" src="../img/kirby_spring.jpg" width="170" height="170">
@@ -42,6 +49,9 @@
 					<td>수량: 1개</td>	<!-- 상품 수량 -->
 				</tr>
 			</table>
+			
+			<!-- 페이징 처리 -->
+			
 		</div>
 		
 		<!-- 주문하기 : 30% -->
@@ -78,7 +88,7 @@
 	<div id="cartList_recommend">	
 		<div id="cartList_recommend_inner">		
 			<p class="cartList_recommend_title">추천상품</p><br>
-			<!-- 리스트 : 같은 카테고리의 상품들 select로 불러오기 : 5개 -->
+			<!-- 리스트 : 같은 카테고리의 상품들 select로 불러오기 : 최대 5개 -->
 			<!-- c:forEach로 div 생성 -->
 
 			<div class="cartList_recommend_item">
