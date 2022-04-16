@@ -1,0 +1,57 @@
+@charset "UTF-8";
+* {
+	padding: 0;
+	margin: 5px;
+	color: #333;
+}
+#container {
+	width: 500px;
+	padding: 30px 20px;
+}
+#inquiry_write {
+	padding: 20px 15px;
+	border-bottom: 1px solid #c0c0c0;
+}
+#inquiry_info {
+	font-size: 14px;
+	text-align: center;
+}
+#inquiry_write label {
+	display: inline-block;
+	width: 80px;
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+#inquiry_write textarea {
+	border : 1px solid #ccc;
+	vertical-align: middle;
+	padding: 3px 10px;
+	font-size: 12px;
+	line-height: 150%;
+	width: 400px;
+	height: 90px;
+}
+#inquiry_submit {
+	text-align: right;
+}
+#inquiry_table {
+	width: 500px;
+	margin: auto;
+	font-size: 14px;
+}
+#inquiry_code {
+	width: 70px;
+}
+#inquiry_subject {
+	width: *;
+}
+#inquiry_id {
+	width: 90px;
+}
+#inquiry_date {
+	width: 90px;
+}
+#inquiry_readcount {
+	width: 60px;
+}

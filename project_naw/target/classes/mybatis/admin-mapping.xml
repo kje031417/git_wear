@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.adminMapper">
+	
+	<!------------ item ------------>
+	
+	<insert id="itemWrite" parameterType="itemDTO">
+		<![CDATA[insert into item values
+		(#{item_code}, seq_item.nextval, #{item_category1}, #{item_category2}, #{item_category3}, 
+		#{item_name}, #{item_details}, #{item_image1}, #{item_image2}, 
+		#{item_price}, sysdate, #{item_color}, #{item_size})]]>
+	</insert>
+	
+	<update id="itemModify" parameterType="itemDTO">
+		<![CDATA[update item set item_category1=#{item_category1}, item_category2=#{item_category2}, item_category3=#{item_category3}, 
+		item_name=#{item_name}, item_details=#{item_details}, item_image1=#{item_image1}, item_image2=#{item_image2}, 
+		item_price=#{item_price}, item_color=#{item_color}, item_size=#{item_size} 
+		where item_code=#{item_code}]]>
+	</update>
+	
+	<delete id="itemDelete" parameterType="int">
+		<![CDATA[delete item where item_code=#{item_code}]]>
+	</delete>
+	
+	
+	
+	<!------------ member ------------>
+	
+	<select id="memberList" parameterType="java.util.Map" resultType="profileDTO">
+		<![CDATA[select user_id, user_pwd, user_name, user_phone, user_email, 
+		user_addr1, user_addr2, user_gender, user_birth, 
+		to_char(user_joindate, 'YYYY.MM.DD')as user_joindate from
+		(select rownum rn, tt.* from
+		(select * from profile order by user_joindate desc) tt)
+		where rn>=#{startNum} and rn<=#{endNum}]]>
+	</select>
+	
+	<select id="memberView" parameterType="int" resultType="profileDTO">
+		select * from profile where user_id=#{user_id}
+	</select>
+	
+	<select id="getTotalA" resultType="int">
+		select count(*) as cnt from profile
+	</select>
+	
+	
+	
+	<!------------ sales ------------>
+	
+	<select id="salesList" parameterType="java.util.Map" resultType="salesDTO">
+		<!-- 매출일자 상품코드 상품명 상세(카테고리1>2>3) 사이즈 색상 수량 가격 -->
+		<![CDATA[select 
+		to_char(ord_date, 'YYYY.MM.DD') as ord_date 
+		
+		item_code, item_name, item_category1, item_category2, item_category3, 
+		item_size, item_color, ord_qty, item_price, 
+		to_char(logtime, 'YYYY.MM.DD')as logtime from
+		(select rownum rn, tt.* from
+		(select * from sales order by seq desc) tt)
+		where rn>=#{startNum} and rn<=#{endNum}]]>
+	</select>
+	
+	<select id="salesView" parameterType="int" resultType="salesDTO">
+		select * from sales where seq=#{seq}
+	</select>
+	
+	<select id="getTotalA" resultType="int">
+		select count(*) as cnt from sales
+	</select>
+	
+</mapper>
