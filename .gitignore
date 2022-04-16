@@ -1,0 +1,7 @@
+target/*
+META-INF/*
+.springBeans
+pom.xml
+.project
+.settings/*
+.classpath
