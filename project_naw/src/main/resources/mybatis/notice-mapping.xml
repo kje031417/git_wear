@@ -4,7 +4,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mybatis.noticeMapper">
 	<select id="noticeList" parameterType="java.util.Map" resultType="noticeDTO">
-		<![CDATA[select notice_title, notice_content, 
+		<![CDATA[select 
+		notice_title, 
+		notice_content, 
 		to_char(notice_date, 'YYYY.MM.DD')as notice_date from
 		(select rownum rn, tt.* from
 		(select * from notice order by notice_date desc) tt)
