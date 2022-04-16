@@ -12,9 +12,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where rn>=#{startNum} and rn<=#{endNum}]]>
 	</select>
 	
-	<!-- select: 전체 데이터 개수 구하기 -->
-	<select id="getTotalA" resultType="int">
-		<![CDATA[select count(*) as cnt from cart]]>
+	<!-- select: 특정 회원의 장바구니 상품 개수 구하기 -->
+	<select id="getTotalA" parameterType="String" resultType="int">
+		<![CDATA[select count(*) as cnt from cart where user_id=#{user_id}]]>
 	</select>
 	
 	<!-- insert: 저장 -->
