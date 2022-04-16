@@ -1,6 +1,9 @@
 package order.bean;
 
 public class OrderDTO {
+	private String ord_date; // 주문 날짜
+	private String ord_time; // 주문 날짜
+	private String ord_number; // 주문 날짜
 	private String user_id; // 회원 id
 	private String user_name; // 구매자 이름
 	private int cart_seq; // 시퀀스
@@ -9,12 +12,36 @@ public class OrderDTO {
 	private String item_color; // 색상
 	private String item_size; // 사이즈
 	private int item_price; // 상품 개별 금액
-	private int cart_qty; // 상품 개수
-	private int cart_totalprice; // total 금액
+	private int ord_qty; // 상품 개수
+	private int ord_totalprice; // total 금액
 	private String user_post; // 우편번호
 	private String user_addr1; // 주소
 	private String user_addr2; // 상세주소
 	private String ord_payment; // 결제 수단
+
+	public String getOrd_date() {
+		return ord_date;
+	}
+
+	public void setOrd_date(String ord_date) {
+		this.ord_date = ord_date;
+	}
+
+	public String getOrd_time() {
+		return ord_time;
+	}
+
+	public void setOrd_time(String ord_time) {
+		this.ord_time = ord_time;
+	}
+
+	public String getOrd_number() {
+		return ord_number;
+	}
+
+	public void setOrd_number(String ord_number) {
+		this.ord_number = ord_number;
+	}
 
 	public String getUser_id() {
 		return user_id;
@@ -80,20 +107,20 @@ public class OrderDTO {
 		this.item_price = item_price;
 	}
 
-	public int getCart_qty() {
-		return cart_qty;
+	public int getOrd_qty() {
+		return ord_qty;
 	}
 
-	public void setCart_qty(int cart_qty) {
-		this.cart_qty = cart_qty;
+	public void setOrd_qty(int ord_qty) {
+		this.ord_qty = ord_qty;
 	}
 
-	public int getCart_totalprice() {
-		return cart_totalprice;
+	public int getOrd_totalprice() {
+		return ord_totalprice;
 	}
 
-	public void setCart_totalprice(int cart_totalprice) {
-		this.cart_totalprice = cart_totalprice;
+	public void setOrd_totalprice(int ord_totalprice) {
+		this.ord_totalprice = ord_totalprice;
 	}
 
 	public String getUser_post() {
