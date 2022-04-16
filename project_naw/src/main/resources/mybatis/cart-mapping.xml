@@ -4,12 +4,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mybatis.cartMapper">
-	<!-- select: 인덱스 뷰 -->
+	<!-- select: 특정 회원의 인덱스 뷰 -->
 	<select id="getCartList" parameterType="java.util.Map" resultType="cartDTO">
 		<![CDATA[select * from
 		(select rownum rn, tt.* from
 		(select * from cart order by cart_seq desc) tt)
-		where rn>=#{startNum} and rn<=#{endNum}]]>
+		where rn>=#{startNum} and rn<=#{endNum} and user_id=#{user_id}]]>
 	</select>
 	
 	<!-- select: 특정 회원의 장바구니 상품 개수 구하기 -->
@@ -25,10 +25,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{cart_qty}, #{cart_totalprice})]]>
 	</insert>
 	
-	<!-- update: 상품 개수 조정 -->
+	<!-- update: 옵션 변경 -->
 	<update id="modifyCart" parameterType="java.util.Map">
 		<![CDATA[update cart 
-		set cart_qty=#{cart_qty}, cart_totalprice=#{cart_totalprice}
+		set item_color=#{item_color}, item_size=#{item_size},
+		cart_qty=#{cart_qty}, cart_totalprice=#{cart_totalprice}
 		where cart_seq=#{cart_seq}]]>
 	</update>
 	

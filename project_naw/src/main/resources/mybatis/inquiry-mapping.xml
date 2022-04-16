@@ -3,18 +3,18 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper>
+<mapper namespace="mybatis.inquiryMapper">
 	<!-- select: 인덱스 뷰(답글기능) -->
 	<select id="getInquiryList" parameterType="java.util.Map" resultType="inquiryDTO">
 		<![CDATA[select * from
 		(select rownum rn, tt.* from
 		(select * from inquiry order by re_ref desc, re_seq asc) tt)
-		where rn>=#{startNum} and rn<=#{endNum}]]>
+		where rn>=#{startNum} and rn<=#{endNum} and item_code=#{item_code}]]>
 	</select>
 	
 	<!-- select: 전체 데이터 개수 구하기 -->
-	<select id="getTotalA" resultType="int">
-		<![CDATA[select count(*) as cnt from inquiry]]>
+	<select id="getTotalA" parameterType="String" resultType="int">
+		<![CDATA[select count(*) as cnt from inquiry where item_code=#{item_code}]]>
 	</select>
 	
 	<!-- select: 상세 데이터 1줄 불러오기 -->
@@ -36,7 +36,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<!-- insert: 답글 저장 -->
-	<insert id="insertReply2" parameterType="">
+	<insert id="insertReply2" parameterType="inquirtDTO">
 		<![CDATA[insert into inquiry 
 		values (seq_num.nextval, #{user_id}, #{item_code}, #{inquiry_subject}, 
 		#{inquiry_content}, #{re_ref}, #{re_lev}, #{re_seq}, 0, sysdate)]]>
