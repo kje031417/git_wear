@@ -8,6 +8,28 @@
 <title>장바구니</title>
 </head>
 <script type="text/javascript" src="../script/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		/* 수정 이벤트 : 옵션 변경 */
+		$("#cartList_option_modify").click(function(){
+			var url = "../item/cartListModifyForm.do";
+			var _left = Math.ceil(( window.screen.width - 700 )/2);
+			var _top = Math.ceil(( window.screen.height - 350 )/2);
+
+			window.open(url, "_blank", "width=700, height=350, left=" +_left + ", top=" + _top);
+		});
+		
+		/* 삭제 이벤트 */
+		$("#cartList_delete").click(function(){
+			var result = confirm("선택하신 상품을 삭제하시겠습니까?");
+			if(result) {
+				location.href="../item/cartListDelete.do";
+			} 
+		});
+	});
+	
+	
+</script>
 <link rel="stylesheet" href="../css/cartList.css">
 <body>
 	<div id="cartList_title">
@@ -18,7 +40,9 @@
 	<div id="cartList_list">
 		<!-- 상품 목록 : 70% -->
 		<div id="cartList_item">
+			<!-- 목록 : 3개, 블럭 3개 -->
 			<!-- c:forEach로 테이블 추가생성 -->
+			
 			<div id="cartList_item_img">	<!-- 상품이미지 -->
 				<img alt="" src="../img/kirby_spring.jpg" width="170" height="170">
 			</div>
@@ -31,7 +55,7 @@
 					<td>10,000원</td>	<!-- 총합계 -->
 					<td width="50">		<!-- 삭제 버튼 -->
 						<a href="#">
-							<img alt="" src="../img/cancel.png" width="17" height="17">
+							<img id="cartList_delete" src="../img/cancel.png" width="17" height="17">
 						</a>
 					</td>	
 				</tr>
@@ -42,6 +66,25 @@
 					<td>수량: 1개</td>	<!-- 상품 수량 -->
 				</tr>
 			</table>
+			
+			
+			<!-- 페이징 처리 -->
+			<c:if test="${startPage > 3 }">
+				<a class="paging" href="cartList.do?pg=${startPage-1 }">이전</a>
+			</c:if>
+			
+			<c:forEach var="i" begin="${startPage }" end="${endPage }" step="1">
+				<c:if test="${pg == i }">
+					<a class="currentPaging" href="cartList.do?pg=${i }">${i }</a>
+				</c:if>
+				<c:if test="${pg != i }">
+					<a class="paging" href="cartList.do?pg=${i }">${i }</a>
+				</c:if>
+			</c:forEach>
+			
+			<c:if test="${endPage < totalP }">
+				<a class="paging" href="cartList.do?pg=${endPage + 1 }">다음</a>
+			</c:if>
 		</div>
 		
 		<!-- 주문하기 : 30% -->
@@ -78,9 +121,9 @@
 	<div id="cartList_recommend">	
 		<div id="cartList_recommend_inner">		
 			<p class="cartList_recommend_title">추천상품</p><br>
-			<!-- 리스트 : 같은 카테고리의 상품들 select로 불러오기 : 5개 -->
+			<!-- 리스트 : 같은 카테고리의 상품들 select로 불러오기 : 최대 5개 -->
 			<!-- c:forEach로 div 생성 -->
-
+			
 			<div class="cartList_recommend_item">
 				<a href="#"><img alt="" src="../img/나이키머큐리얼에어줌베이퍼14프로TF_footballgrey_1.jpg" width="200" height="200"></a>
 				<p>나이키 머큐리얼 에어<br>줌 베이퍼 14 프로 TF</p>	<!-- 상품명 -->
