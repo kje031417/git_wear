@@ -3,17 +3,18 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper>
-	<!-- select: 인덱스 뷰 -->
-	<select id="getReviewList" parameterType="java.util.Map" resultType="reviewDTO">
-		<![CDATA[]]>	<!-- 더보기 기능 구현? -->
+<mapper namespace="mybatis.reviewMapper">
+	<!-- select -->
+	<select id="getReviewList" parameterType="int" resultType="reviewDTO">
+		<![CDATA[select * from review where item_code=#{item_code}]]>	<!-- 더보기 기능 구현? -->
 	</select>
 	
 	<!-- select: 전체 데이터 개수 구하기 -->
-	<select id="getTotalA" resultType="int">
+<!-- <select id="getTotalA" resultType="int">
 		<![CDATA[select count(*) as cnt from review]]>
 	</select>
-	
+ -->	
+ 	
 	<!-- insert: 저장 -->
 	<insert id="insertReview" parameterType="reviewDTO">
 		<![CDATA[insert into review 
@@ -21,12 +22,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<!-- update: 수정 -->
-	<update id="modifyReview" parameterType="java.util.Map">
+<!-- <update id="modifyReview" parameterType="java.util.Map">
 		<![CDATA[update review 
 		set review_content=#{review_content}, review_star=#{review_star} 
 		where review_code=#{review_code}]]>
 	</update>
-	
+ -->	
+ 	
 	<!-- delete: 삭제 -->
 	<delete id="deleteReview" parameterType="int">
 		<![CDATA[delete review where review_code=#{review_code}]]>
