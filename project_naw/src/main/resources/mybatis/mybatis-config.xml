@@ -8,6 +8,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="cart.bean.CartDTO" alias="cartDTO"/>
 		<!-- <typeAlias type="review.bean.ReviewDTO" alias="reviewDTO"/>  -->
 		<!-- <typeAlias type="inquriy.bean.InquiryDTO" alias="inquiryDTO"/> -->
+		<typeAlias type="item.bean.ItemDTO" alias="dto"/>
+		<typeAlias type="order.bean.OrderDTO" alias="dto"/>
 	</typeAliases>
 	
 	<!-- mapper 설정 -->
@@ -15,6 +17,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="mybatis/cart-mapping.xml"/>
 	<!-- <mapper resource="mybatis/review-mapping.xml"/> -->	
 	<!-- <mapper resource="mybatis/inquiry-mapping.xml"/> -->	
+		<mapper resource="mybatis/item-mapping.xml" />
+		<mapper resource="mybatis/order-mapping.xml" />
 	</mappers>
 	
 </configuration>
