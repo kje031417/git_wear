@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper>
+	<!-- select: 인덱스 뷰(답글기능) -->
+	<select id="getInquiryList" parameterType="java.util.Map" resultType="inquiryDTO">
+		<![CDATA[select * from
+		(select rownum rn, tt.* from
+		(select * from inquiry order by re_ref desc, re_seq asc) tt)
+		where rn>=#{startNum} and rn<=#{endNum}]]>
+	</select>
+	
+	<!-- select: 전체 데이터 개수 구하기 -->
+	<select id="getTotalA" resultType="int">
+		<![CDATA[select count(*) as cnt from inquiry]]>
+	</select>
+	
+	<!-- select: 상세 데이터 1줄 불러오기 -->
+	<select id="viewInquiry" parameterType="int" resultType="inquiryDTO">
+		<![CDATA[select * from inquiry where inquiry_code=#{inquiry_code}]]>
+	</select>
+	
+	<!-- insert: 저장 -->
+	<insert id="insertInquiry" parameterType="inquiryDTO">
+		<![CDATA[insert into inquiry 
+		values(inquiry_code.nextval, #{user_id}, #{item_code}, #{inquiry_subject}, 
+		#{inquiry_content}, inquiry_code.currval, 0, 0, 0, sysdate)]]>
+	</insert>
+	
+	<!-- update: 기존글의 re_seq값 정리 -->
+	<update id="insertReply1" parameterType="java.util.Map">
+		<![CDATA[update inquiry 
+		set re_seq = re_seq + 1 where re_ref=#{re_ref} and re_seq>#{re_seq}]]>
+	</update>
+	
+	<!-- insert: 답글 저장 -->
+	<insert id="insertReply2" parameterType="">
+		<![CDATA[insert into inquiry 
+		values (seq_num.nextval, #{user_id}, #{item_code}, #{inquiry_subject}, 
+		#{inquiry_content}, #{re_ref}, #{re_lev}, #{re_seq}, 0, sysdate)]]>
+	</insert>
+	
+	<!-- update: 수정 -->
+	<update id="modifyInquiry" parameterType="java.util.Map">
+		<![CDATA[update inquiry 
+		set inquiry_subject=#{inquiry_subject}, inquiry_content=#{inquiry_content}
+		where inquiry_code=#{inquiry_code}]]>
+	</update>
+	
+	<!-- update: 조회수 증가 -->
+	<update id="plusHit" parameterType="int">
+		<![CDATA[update inquiry 
+		set inquiry_readcount = inquiry_readcount + 1 where inquiry_code=#{inquiry_code}]]>
+	</update>
+	
+	<!-- delete: 삭제 -->
+	<delete id="deleteInquiry" parameterType="int">
+		<![CDATA[delete review where review_code=#{review_code}]]>
+	</delete>
+</mapper>
