@@ -7,10 +7,6 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 
-
- <!-- ** mybatis 작업이 끝날때까지 주석 처리로 두기 ** -->
-
-
 	<!-- DataSource 설정 : 커넥션풀 -->
 	<context:property-placeholder location="classpath:mybatis/db.properties"/>
 	
