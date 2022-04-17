@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.adminMapper">
+	
+	<!------------ item ------------>
+	
+	<insert id="itemWrite" parameterType="itemDTO">
+		<![CDATA[insert into item values
+		(#{item_code}, seq_item.nextval, #{item_category1}, #{item_category2}, #{item_category3}, 
+		#{item_name}, #{item_details}, #{item_image1}, #{item_image2}, 
+		#{item_price}, sysdate, #{item_color}, #{item_size})]]>
+	</insert>
+	
+	<update id="itemModify" parameterType="itemDTO">
+		<![CDATA[update item set item_category1=#{item_category1}, item_category2=#{item_category2}, item_category3=#{item_category3}, 
+		item_name=#{item_name}, item_details=#{item_details}, item_image1=#{item_image1}, item_image2=#{item_image2}, 
+		item_price=#{item_price}, item_color=#{item_color}, item_size=#{item_size} 
+		where item_code=#{item_code}]]>
+	</update>
+	
+	<delete id="itemDelete" parameterType="int">
+		<![CDATA[delete item where item_code=#{item_code}]]>
+	</delete>
+	
+	
+	
+	<!------------ member ------------>
+	
+	<select id="memberList" parameterType="java.util.Map" resultType="profileDTO">
+		<![CDATA[select 
+		user_id, 
+		user_pwd, 
+		user_name, 
+		user_phone, 
+		user_email, 
+		user_addr1, 
+		user_addr2, 
+		user_gender, 
+		user_birth, 
+		to_char(user_joindate, 'YYYY/MM/DD')as user_joindate from
+		(select rownum rn, tt.* from
+		(select * from profile 
+		
+		order by user_joindate desc) tt)
+		where rn>=#{startNum} and rn<=#{endNum}]]>
+	</select>
+	
+	<select id="memberView" parameterType="int" resultType="profileDTO">
+		select * from profile where user_id=#{user_id}
+	</select>
+	
+	<select id="getTotalProfile" resultType="int">
+		select count(*) as cnt from profile
+	</select>
+	
+	
+	
+	<!------------ sales ------------>
+	
+	
+	
+	<!-- 1. 전체 -->
+	
+	<!-- 매출목록 -->
+	<select id="salesList" parameterType="java.util.Map" resultType="salesDTO">
+		<!-- 매출일자 상품코드 상품명 상세(카테고리1>2>3) 사이즈 색상 가격(단가) 수량 총가격(매출액) -->
+		<![CDATA[select 
+		to_char(ord_date, 'YYYY/MM/DD') as ord_date, 
+		item_code, 
+		ord_name, 
+		item_category1, 
+		item_category2, 
+		item_category3, 
+		ord_size, 
+		ord_color, 
+		ord_price, 
+		ord_qty, 
+		ord_totalprice 
+		from (select rownum rn, tt.* from 
+		(select * from ord 
+        inner join item
+		on ord.ord_name = item.item_name 
+        order by ord_date asc) tt) 
+		where rn>=#{startNum} and rn<=#{endNum}]]>
+	</select>
+	
+	<!-- 총매출액 -->
+	<select id="totalSales" parameterType="java.util.Map" resultType="salesDTO">
+		<![CDATA[select count(*), sum(ord_totalprice) from ord]]>
+	</select>
+	
+	
+	
+	
+	<!-- 2. 날짜별 - 연,월,일별 -->
+	
+	<!-- 연,월,일별 매출목록 -->
+	<select id="salesListByDate" parameterType="java.util.Map" resultType="salesDTO">
+		<![CDATA[select 
+		to_char(ord_date, 'YYYY/MM/DD') as ord_date, 
+		item_code, 
+		ord_name, 
+		item_category1, 
+		item_category2, 
+		item_category3, 
+		ord_size, 
+		ord_color, 
+		ord_price, 
+		ord_qty, 
+		ord_totalprice 
+		from (select rownum rn, tt.* from 
+		(select * from ord 
+		inner join item
+		on ord.ord_name = item.item_name ]]>
+		<if test="year!=null or month!=null or day!=null">
+			<![CDATA[where ]]>
+			<if test="year != null">
+				<![CDATA[extract(year from ord_date) = #{year} ]]>
+			</if>
+			<if test="month != null">
+				<if test="year != null">
+					<![CDATA[and ]]>
+				</if>
+				<![CDATA[extract(month from ord_date) = #{month} ]]>
+			</if>
+			<if test="day != null">
+				<if test="year != null or month != null">
+					<![CDATA[and ]]>
+				</if>
+				<![CDATA[extract(day from ord_date) = #{day} ]]>
+			</if>
+		</if>
+		<![CDATA[
+		order by ord_date asc) tt) 
+		where rn>=#{startNum} and rn<=#{endNum}]]>
+	</select>
+	
+	<!-- 연,월,일별 총매출액 -->
+	<select id="salesByDate" parameterType="java.util.Map" resultType="salesDTO">
+		<![CDATA[select 
+		sum(ord_totalprice) from ord ]]>
+		<if test="year!=null or month!=null or day!=null">
+			<![CDATA[where ]]>
+			<if test="year != null">
+				<![CDATA[extract(year from ord_date) = #{year} ]]>
+			</if>
+			<if test="month != null">
+				<if test="year != null">
+					<![CDATA[and ]]>
+				</if>
+				<![CDATA[extract(month from ord_date) = #{month} ]]>
+			</if>
+			<if test="day != null">
+				<if test="year != null or month != null">
+					<![CDATA[and ]]>
+				</if>
+				<![CDATA[extract(day from ord_date) = #{day}]]>
+			</if>
+		</if>
+	</select>
+	
+	
+	
+	
+	<!-- 3. 카테고리별(카테고리1 > 카테고리2 > 카테고리3) 매출 -->
+	
+	<!-- 카테고리1 > 카테고리2 > 카테고리3 매출목록 -->
+	<select id="salesListByCategory" parameterType="java.util.Map" resultType="salesDTO">
+		<![CDATA[select 
+		to_char(ord_date, 'YYYY/MM/DD') as ord_date, 
+		item_code, 
+		ord_name, 
+		item_category1, 
+		item_category2, 
+		item_category3, 
+		ord_size, 
+		ord_color, 
+		ord_price, 
+		ord_qty, 
+		ord_totalprice 
+		from (select rownum rn, tt.* from 
+		(select * from ord 
+		inner join item
+		on ord.ord_name = item.item_name ]]>
+		<if test="item_category1!=null or item_category2!=null or item_category3!=null">
+			<![CDATA[where ]]>
+			<if test="item_category1 != null">
+				<![CDATA[item_category1 = #{item_category1} ]]>
+			</if>
+			<if test="item_category2 != null">
+				<if test="item_category1 != null">
+					<![CDATA[and ]]>
+				</if>
+				<![CDATA[item_category2 = #{item_category2} ]]>
+			</if>
+			<if test="item_category3 != null">
+				<if test="item_category1 != null or item_category2 != null">
+					<![CDATA[and ]]>
+				</if>
+				<![CDATA[item_category3 = #{item_category3} ]]>
+			</if>
+		</if>
+		<![CDATA[
+		order by ord_date asc) tt) 
+		where rn>=#{startNum} and rn<=#{endNum}]]>
+	</select>
+	
+	<!-- 카테고리1 > 카테고리2 > 카테고리3 총매출액 -->
+	<select id="salesByCategory" parameterType="java.util.Map" resultType="salesDTO">
+		<![CDATA[select 
+		sum(ord_totalprice) from ord 
+		inner join item 
+		on ord.ord_name = item.item_name ]]>
+		<if test="item_category1!=null or item_category2!=null or item_category3!=null">
+			<![CDATA[where ]]>
+			<if test="item_category1 != null">
+				<![CDATA[item_category1 = #{item_category1} ]]>
+			</if>
+			<if test="item_category2 != null">
+				<if test="item_category1 != null">
+					<![CDATA[and ]]>
+				</if>
+				<![CDATA[item_category2 = #{item_category2} ]]>
+			</if>
+			<if test="item_category3 != null">
+				<if test="item_category1 != null or item_category2 != null">
+					<![CDATA[and ]]>
+				</if>
+				<![CDATA[item_category3 = #{item_category3}]]>
+			</if>
+		</if>
+	</select>
+	
+	
+	
+	
+	<!-- 4. 성별 -->
+	
+	<!-- 성별 매출목록 -->
+	<select id="salesListByGender" parameterType="java.util.Map" resultType="salesDTO">
+		<![CDATA[select 
+		to_char(ord_date, 'YYYY/MM/DD') as ord_date, 
+        user_gender, 
+        trunc(months_between(sysdate, user_birth) / 12) as user_age, 
+		item_code, 
+		ord_name, 
+		item_category1, 
+		item_category2, 
+		item_category3, 
+		ord_size, 
+		ord_color, 
+		ord_price, 
+		ord_qty, 
+		ord_totalprice 
+		from (select rownum rn, tt.* from 
+		(select * from ord 
+		inner join item
+		on ord.ord_name = item.item_name 
+		inner join profile
+		on ord.user_id = profile.user_id ]]>
+		<if test="user_gender != null">
+			<![CDATA[where user_gender = #{user_gender} ]]>
+		</if>
+		<![CDATA[
+		order by ord_date asc) tt) 
+		where rn>=#{startNum} and rn<=#{endNum}]]>
+	</select>
+	
+	
+	<!-- 성별 총매출액 -->
+	<select id="salesByGender" parameterType="java.util.Map" resultType="salesDTO">
+		<![CDATA[select 
+		sum(ord_totalprice) from ord 
+		inner join item 
+		on ord.ord_name = item.item_name 
+		inner join profile
+		on ord.user_id = profile.user_id ]]>
+		<if test="user_gender != null">
+			<![CDATA[where user_gender = #{user_gender}]]>
+		</if>
+	</select>
+	
+	
+	
+	
+	<!-- 5. 연령별 -->
+	
+	<!-- 연령대별 매출목록 -->
+	<select id="salesListByAgegroup" parameterType="java.util.Map" resultType="salesDTO">
+		<![CDATA[select 
+		to_char(ord_date, 'YYYY/MM/DD') as ord_date, 
+        user_gender, 
+        trunc(months_between(sysdate, user_birth) / 12) as user_age, 
+		item_code, 
+		ord_name, 
+		item_category1, 
+		item_category2, 
+		item_category3, 
+		ord_size, 
+		ord_color, 
+		ord_price, 
+		ord_qty, 
+		ord_totalprice 
+		from (select rownum rn, tt.* from 
+		(select * from ord 
+		inner join item
+		on ord.ord_name = item.item_name 
+		inner join profile
+		on ord.user_id = profile.user_id ]]>
+		<if test="user_agegroup != null">
+			<![CDATA[where trunc(months_between(sysdate, user_birth) / 12) >= #{user_agegroup} 
+						and trunc(months_between(sysdate, user_birth) / 12) < #{user_agegroup + 10} ]]>
+		</if>
+		<![CDATA[
+		order by ord_date asc) tt) 
+		where rn>=#{startNum} and rn<=#{endNum}]]>
+	</select>
+	
+	
+	
+	<!-- 연령대별 총매출액 -->
+	<select id="salesByAgegroup" parameterType="java.util.Map" resultType="salesDTO">
+		<![CDATA[select 
+		sum(ord_totalprice) from ord 
+		inner join item 
+		on ord.ord_name = item.item_name 
+		inner join profile
+		on ord.user_id = profile.user_id ]]>
+		<if test="user_agegroup != null">
+			<![CDATA[where trunc(months_between(sysdate, user_birth) / 12) >= #{user_agegroup} 
+						and trunc(months_between(sysdate, user_birth) / 12) < #{user_agegroup + 10}]]>
+		</if>
+	</select>
+	
+	
+	
+	
+	<!-- 4+5. 성별 + 연령별 -->
+	
+	<!-- 성별 + 연령대별 매출목록 -->
+	<select id="salesListByGenderAgegroup" parameterType="java.util.Map" resultType="salesDTO">
+		<![CDATA[select 
+		to_char(ord_date, 'YYYY/MM/DD') as ord_date, 
+        user_gender, 
+        trunc(months_between(sysdate, user_birth) / 12) as user_age, 
+		item_code, 
+		ord_name, 
+		item_category1, 
+		item_category2, 
+		item_category3, 
+		ord_size, 
+		ord_color, 
+		ord_price, 
+		ord_qty, 
+		ord_totalprice 
+		from (select rownum rn, tt.* from 
+		(select * from ord 
+		inner join item
+		on ord.ord_name = item.item_name 
+		inner join profile
+		on ord.user_id = profile.user_id ]]>
+		<if test="user_gender!=null or user_agegroup!=null">
+			<![CDATA[where ]]>
+			<if test="user_gender != null">
+				<![CDATA[user_gender = #{user_gender} ]]>
+			</if>
+			<if test="user_agegroup != null">
+				<if test="user_gender != null">
+					<![CDATA[and ]]>
+				</if>
+					<![CDATA[trunc(months_between(sysdate, user_birth) / 12) >= #{user_agegroup} 
+						and trunc(months_between(sysdate, user_birth) / 12) < #{user_agegroup + 10} ]]>
+			</if>
+		</if>
+		<![CDATA[
+		order by ord_date asc) tt) 
+		where rn>=#{startNum} and rn<=#{endNum}]]>
+	</select>
+	
+	<!-- 성별 + 연령대별 총매출액 -->
+	<select id="salesByGenderAgegroup" parameterType="java.util.Map" resultType="salesDTO">
+		<![CDATA[select 
+		sum(ord_totalprice) from ord 
+		inner join item 
+		on ord.ord_name = item.item_name 
+		inner join profile
+		on ord.user_id = profile.user_id ]]>
+		<if test="user_gender!=null or user_agegroup!=null">
+			<![CDATA[where ]]>
+			<if test="user_gender != null">
+				<![CDATA[user_gender = #{user_gender} ]]>
+			</if>
+			<if test="user_agegroup != null">
+				<if test="user_gender != null">
+					<![CDATA[and ]]>
+				</if>
+					<![CDATA[trunc(months_between(sysdate, user_birth) / 12) >= #{user_agegroup} 
+						and trunc(months_between(sysdate, user_birth) / 12) < #{user_agegroup + 10}]]>
+			</if>
+		</if>
+	</select>
+	
+	
+	
+	<!-- 1~5. 날짜별 + 카테고리별 + 성별 + 연령별 -->
+	
+	<!-- 날짜별 + 카테고리별 + 성별 + 연령대별 매출목록 -->
+	<select id="salesList" parameterType="java.util.Map" resultType="salesDTO">
+		<![CDATA[select 
+		to_char(ord_date, 'YYYY/MM/DD') as ord_date, 
+        user_gender, 
+        trunc(months_between(sysdate, user_birth) / 12) as user_age, 
+		item_code, 
+		ord_name, 
+		item_category1, 
+		item_category2, 
+		item_category3, 
+		ord_size, 
+		ord_color, 
+		ord_price, 
+		ord_qty, 
+		ord_totalprice 
+		from (select rownum rn, tt.* from 
+		(select * from ord 
+		inner join item
+		on ord.ord_name = item.item_name 
+		inner join profile
+		on ord.user_id = profile.user_id ]]>
+		<!-- 날짜별 -->
+		<if test="year!=null or month!=null or day!=null">
+			<![CDATA[where ]]>
+			<if test="year != null">
+				<![CDATA[extract(year from ord_date) = #{year} ]]>
+			</if>
+			<if test="month != null">
+				<if test="year != null">
+					<![CDATA[and ]]>
+				</if>
+				<![CDATA[extract(month from ord_date) = #{month} ]]>
+			</if>
+			<if test="day != null">
+				<if test="year != null or month != null">
+					<![CDATA[and ]]>
+				</if>
+				<![CDATA[extract(day from ord_date) = #{day} ]]>
+			</if>
+		</if>
+		<!-- 카테고리별 -->
+		<if test="item_category1!=null or item_category2!=null or item_category3!=null">
+			<![CDATA[where ]]>
+			<if test="item_category1 != null">
+				<![CDATA[item_category1 = #{item_category1} ]]>
+			</if>
+			<if test="item_category2 != null">
+				<if test="item_category1 != null">
+					<![CDATA[and ]]>
+				</if>
+				<![CDATA[item_category2 = #{item_category2} ]]>
+			</if>
+			<if test="item_category3 != null">
+				<if test="item_category1 != null or item_category2 != null">
+					<![CDATA[and ]]>
+				</if>
+				<![CDATA[item_category3 = #{item_category3} ]]>
+			</if>
+		</if>
+		<!-- 성별+연령별 -->
+		<if test="user_gender!=null or user_agegroup!=null">
+			<![CDATA[where ]]>
+			<if test="user_gender != null">
+				<![CDATA[user_gender = #{user_gender} ]]>
+			</if>
+			<if test="user_agegroup != null">
+				<if test="user_gender != null">
+					<![CDATA[and ]]>
+				</if>
+					<![CDATA[trunc(months_between(sysdate, user_birth) / 12) >= #{user_agegroup} 
+						and trunc(months_between(sysdate, user_birth) / 12) < #{user_agegroup + 10} ]]>
+			</if>
+		</if>
+		<![CDATA[
+		order by ord_date asc) tt) 
+		where rn>=#{startNum} and rn<=#{endNum}]]>
+	</select>
+	
+	<!-- 날짜별 + 카테고리별 + 성별 + 연령대별 총매출액 -->
+	<select id="totalSales" parameterType="java.util.Map" resultType="salesDTO">
+		<![CDATA[select 
+		sum(ord_totalprice) from ord 
+		inner join item 
+		on ord.ord_name = item.item_name 
+		inner join profile
+		on ord.user_id = profile.user_id ]]>
+		<if test="user_gender!=null or user_agegroup!=null">
+			<![CDATA[where ]]>
+			<if test="user_gender != null">
+				<![CDATA[user_gender = #{user_gender} ]]>
+			</if>
+			<if test="user_agegroup != null">
+				<if test="user_gender != null">
+					<![CDATA[and ]]>
+				</if>
+					<![CDATA[trunc(months_between(sysdate, user_birth) / 12) >= #{user_agegroup} 
+						and trunc(months_between(sysdate, user_birth) / 12) < #{user_agegroup + 10}]]>
+			</if>
+		</if>
+	</select>
+	
+	
+	
+	
+	
+	<select id="getTotalSales" resultType="int">
+		<![CDATA[select count(*) as cnt from sales]]>
+	</select>
+	
+</mapper>
