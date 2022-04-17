@@ -1,2 +1,3 @@
-project_naw/src/main/webapp/META-INF/*
-project_naw/target/**
+target/*
+META-INF/*
+.springBeans
