@@ -8,6 +8,7 @@ public class CartDTO {
 	private String item_name;		//상품이름
 	private String item_color;		//색상
 	private String item_size;		//사이즈
+	private String item_image;		//상품이미지
 	private int item_price;			//상품 개별적인 금액
 	private int cart_qty;			//상품개수
 	private int cart_totalprice;	//total금액
@@ -17,7 +18,7 @@ public class CartDTO {
 	public String toString() {
 		String str = String.format("%s\t%d\t%s\t%s\t%s\t%s\t%d\t%d\t%d", 
 							user_id, cart_seq, item_code, item_name, item_color, 
-							item_size, item_price, cart_qty, cart_totalprice);
+							item_size, item_image, item_price, cart_qty, cart_totalprice);
 		return str;
 	}
 	
@@ -57,6 +58,12 @@ public class CartDTO {
 	}
 	public void setItem_size(String item_size) {
 		this.item_size = item_size;
+	}
+	public String getItem_image() {
+		return item_image;
+	}
+	public void setItem_image(String item_image) {
+		this.item_image = item_image;
 	}
 	public int getItem_price() {
 		return item_price;

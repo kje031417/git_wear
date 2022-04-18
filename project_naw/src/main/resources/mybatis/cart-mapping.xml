@@ -17,12 +17,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<![CDATA[select count(*) as cnt from cart where user_id=#{user_id}]]>
 	</select>
 	
+	<!-- select: 특정 회원의 장바구니 총 상품 금액 구하기 -->
+	<select id="getTotalprice" parameterType="String" resultType="int">
+		<![CDATA[select sum(cart_totalprice) from cart where user_id=#{user_id}]]>
+	</select>
+	
 	<!-- insert: 저장 -->
 	<insert id="insertCart" parameterType="cartDTO">
 		<![CDATA[insert into cart 
 		values(#{user_id}, cart_seq.nextval, #{item_code}, 
-		#{item_name}, #{item_color}, #{item_size}, #{item_price}, 
-		#{cart_qty}, #{cart_totalprice})]]>
+		#{item_name}, #{item_color}, #{item_size}, #{item_image},
+		#{item_price}, #{cart_qty}, #{cart_totalprice})]]>
 	</insert>
 	
 	<!-- update: 옵션 변경 -->

@@ -6,6 +6,7 @@ create table cart (
 	item_name varchar2(100) not null,	    --상품이름
 	item_color varchar(20) not null,	    --색상
 	item_size varchar(20) not null,	        --사이즈
+    item_image varchar2(100) not null,      --상품이미지
 	item_price number(20) not null,	        --상품개별적인 금액
 	cart_qty number(10) not null,	        --상품개수
 	cart_totalprice number(20) not null,    --total 금액
@@ -26,7 +27,7 @@ drop sequence cart_seq;
 
 -- 6) 데이터 저장하기
 insert into cart 
-values('lee333', cart_seq.nextval, '001', 'test', 'black', 'S', 10, 1000, 10000);
+values('hong', cart_seq.nextval, '001', 'test', 'black', 'S', 'aa.jpg', 10, 1000, 10000);
 
 -- 7) 전체 내용 확인
 select * from cart order by cart_seq desc;
