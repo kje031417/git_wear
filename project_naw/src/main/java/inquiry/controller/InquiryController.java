@@ -17,7 +17,7 @@ public class InquiryController {
 	@Autowired
 	private InquiryService inquiryService;
 	
-	@RequestMapping(value="/item/inquiry.do")
+	@RequestMapping(value="/item/inquiryList.do")
 	public ModelAndView inquiryList(HttpServletRequest request, HttpServletResponse response) {
 		/* 데이터 처리 */
 		int pg = 1;
@@ -26,12 +26,12 @@ public class InquiryController {
 		
 		// 페이징 처리
 		int totalA = inquiryService.getTotalA();
-		int totalP = (totalA + 4) / 5;
+		int totalP = (totalA + 9) / 10;
 		if(pg > totalP) pg = totalP;
 		
 		// 목록 보기
-		int endNum = pg * 5;
-		int startNum = endNum - 4;
+		int endNum = pg * 10;
+		int startNum = endNum - 9;
 		
 		List<InquiryDTO> list = inquiryService.getInquiryList(startNum, endNum);
 		
@@ -47,49 +47,159 @@ public class InquiryController {
 		modelAndView.addObject("startPage", startPage);
 		modelAndView.addObject("endPage", endPage);
 		modelAndView.addObject("totalP", totalP);
-		modelAndView.setViewName("../item/inquiry.jsp");
-		//modelAndView.addObject("req_itemView", "../item/inquiry.jsp");
-		//modelAndView.setViewName("../item/itemView.jsp");
-		
+		modelAndView.addObject("req", "../item/inquiry.jsp");
+		modelAndView.setViewName("../main/index.jsp");
+
 		return modelAndView;
 	}
 	
 	@RequestMapping(value="/item/inquiryView.do")
 	public ModelAndView inquiryView(HttpServletRequest request, HttpServletResponse response) {
 		/* 데이터 처리 */
+		int inquiry_code = Integer.parseInt(request.getParameter("inquiry_code"));
+		int pg = Integer.parseInt(request.getParameter("pg"));
 		
-		
-		
+		// 조회수 증가하기
+		inquiryService.plusHit(inquiry_code);
+		// 상세 데이터 1줄 가져오기
+		InquiryDTO dto = inquiryService.viewInquiry(inquiry_code);
 		
 		/* 화면 네비게이션 */
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("pg", pg);
+		modelAndView.addObject("dto", dto);
+		modelAndView.addObject("req", "../item/inquiryView.jsp");
+		modelAndView.setViewName("../main/index.jsp");
 		
-		return null;
+		return modelAndView;
 	}
 	
-	@RequestMapping(value="/item/inquiryInsert.do")
-	public ModelAndView inquiryInsert(HttpServletRequest request, HttpServletResponse response) {
+	@RequestMapping(value="/item/inquiryWrite.do")
+	public ModelAndView inquiryWrite(HttpServletRequest request, HttpServletResponse response) {
 		/* 데이터 처리 */
+		//HttpSession session = request.getSession();
+		//String user_id = (String)session.getAttribute("memId");		//memId의 세션 값 불러오기
+		String user_id = "lee303";	// test
+		String inquiry_subject = request.getParameter("inquiry_subject");
+		String inquiry_content = request.getParameter("inquiry_content");
+		
+		InquiryDTO dto = new InquiryDTO();
+		dto.setUser_id(user_id);
+		dto.setInquiry_subject(inquiry_subject);
+		dto.setInquiry_content(inquiry_content);
+		
+		int result = inquiryService.insertInquiry(dto);
 		
 		/* 화면 네비게이션 */
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("result", result);
+		modelAndView.addObject("req", "../item/inquiryWrite.jsp");
+		modelAndView.setViewName("../main/index.jsp");
 		
-		return null;
+		return modelAndView;
 	}
+	
+	@RequestMapping(value="/item/inquiryModifyForm.do")
+	public ModelAndView inquiryModifyForm(HttpServletRequest request, HttpServletResponse response) {
+		/* 데이터 처리 */
+		int inquiry_code = Integer.parseInt(request.getParameter("inquiry_code"));
+		int pg = Integer.parseInt(request.getParameter("pg"));
+		
+		InquiryDTO dto = inquiryService.viewInquiry(inquiry_code);
+		
+		/* 화면 네비게이션 */
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("pg", pg);
+		modelAndView.addObject("inquiry_code", inquiry_code);
+		modelAndView.addObject("dto", dto);
+		modelAndView.addObject("req", "../item/inquiryModifyForm.jsp");
+		modelAndView.setViewName("../main/index.jsp");
+		
+		return modelAndView;
+	}
+	
 	
 	@RequestMapping(value="/item/inquiryModify.do")
 	public ModelAndView inquiryModify(HttpServletRequest request, HttpServletResponse response) {
 		/* 데이터 처리 */
+		int inquiry_code = Integer.parseInt(request.getParameter("inquiry_code"));
+		int pg = Integer.parseInt(request.getParameter("pg"));
+		String inquiry_subject = request.getParameter("inquiry_subject");
+		String inquiry_content = request.getParameter("inquiry_content");
+		
+		int result = inquiryService.modifyInquiry(inquiry_subject, inquiry_content, inquiry_code);
 		
 		/* 화면 네비게이션 */
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("pg", pg);
+		modelAndView.addObject("inquiry_code", inquiry_code);
+		modelAndView.addObject("result", result);
+		modelAndView.addObject("req", "../item/inquiryModify.jsp");
 		
-		return null;
+		modelAndView.setViewName("../main/index.jsp");
+		
+		return modelAndView;
 	}
 	
 	@RequestMapping(value="/item/inquiryDelete.do")
 	public ModelAndView inquiryDelete(HttpServletRequest request, HttpServletResponse response) {
 		/* 데이터 처리 */
+		int inquiry_code = Integer.parseInt(request.getParameter("inquiry_code"));
+		int pg = Integer.parseInt(request.getParameter("pg"));
+		
+		int result = inquiryService.deleteInquiry(inquiry_code);
 		
 		/* 화면 네비게이션 */
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("pg", pg);
+		modelAndView.addObject("inquiry_code", inquiry_code);
+		modelAndView.addObject("result", result);
+		modelAndView.addObject("req", "../item/inquiryDelete.jsp");
+		modelAndView.setViewName("../main/index.jsp");
 		
-		return null;
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="/item/inquiryReply.do")
+	public ModelAndView inquiryReply(HttpServletRequest request, HttpServletResponse response) {
+		/* 데이터 처리 */
+		int inquiry_code = Integer.parseInt(request.getParameter("inquiry_code"));
+		int pg = Integer.parseInt(request.getParameter("pg"));
+		// 답글 내용
+		//HttpSession session = request.getSession();
+		//String user_id = (String)session.getAttribute("memId");		//memId의 세션 값 불러오기
+		String user_id = "admin111";	// test
+		String inquiry_subject = request.getParameter("inquiry_subject");
+		String inquiry_content = request.getParameter("inquiry_content");
+		
+		// 기존글의 re_ref, re_lev, re_seq 값 가져오기 => +1해서 답글 저장
+		InquiryDTO dto_origin = inquiryService.viewInquiry(inquiry_code);
+		int re_ref = dto_origin.getRe_ref();
+		int re_lev = dto_origin.getRe_lev();
+		int re_seq = dto_origin.getRe_seq();
+		
+		// 기존글의 re_seq값 정리
+		inquiryService.insertReply1(re_ref, re_seq);
+		
+		// 답글 저장
+		InquiryDTO dto_reply = new InquiryDTO();
+		dto_reply.setUser_id(user_id);
+		dto_reply.setInquiry_subject(inquiry_subject);
+		dto_reply.setInquiry_content(inquiry_content);
+		dto_reply.setRe_ref(re_ref);
+		dto_reply.setRe_lev(re_lev + 1);
+		dto_reply.setRe_seq(re_seq + 1);
+		
+		int result = inquiryService.insertReply2(dto_reply);
+		
+		/* 화면 네비게이션 */
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("pg", pg);
+		modelAndView.addObject("inquiry_code", inquiry_code);
+		modelAndView.addObject("result", result);
+		modelAndView.addObject("req", "../item/inquiryReply.jsp");
+		modelAndView.setViewName("../main/index.jsp");
+		
+		return modelAndView;
 	}
 }
