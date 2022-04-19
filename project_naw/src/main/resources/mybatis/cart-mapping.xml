@@ -12,6 +12,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where rn>=#{startNum} and rn<=#{endNum} and user_id=#{user_id}]]>
 	</select>
 	
+	<!-- select: 특정 상품 데이터 1줄 가져오기 -->
+	<select id="getCartDetail" parameterType="int" resultType="cartDTO">
+		<![CDATA[select * from cart where cart_seq=#{cart_seq}]]>
+	</select>
+	
+	<!-- select: 특정 회원의 주문할 장바구니 목록 가져오기 -->
+	<select id="getCartListOrder" parameterType="String" resultType="cartDTO">
+		<![CDATA[select * from cart where user_id=#{user_id}]]>
+	</select>
+	
 	<!-- select: 특정 회원의 장바구니 상품 개수 구하기 -->
 	<select id="getTotalA" parameterType="String" resultType="int">
 		<![CDATA[select count(*) as cnt from cart where user_id=#{user_id}]]>
@@ -33,8 +43,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- update: 옵션 변경 -->
 	<update id="modifyCart" parameterType="java.util.Map">
 		<![CDATA[update cart 
-		set item_color=#{item_color}, item_size=#{item_size},
-		cart_qty=#{cart_qty}, cart_totalprice=#{cart_totalprice}
+		set cart_qty=#{cart_qty}, cart_totalprice=#{cart_totalprice}
 		where cart_seq=#{cart_seq}]]>
 	</update>
 	
