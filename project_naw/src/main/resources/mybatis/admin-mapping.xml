@@ -4,7 +4,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mybatis.adminMapper">
 	
-	<!------------ item ------------>
+	<!-- item -->
 	
 	<insert id="itemWrite" parameterType="itemDTO">
 		<![CDATA[insert into item values
@@ -26,7 +26,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	
 	
-	<!------------ member ------------>
+	<!-- member -->
 	
 	<select id="memberList" parameterType="java.util.Map" resultType="profileDTO">
 		<![CDATA[select 
@@ -57,7 +57,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	
 	
-	<!------------ sales ------------>
+	<!-- sales -->
 	
 	
 	
