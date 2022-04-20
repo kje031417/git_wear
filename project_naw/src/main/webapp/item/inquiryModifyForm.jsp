@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+#inquiryModify_body {font-family: 'Trebuchet MS', 'NanumSquareAcb', serif;}
 #view_modify_container {
 	width: 950px;
 	height: 700px;
@@ -35,6 +36,7 @@
 #inquiry_modify_btn1 a:hover {text-decoration: underline;}
 #modify_submit:hover {text-decoration: underline;}
 </style>
+<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
 <script type="text/javascript" src="../script/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	$(function(){
@@ -66,7 +68,7 @@
 	});
 </script>
 </head>
-<body>
+<body id="inquiryModify_body">
 	<div id="view_modify_container">
 	<h2>문의글 수정</h2>
 		<div id="modify_container">	

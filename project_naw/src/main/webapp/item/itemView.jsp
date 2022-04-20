@@ -70,6 +70,13 @@
 				<label>나이키 머큐리얼 에어 줌 베이퍼 14 프로를 신고 거침없는 스피드를 만끽하세요. 최소한의 소재를 사용한 세련된 디자인으로 경기 시작부터 끝까지 한결같이 빠른 스피드를 유지할 수 있습니다.</label>
 			</div>
 		</div>
+		
+		<!-- 리뷰, 문의 게시판 -->
+		<div class="container4">
+			<c:if test="${req_itemView != null }">
+				<jsp:include page="${req_itemView }"/>
+			</c:if>
+		</div>
 	</main>
 </body>
 </html>

@@ -12,14 +12,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import cart.bean.CartDTO;
+import order.controller.OrderService;
 
 @Controller
 public class CartController {
 	@Autowired
 	private CartService cartService;
+	@Autowired
+	private OrderService orderService;
 	
 	@RequestMapping(value="/item/cartList.do")
-	public ModelAndView cartList(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView cartList(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		/* 데이터 처리 */
 		int pg = 1;
 		if(request.getParameter("pg") != null)
@@ -63,7 +66,7 @@ public class CartController {
 	
 	
 	@RequestMapping(value="/item/cartModify.do")
-	public ModelAndView cartListModify(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView cartListModify(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		/* 데이터 처리 */
 		// 수량 수정
 		int cart_qty = Integer.parseInt(request.getParameter("cart_qty"));
@@ -88,7 +91,7 @@ public class CartController {
 	
 	
 	@RequestMapping(value="/item/cartListDelete.do")
-	public ModelAndView cartListDelete(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView cartListDelete(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		/* 데이터 처리 */
 		int cart_seq = Integer.parseInt(request.getParameter("cart_seq"));
 		int result = cartService.deleteCart(cart_seq);
@@ -111,12 +114,16 @@ public class CartController {
 		// 특정 회원의 장바구니 리스트 가져오기
 		List<CartDTO> list = cartService.getCartListOrder(user_id);
 		
+		// orderDTO에 저장 후 가져오기
+		
+		
 		/* 화면 네비게이션 */
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("list", list);
-		modelAndView.addObject("req", "../item/oreder_info.do");	// ****고쳐야됨****
+		modelAndView.addObject("req", "../item/order_info.jsp");
 		modelAndView.setViewName("../main/index.jsp");
 		
 		return modelAndView;
 	}
+	
 }

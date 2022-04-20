@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 body {
-	font-family: "나눔바른고딕";
+	font-family: 'Trebuchet MS', 'NanumSquareAcb', serif;
 }
 #new_release { /* 신상품 */
 	width: 100%;

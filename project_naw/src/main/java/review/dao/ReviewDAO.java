@@ -16,7 +16,7 @@ public class ReviewDAO {
 	private SqlSessionTemplate sqlSession;
 	
 	/* 목록보기 */
-	public List<ReviewDTO> getReviewList(int startNum, int endNum, String item_code) {
+	/*public List<ReviewDTO> getReviewList(int startNum, int endNum, String item_code) {
 		String startNum_str = String.format("%d", startNum);
 		String endNum_str = String.format("%d", endNum);
 		Map<String, String> map = new HashMap<String, String>();
@@ -25,6 +25,15 @@ public class ReviewDAO {
 		map.put("item_code", item_code);
 		
 		return sqlSession.selectList("mybatis.reviewMapper.getReviewList", map);
+	}*/
+	
+	public List<ReviewDTO> getReviewList(String item_code) {
+		return sqlSession.selectList("mybatis.reviewMapper.getReviewList", item_code);
+	}
+	
+	/* 상세 데이터 1줄 뽑기 */
+	public ReviewDTO getReviewDetail(int review_code) {
+		return sqlSession.selectOne("mybatis.reviewMapper.getReviewDetail", review_code);
 	}
 	
 	/* 특정 상품의 전체 리뷰글 수 구하기 */

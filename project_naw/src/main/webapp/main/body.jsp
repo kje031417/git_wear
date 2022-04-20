@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>메인</title> 
+<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
 <link rel="stylesheet" href="../css/body.css">
 <script type="text/javascript" src="../script/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="../script/jquery.bxslider.js"></script>

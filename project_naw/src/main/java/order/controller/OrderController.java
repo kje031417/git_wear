@@ -62,4 +62,5 @@ public class OrderController {
 		modelAndView.setViewName("order_check.jsp");
 		return modelAndView;
 	}
+	
 }

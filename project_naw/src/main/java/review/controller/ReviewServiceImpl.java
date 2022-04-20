@@ -14,8 +14,8 @@ public class ReviewServiceImpl implements ReviewService {
 	private ReviewDAO dao;
 
 	@Override
-	public List<ReviewDTO> getReviewList(int startNum, int endNum, String item_code) {
-		return dao.getReviewList(startNum, endNum, item_code);
+	public List<ReviewDTO> getReviewList(String item_code) {
+		return dao.getReviewList(item_code);
 	}
 
 	@Override
@@ -34,8 +34,13 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public int deleteREview(int review_code) {
+	public int deleteReview(int review_code) {
 		return dao.deleteReview(review_code);
+	}
+
+	@Override
+	public ReviewDTO getReviewDetail(int review_code) {
+		return dao.getReviewDetail(review_code);
 	}
 
 }
