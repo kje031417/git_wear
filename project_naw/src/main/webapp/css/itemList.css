@@ -51,6 +51,7 @@ main {
 	display: inline;
 	outline: 0px;
 	margin-left: 30px;
+	text-align: center;
 }
 .filter {
 	text-align: center;
@@ -84,7 +85,7 @@ main {
 	text-decoration: none;
 	color: #262222;
 }
-.bar a {
+.filtering button {
 	text-decoration: none;
 	color: #262222;
 }
@@ -106,7 +107,7 @@ img {
 	color: black;
 }
 
-.bar > *{
+.button-group > *{
 	list-style-type: none;
 	display: inline;
 	outline: 0px;
@@ -121,9 +122,8 @@ img {
 	grid-template-rows: repeat(3, minmax(100px, auto));
 	row-gap: 50px;
 	column-gap: 50px;
-	
 }
-select {
+.button-group {
 	width: 200px;
 	padding: .8em .5em;
 	border: 1px solid #999;
@@ -136,6 +136,20 @@ select {
 	border: none;
 }
 
-select::-ms-expand {
+.button-group::-ms-expand {
     display: none;
+}
+
+.grid-item {
+  float: left;
+  width: 100px;
+  height: 100px;
+  background: #0D8;
+  border: 2px solid #333;
+  border-color: hsla(0, 0%, 0%, 0.7);
+}
+
+.grid {
+  background: #DDD;
+  max-width: 1200px;
 }

@@ -16,7 +16,7 @@ public class OrderController {
 	private OrderService orderService;
 	
 	@RequestMapping(value = "/item/order_info.do")
-	public  ModelAndView GuestBookWrite(HttpServletRequest request) throws Exception{
+	public  ModelAndView order_info(HttpServletRequest request) throws Exception{
 		
 		request.setCharacterEncoding("utf-8");
 		
@@ -26,6 +26,7 @@ public class OrderController {
 		dto.setOrd_number(request.getParameter("ord_number"));
 		dto.setUser_id(request.getParameter("user_id"));
 		dto.setItem_name(request.getParameter("item_name"));
+		dto.setItem_image1(request.getParameter("item_image1"));
 		dto.setItem_color(request.getParameter("item_color"));
 		dto.setItem_size(request.getParameter("item_size"));
 		dto.setItem_price(Integer.parseInt(request.getParameter("item_price")));
@@ -39,7 +40,8 @@ public class OrderController {
 		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("result", result);
-		modelAndView.addObject("req", "GuestBookWrite.jsp");
+		modelAndView.addObject("dto", dto);
+		modelAndView.addObject("req", "../item/order_info.jsp");
 		modelAndView.setViewName("Index.jsp");
 		
 		return modelAndView;
@@ -57,9 +59,9 @@ public class OrderController {
 		modelAndView.addObject("seq", seq);
 		modelAndView.addObject("pg", pg);
 		modelAndView.addObject("dto", dto);
-		modelAndView.addObject("req", "order_check.jsp");
+		modelAndView.addObject("req", "../item/order_check.jsp");
 
-		modelAndView.setViewName("order_check.jsp");
+		modelAndView.setViewName("index.jsp");
 		return modelAndView;
 	}
 }
