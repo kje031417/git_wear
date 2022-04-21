@@ -62,7 +62,7 @@
 	});
 </script>
 </head>
-<body>	
+<body id="body_body">	
 	<!-- 신상품 : 1350x500 -->
 	<div id="new_release">
 		<div id="new_release_inner">		

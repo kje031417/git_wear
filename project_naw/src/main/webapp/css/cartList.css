@@ -78,11 +78,15 @@ body {
 	float: left;
 	margin: 0 30px;
 }
-#cartList_page > a {
+.paging {
 	text-decoration: none;
 	font-size: 20px;
-	color: black;
+	color: #262222;
 }
-#cartList_page > a:hove {
+.paging:hover {
 	text-decoration: underline;
+}
+.currentPaging {
+	color: #AE4755;
+	font-size: 20px;
 }

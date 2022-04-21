@@ -1,5 +1,6 @@
 package cart.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import cart.bean.CartDTO;
+import order.bean.OrderDTO;
 import order.controller.OrderService;
 
 @Controller
@@ -114,12 +116,30 @@ public class CartController {
 		// 특정 회원의 장바구니 리스트 가져오기
 		List<CartDTO> list = cartService.getCartListOrder(user_id);
 		
-		// orderDTO에 저장 후 가져오기
+		// 반복문으로 orderDTO에 저장 후 가져오기
+		OrderDTO dto;
+		List<OrderDTO> list_result = new ArrayList<OrderDTO>();
+		
+		for(int i=0; i<list.size(); i++) {
+			dto = new OrderDTO();
+			dto.setUser_id(user_id);
+			dto.setCart_seq(list.get(i).getCart_seq());
+			dto.setOrd_code(list.get(i).getItem_code());
+			dto.setOrd_name(list.get(i).getItem_name());
+			dto.setOrd_color(list.get(i).getItem_color());
+			dto.setOrd_size(list.get(i).getItem_size());
+			dto.setOrd_price(list.get(i).getItem_price());
+			dto.setOrd_qty(list.get(i).getCart_qty());
+			dto.setOrd_totalprice(list.get(i).getCart_totalprice());
+			
+			list_result.add(dto);
+		}
+		
 		
 		
 		/* 화면 네비게이션 */
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("list", list);
+		modelAndView.addObject("list", list_result);
 		modelAndView.addObject("req", "../item/order_info.jsp");
 		modelAndView.setViewName("../main/index.jsp");
 		

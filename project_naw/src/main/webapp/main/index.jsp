@@ -174,7 +174,6 @@
 	<!-- 사이트 정보 -->
 		<p>서울 서초구 서초대로77길 55 에이프로스퀘어 3층</p>
 		<p>project_NAW: KJE&nbsp;YHJ&nbsp;LHW&nbsp;CYJ&nbsp;&nbsp;TEL: 032)3333-3333</p>
-		<a href="../item/reviewList.do">리뷰게시판</a>
 	</div>
 </body>
 </html>

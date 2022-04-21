@@ -7,11 +7,11 @@ public class OrderDTO {
 	private String user_id; // 회원 id
 	private String user_name; // 구매자 이름
 	private int cart_seq; // 시퀀스
-	private String item_code; // 상품 번호
-	private String item_name; // 상품 이름
-	private String item_color; // 색상
-	private String item_size; // 사이즈
-	private int item_price; // 상품 개별 금액
+	private String ord_code; // 상품 번호
+	private String ord_name; // 상품 이름
+	private String ord_color; // 색상
+	private String ord_size; // 사이즈
+	private int ord_price; // 상품 개별 금액
 	private int ord_qty; // 상품 개수
 	private int ord_totalprice; // total 금액
 	private String user_post; // 우편번호
@@ -67,44 +67,44 @@ public class OrderDTO {
 		this.cart_seq = cart_seq;
 	}
 
-	public String getItem_code() {
-		return item_code;
+	public String getOrd_code() {
+		return ord_code;
 	}
 
-	public void setItem_code(String item_code) {
-		this.item_code = item_code;
+	public void setOrd_code(String ord_code) {
+		this.ord_code = ord_code;
 	}
 
-	public String getItem_name() {
-		return item_name;
+	public String getOrd_name() {
+		return ord_name;
 	}
 
-	public void setItem_name(String item_name) {
-		this.item_name = item_name;
+	public void setOrd_name(String ord_name) {
+		this.ord_name = ord_name;
 	}
 
-	public String getItem_color() {
-		return item_color;
+	public String getOrd_color() {
+		return ord_color;
 	}
 
-	public void setItem_color(String item_color) {
-		this.item_color = item_color;
+	public void setOrd_color(String ord_color) {
+		this.ord_color = ord_color;
 	}
 
-	public String getItem_size() {
-		return item_size;
+	public String getOrd_size() {
+		return ord_size;
 	}
 
-	public void setItem_size(String item_size) {
-		this.item_size = item_size;
+	public void setOrd_size(String ord_size) {
+		this.ord_size = ord_size;
 	}
 
-	public int getItem_price() {
-		return item_price;
+	public int getOrd_price() {
+		return ord_price;
 	}
 
-	public void setItem_price(int item_price) {
-		this.item_price = item_price;
+	public void setOrd_price(int ord_price) {
+		this.ord_price = ord_price;
 	}
 
 	public int getOrd_qty() {
