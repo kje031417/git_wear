@@ -33,7 +33,7 @@
 							data-screenset-element-id="register-Name"
 							data-screenset-element-id-publish="true"
 							data-screenset-roles="instance" data-gigya-name="profile.Name"
-							data-original-value="" id="register-Name">
+							data-original-value="" id="user_name">
 					</div>
 				</div>
 
@@ -49,7 +49,7 @@
 							data-screenset-element-id="register-id"
 							data-screenset-element-id-publish="true"
 							data-screenset-roles="instance" data-gigya-name="id"
-							data-original-value="" id="register-id">
+							data-original-value="" id="user_id">
 					</div>
 				</div>
 
@@ -60,9 +60,9 @@
 							data-screenset-element-id-publish="true"
 							data-screenset-roles="instance" for="register-password"
 							id="label_register-password">Password</label> <input
-							class="label-input__input " type="password"
+							class="label-input__input" type="password"
 							autocomplete="new-password" aria-describedby="password-help"
-							name="user_password"
+							name="user_pwd"
 							title="Your password must contain 8 characters minimum and the following 3 character types: uppercase, lowercase and numbers" 
 							pattern="(?=^\S*$)(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,255}"
 							placeholder="Enter your Password" 
@@ -73,7 +73,7 @@
 							data-screenset-element-id="register-password"
 							data-screenset-element-id-publish="true"
 							data-screenset-roles="instance" data-gigya-name="password"
-							data-original-value="" id="register-password">
+							data-original-value="" id="user_pwd">
 					</div>
 				</div>
 
@@ -92,7 +92,7 @@
 								title="휴대폰 번호 입력 형식 – 01000000000(- 제외)"
 								data-screenset-element-id="registrationPhone"
 								data-screenset-element-id-publish="true"
-								data-screenset-roles="instance" id="registrationPhone">
+								data-screenset-roles="instance" id="user_phone">
 						</div>
 					</div>
 				</div>
@@ -111,7 +111,7 @@
 							data-screenset-element-id="register-email"
 							data-screenset-element-id-publish="true"
 							data-screenset-roles="instance" data-gigya-name="email"
-							data-original-value="" id="register-email">
+							data-original-value="" id="user_email">
 					</div>
 				</div>
 				<br>
