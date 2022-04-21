@@ -5,16 +5,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="mybatis.noticeMapper">
 	<select id="noticeList" parameterType="java.util.Map" resultType="noticeDTO">
 		<![CDATA[select 
+		notice_seq, 
 		notice_title, 
 		notice_content, 
-		to_char(notice_date, 'YYYY.MM.DD')as notice_date from
+		to_char(notice_date, 'YYYY/MM/DD')as notice_date from
 		(select rownum rn, tt.* from
-		(select * from notice order by notice_date desc) tt)
+		(select * from notice order by notice_seq desc) tt)
 		where rn>=#{startNum} and rn<=#{endNum}]]>
 	</select>
 	
+	<select id="noticeLatestView" resultType="noticeDTO">
+		<![CDATA[select * from notice where notice_seq = (select max(notice_seq) from notice)]]>
+	</select>
+	
 	<select id="noticeView" parameterType="int" resultType="noticeDTO">
-		<![CDATA[select * from notice where notice_date=#{notice_date}]]>
+		<![CDATA[select * from notice where notice_seq=#{notice_seq}]]>
 	</select>
 	
 	<select id="getTotalA" resultType="int">
@@ -23,15 +28,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<insert id="noticeWrite" parameterType="noticeDTO">
 		<![CDATA[insert into notice values
-		(sysdate, #{notice_title}, #{notice_content})]]>
+		(seq_notice.nextval, sysdate, #{notice_title}, #{notice_content})]]>
 	</insert>
 	
 	<update id="noticeModify" parameterType="noticeDTO">
 		<![CDATA[update notice set notice_title=#{notice_title}, notice_content=#{notice_content}
-		where notice_date=#{notice_date}]]>
+		where notice_seq=#{notice_seq}]]>
 	</update>
 	
 	<delete id="noticeDelete" parameterType="int">
-		<![CDATA[delete notice where notice_date=#{notice_date}]]>
+		<![CDATA[delete notice where notice_seq=#{notice_seq}]]>
 	</delete>
 </mapper>
