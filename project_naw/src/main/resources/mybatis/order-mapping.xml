@@ -4,20 +4,20 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mybatis.orderMapper">
 
-	<select id="order_info"> <!-- order_check에서 item_seq만 추가된 것 -->
+	<select id="order_info" parameterType="java.util.Map" resultType="OrderDTO"> <!-- order_check에서 item_seq만 추가된 것 -->
 		<![CDATA[
-		insert into order_page values( #{ord_date}, #{ord_time},#{ord_number}, #{user_id},
+		insert into order_page values(#{ord_date}, #{ord_time}, #{ord_number}, #{user_id},
 		 #{item_name}, #{item_color}, #{item_size}, #{item_price}, #{ord_qty}, 
-		 #{ord_totalprice}, #{user_post}, #{user_addr1}, #{user_addr2})
+		 #{ord_totalprice}, #{user_post}, #{user_addr1}, #{user_addr2}, #{user_phone})
 		
 		]]>
 	</select>
 	
-	<select id="order_check">
+	<select id="order_check" resultType="OrderDTO">
 	<![CDATA[
-		select #{ord_date}, #{ord_time},#{ord_number}, #{user_id},
-		 #{item_name}, #{item_color}, #{item_size}, #{item_price}, #{ord_qty}, 
-		 #{ord_totalprice}, #{user_post}, #{user_addr1}, #{user_addr2}
+		select ord_date, ord_time, ord_number, user_id,
+		 item_name, item_color, item_size, item_price, ord_qty, 
+		 ord_totalprice, user_post, user_phone ,user_addr1, user_addr2
 		from order_page
 		]]>
 	</select>

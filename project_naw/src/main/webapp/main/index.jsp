@@ -40,9 +40,9 @@
 			<!-- 메뉴 바 : MEN WOMEN KIDS -->
 			<div class="menu_bar">
 				<ul class="top_menu">
-					<li><a href="#">MEN</a></li>
-					<li><a href="#">WOMEN</a></li>
-					<li><a href="#">KIDS</a></li>
+					<li><a href="../item/itemList.do">MEN</a></li>
+					<li><a href="../item/itemList.do">WOMEN</a></li>
+					<li><a href="../item/itemList.do">KIDS</a></li>
 				</ul>
 			</div>
 			<!-- 검색창 -->
