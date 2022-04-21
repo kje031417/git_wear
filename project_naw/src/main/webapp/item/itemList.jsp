@@ -1,3 +1,4 @@
+<%@page import="org.springframework.web.bind.annotation.SessionAttribute"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -36,11 +37,10 @@
 	<header class="container1">
 		<div class="category">
 			<ul class="category_bar">
-				<li><a href="../main/index.jsp">Men</a></li>
+				<li><a href="../main/index.jsp">Product</a></li>
 			</ul>
 		</div>
 		<!-- 메뉴 바 : 신발 의류 용품 -->
-		<form method="post">
 			<div class="menu_bar">
 				<ul class="menu">
 					<li><a href="shoes_item.do">신발</a></li>
@@ -62,7 +62,6 @@
 					</div>
 				</ul>
 			</div>
-		</form>
 	</header>
 	<!-- 상품 정렬 필터링 -->
 
@@ -70,6 +69,7 @@
 	<!-- 필터리스트 -->
 	<aside>
 		<div class="container2">
+		<br>
 			<a href="#" class="filtering">사이즈</a>
 			<div class="button-group" data-filter-group="size">
 				<ul>
@@ -130,6 +130,5 @@
 		</div> 
 		 -->
 	</main>
-
 </body>
 </html>

@@ -29,12 +29,13 @@ public class OrderController {
 		dto.setItem_image1(request.getParameter("item_image1"));
 		dto.setItem_color(request.getParameter("item_color"));
 		dto.setItem_size(request.getParameter("item_size"));
-		dto.setItem_price(Integer.parseInt(request.getParameter("item_price")));
-		dto.setOrd_qty(Integer.parseInt(request.getParameter("ord_qty")));
-		dto.setOrd_totalprice(Integer.parseInt(request.getParameter("ord_totalprice")));
+		dto.setItem_price(Integer.parseInt(request.getParameter("item_price")));	// String -> int 변환에서 문제...
+		dto.setOrd_qty(Integer.parseInt(request.getParameter("ord_qty")));			// String -> int 변환에서 문제...
+		dto.setOrd_totalprice(Integer.parseInt(request.getParameter("ord_totalprice")));	// String -> int 변환에서 문제...
 		dto.setUser_post(request.getParameter("user_post"));
 		dto.setUser_addr1(request.getParameter("user_addr1"));
 		dto.setUser_addr2(request.getParameter("user_addr2"));
+		dto.setUser_phone(request.getParameter("user_phone"));
 		
 		int result = orderService.order_info(dto);
 		
@@ -42,7 +43,7 @@ public class OrderController {
 		modelAndView.addObject("result", result);
 		modelAndView.addObject("dto", dto);
 		modelAndView.addObject("req", "../item/order_info.jsp");
-		modelAndView.setViewName("Index.jsp");
+		modelAndView.setViewName("../item/itemList.jsp");
 		
 		return modelAndView;
 	}
@@ -61,7 +62,7 @@ public class OrderController {
 		modelAndView.addObject("dto", dto);
 		modelAndView.addObject("req", "../item/order_check.jsp");
 
-		modelAndView.setViewName("index.jsp");
+		modelAndView.setViewName("../item/itemList.jsp");
 		return modelAndView;
 	}
 }

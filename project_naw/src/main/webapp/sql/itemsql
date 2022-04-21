@@ -1,5 +1,4 @@
 create table itemView (
-    user_id	varchar2(15),                        -- 회원 id
     item_code varchar2(100),                     -- 상품 번호
     item_seq number(20) not null,                -- 시퀀스
     item_category1 varchar2(100) not null,       -- 카테고리1(MEN/WOMEN/KIDS)
@@ -13,7 +12,8 @@ create table itemView (
     item_color varchar2(200),                    -- 색상
     cart_qty number(10),                         -- 상품개수
     item_price number(20),                       -- 상품 개별 금액
-    item_date date                               -- 등록일
+    item_date date,                              -- 등록일
+    primary key(item_code)
 );
 
 drop table itemView purge;
@@ -22,21 +22,32 @@ create sequence seq_item nocache nocycle;
 
 drop sequence seq_item;
 
-insert into itemView values('1234', '0001',seq_item.nextval, 'MEN', '신발', '러닝', '나이키머큐리얼에어줌베이퍼14프로', 
-'나이키머큐리얼에어줌베이퍼14프로', '나이키머큐리얼에어줌베이퍼14프로', '나이키 머큐리얼 에어 줌 베이퍼 14 프로를 신고 거침없는 스피드를 만끽하세요.',
+insert into itemView values('0001',seq_item.nextval, 'WOMEN', '용품', '농구', '나이키머큐리얼에어줌베이퍼14프로', 
+'../img/나이키머큐리얼에어줌베이퍼14프로TF_footballgrey_1.jpg', '../img/나이키머큐리얼에어줌베이퍼14프로TF_footballgrey_1.jpg', '나이키 머큐리얼 에어 줌 베이퍼 14 프로를 신고 거침없는 스피드를 만끽하세요.',
 '265', 'white', 10, 55000, sysdate); 
+insert into itemView values('0002',seq_item.nextval, 'MEN', '신발', '축구', '나이키머큐리얼에어줌베이퍼14프로', 
+'../img/나이키머큐리얼에어줌베이퍼14프로TF_footballgrey_1.jpg', '../img/나이키머큐리얼에어줌베이퍼14프로TF_footballgrey_1.jpg', '나이키 머큐리얼 에어 줌 베이퍼 14 프로를 신고 거침없는 스피드를 만끽하세요.',
+'260', 'green', 10, 55000, sysdate); 
+insert into itemView values('0003',seq_item.nextval, 'KIDS', '의류', '러닝', '나이키머큐리얼에어줌베이퍼14프로', 
+'../img/나이키머큐리얼에어줌베이퍼14프로TF_footballgrey_1.jpg', '../img/나이키머큐리얼에어줌베이퍼14프로TF_footballgrey_1.jpg', '나이키 머큐리얼 에어 줌 베이퍼 14 프로를 신고 거침없는 스피드를 만끽하세요.',
+'270', 'blue', 10, 55000, sysdate); 
+insert into itemView values('0004',seq_item.nextval, 'MEN', '신발', '골프', '나이키머큐리얼에어줌베이퍼14프로', 
+'../img/나이키머큐리얼에어줌베이퍼14프로TF_footballgrey_1.jpg', '../img/나이키머큐리얼에어줌베이퍼14프로TF_footballgrey_1.jpg', '나이키 머큐리얼 에어 줌 베이퍼 14 프로를 신고 거침없는 스피드를 만끽하세요.',
+'275', 'pink', 10, 55000, sysdate); 
+insert into itemView values('0005',seq_item.nextval, 'MEN', '신발', '러닝', '나이키머큐리얼에어줌베이퍼14프로', 
+'../img/나이키머큐리얼에어줌베이퍼14프로TF_footballgrey_1.jpg', '../img/나이키머큐리얼에어줌베이퍼14프로TF_footballgrey_1.jpg', '나이키 머큐리얼 에어 줌 베이퍼 14 프로를 신고 거침없는 스피드를 만끽하세요.',
+'280', 'black', 10, 55000, sysdate); 
 
 select count(*) as cnt from itemView;
 
 select * from itemView;
 
 -- 상품 상세보기
-select user_id, item_code, item_seq, item_category1, item_category2, item_category3, item_name,      
+select item_code, item_seq, item_category1, item_category2, item_category3, item_name, item_image1,    
 item_details, item_image1, item_image2, item_price, item_color, item_size, cart_qty 
 from itemView;
 
  -- 상품 목록보기
-
 select item_code, item_seq, item_category1, item_category2, item_category3, item_name,              
 item_details, item_image1, item_price, item_date, item_color, item_size
 from itemView;
@@ -57,7 +68,6 @@ select * from
 (select * from itemView order by item_seq desc)tt)
 where rn>=1 and rn<=10;
 
--- 상품 상세보기
 select user_id, item_code, item_seq, item_category1, item_category2, item_category3, item_name,      
 item_details, item_image1, item_image2, item_price, item_color, item_size, cart_qty
 from (select rownum rn, tt. * from
@@ -72,5 +82,7 @@ where itemView.item_date = reView.review_code(+);
 update itemView set item_name='오늘도', item_details='크게 웃으리' where seq_item=1;    -- 예시
 
 delete itemView where cart_qty=0;
+delete itemView;
 
 commit;
+

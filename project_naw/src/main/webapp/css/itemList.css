@@ -9,10 +9,9 @@ body {
 }
 aside {
 	width: 200px;
-	height: 60%;
+	height: 50%;
 	float: left;
-	padding: 0;
-	position: fixed;
+	padding: 10px;
 	left: 0;
 	right: 0;
 }
@@ -24,6 +23,7 @@ main {
 }
 
 .container1 {
+	background-color: ;
 	display: inline-flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -39,12 +39,8 @@ main {
 	list-style-type: none;
 	display: inline;
 	outline: 0px;
-}
-.menu_bar {
-	text-align: right;
-}
-.menu {
-	text-align: center;
+	font-size: 20px;
+	padding: 5px;
 }
 .menu > li {
 	list-style-type: none;
@@ -76,6 +72,7 @@ main {
 .category a {
 	text-decoration: none;
 	color: #262222;
+	font-size: 30px;
 }
 .menu a {
 	text-decoration: none;
@@ -103,15 +100,7 @@ img {
 	text-align: center;
 }
 .filtering {
-	text-decoration: none;
-	color: black;
-}
-
-.button-group > *{
-	list-style-type: none;
-	display: inline;
-	outline: 0px;
-	margin-left: 30px;
+	background: ghostWhite;
 	text-decoration: none;
 	color: black;
 }
@@ -123,33 +112,33 @@ img {
 	row-gap: 50px;
 	column-gap: 50px;
 }
-.button-group {
+button {
 	width: 200px;
+	margin: 0 auto;
 	padding: .8em .5em;
-	border: 1px solid #999;
+	border: 0px solid #999;
 	font-family: inherit;
 	background: url('arrow.jpg') no-repeat 95% 50%;
 	border-radius: 0px;
+	appearance: none;
+	text-align: center;
+}
+
+.button-group li {
+		margin: 0 auto;
+		list-style-type: none;
+}
+
+select {
+	font-family: 'Trebuchet MS', serif;
+	border: none;
+	border-radius: 0;
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
-	border: none;
 }
 
-.button-group::-ms-expand {
-    display: none;
-}
-
-.grid-item {
-  float: left;
-  width: 100px;
-  height: 100px;
-  background: #0D8;
-  border: 2px solid #333;
-  border-color: hsla(0, 0%, 0%, 0.7);
-}
-
-.grid {
-  background: #DDD;
-  max-width: 1200px;
+.item_info {
+		padding: 5px;
+		background: lightgreen;
 }
