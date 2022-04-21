@@ -36,7 +36,7 @@
 	String emdNo  = request.getParameter("emdNo");
 %>
 </head>
-<script type="text/javascript" src="../script/JusoPopupScript.js"></script>
+<script type="text/javascript" src="../script/ProfileJusoPopupScript.js"></script>
 <script type="text/javascript">
 function init(){
 	var url = location.href;

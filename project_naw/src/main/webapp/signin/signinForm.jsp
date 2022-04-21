@@ -10,7 +10,7 @@
 <script type="text/javascript" src="../script/ProfileSigninScript.js"></script>
 <link rel="stylesheet" href="../css/profileSignin.css">
 <body>
-	<form action="../signin/signin.do" method="post" name="form" id="form"
+	<form action="signin.do" method="post" name="form" id="form"
 		onsubmit="check(); return false;">
 		<div>
 			<h4>WELCOME BACK</h4>
@@ -20,12 +20,12 @@
 					<div class="label-input js-label-input is-ready">
 						<label class="label-input__label" for="Signin-id">ID</label><br>
 						<input class="label-input__input" type="text"
-							data-test="txtIdField_Signin" maxlength="255" name="user__id"
+							data-test="txtIdField_Signin" maxlength="255" name="user_id"
 							placeholder="Enter your ID" data-required="true" required="true"
 							aria-required="true" data-screenset-element-id="Signin-id"
 							data-screenset-element-id-publish="true"
 							data-screenset-roles="instance" data-gigya-name="SigninID"
-							data-original-value="" id="Signin-id" aria-invalid="true">
+							data-original-value="" id="user_id" aria-invalid="true">
 					</div>
 				</div>
 
@@ -47,10 +47,10 @@
 							data-screenset-element-id="password-eye-toggle_Signin-password"
 							data-screenset-element-id-publish="true"
 							data-screenset-roles="instance"
-							id="password-eye-toggle_Signin-password"><br> </span>
+							id="user_pwd"><br> </span>
 					</div>
 				</div>
-				<a href="#">*Forgot Password? > </a><br>
+				<a href="../mypage/mypageForm.do">*Forgot Password? > </a><br>
 				<p></p>
 
 				<div class="form-footer remember-me" data-remember-me="false">
