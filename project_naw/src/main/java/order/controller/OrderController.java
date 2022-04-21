@@ -21,7 +21,7 @@ public class OrderController {
 	private ItemService itemService;
 	
 	@RequestMapping(value = "/item/order_info.do")
-	public  ModelAndView GuestBookWrite(HttpServletRequest request) throws Exception{
+	public  ModelAndView order_info(HttpServletRequest request) throws Exception{
 		
 		request.setCharacterEncoding("utf-8");
 		
@@ -30,10 +30,11 @@ public class OrderController {
 		dto.setOrd_time(request.getParameter("ord_time"));
 		dto.setOrd_number(request.getParameter("ord_number"));
 		dto.setUser_id(request.getParameter("user_id"));
-		dto.setOrd_name(request.getParameter("item_name"));
-		dto.setOrd_color(request.getParameter("item_color"));
-		dto.setOrd_size(request.getParameter("item_size"));
-		dto.setOrd_price(Integer.parseInt(request.getParameter("item_price")));
+		dto.setItem_name(request.getParameter("item_name"));
+		dto.setItem_image1(request.getParameter("item_image1"));
+		dto.setItem_color(request.getParameter("item_color"));
+		dto.setItem_size(request.getParameter("item_size"));
+		dto.setItem_price(Integer.parseInt(request.getParameter("item_price")));
 		dto.setOrd_qty(Integer.parseInt(request.getParameter("ord_qty")));
 		dto.setOrd_totalprice(Integer.parseInt(request.getParameter("ord_totalprice")));
 		dto.setUser_post(request.getParameter("user_post"));
@@ -44,7 +45,8 @@ public class OrderController {
 		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("result", result);
-		modelAndView.addObject("req", "GuestBookWrite.jsp");
+		modelAndView.addObject("dto", dto);
+		modelAndView.addObject("req", "../item/order_info.jsp");
 		modelAndView.setViewName("Index.jsp");
 		
 		return modelAndView;
@@ -62,9 +64,9 @@ public class OrderController {
 		modelAndView.addObject("seq", seq);
 		modelAndView.addObject("pg", pg);
 		modelAndView.addObject("dto", dto);
-		modelAndView.addObject("req", "order_check.jsp");
+		modelAndView.addObject("req", "../item/order_check.jsp");
 
-		modelAndView.setViewName("order_check.jsp");
+		modelAndView.setViewName("index.jsp");
 		return modelAndView;
 	}
 	
