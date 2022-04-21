@@ -12,6 +12,7 @@ public class ProfileDTO {
 	private String user_birth; // 생년월일
 	private String user_joindate; // 가입일
 	
+	
 	@Override
 	public String toString() {
 		return "ProfileDTO [user_id=" + user_id + ", user_pwd=" + user_pwd + ", user_name=" + user_name
