@@ -5,15 +5,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="mybatis.reviewMapper">
 	<!-- select -->
-	<select id="getReviewList" parameterType="int" resultType="reviewDTO">
-		<![CDATA[select * from review where item_code=#{item_code}]]>	<!-- 더보기 기능 구현? -->
+	<select id="getReviewList" parameterType="String" resultType="reviewDTO">
+		<!-- 더보기 기능 구현? -->
+		<![CDATA[select * from review where item_code=#{item_code} order by review_code desc]]>
 	</select>
 	
-	<!-- select: 전체 데이터 개수 구하기 -->
-<!-- <select id="getTotalA" resultType="int">
-		<![CDATA[select count(*) as cnt from review]]>
+	<!-- select: 상세 데이터 1줄 뽑기 -->
+	<select id="getReviewDetail" parameterType="int" resultType="reviewDTO">
+		<![CDATA[select * from review where review_code=#{review_code}]]>
 	</select>
- -->	
+	
+	<!-- select: 특정 상품의 전체 데이터 개수 구하기 -->
+	<select id="getTotalA" parameterType="String" resultType="int">
+		<![CDATA[select count(*) as cnt from review where item_code=#{item_code}]]>
+	</select>
  	
 	<!-- insert: 저장 -->
 	<insert id="insertReview" parameterType="reviewDTO">
@@ -22,13 +27,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<!-- update: 수정 -->
-<!-- <update id="modifyReview" parameterType="java.util.Map">
+	<update id="modifyReview" parameterType="java.util.Map">
 		<![CDATA[update review 
 		set review_content=#{review_content}, review_star=#{review_star} 
 		where review_code=#{review_code}]]>
 	</update>
- -->	
- 	
+
 	<!-- delete: 삭제 -->
 	<delete id="deleteReview" parameterType="int">
 		<![CDATA[delete review where review_code=#{review_code}]]>
