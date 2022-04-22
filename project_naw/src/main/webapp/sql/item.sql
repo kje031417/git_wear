@@ -1,4 +1,5 @@
 create table itemView (
+    user_id	varchar2(15),                    -- 회원 id
     item_code varchar2(100),                     -- 상품 번호
     item_seq number(20) not null,                -- 시퀀스
     item_category1 varchar2(100) not null,       -- 카테고리1(MEN/WOMEN/KIDS)

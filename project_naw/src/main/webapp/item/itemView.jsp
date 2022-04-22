@@ -55,6 +55,13 @@
 				<label>${item_details}</label>
 			</c:forEach>
 		</div>
+		
+		<!-- 리뷰, 문의 게시판 -->
+		<div class="container4">
+			<c:if test="${req_itemView != null }">
+				<jsp:include page="${req_itemView }"/>
+			</c:if>
+		</div>
 	</main>
 </body>
 </html>

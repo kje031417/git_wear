@@ -6,7 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>NAW</title>
+</head>
+<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
 <link rel="stylesheet" href="../css/index.css">
+
 <script type="text/javascript" src="../script/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	$(function(){
@@ -27,13 +30,12 @@
 		});
 	});
 </script>
-</head>
 <body>
 <!---- HEADER ---->
 	<div id="header">
 			<!-- 로고 이미지 -->
 			<div id="logo">
-				<a href="#">
+				<a href="../main/index.jsp">	<!-- index.do ? -->
 					<img alt="NAW" src="../img/NAW_main.jpg" width="80" height="80">
 				</a>
 			</div>
@@ -46,18 +48,24 @@
 				</ul>
 			</div>
 			<!-- 검색창 -->
-			<div id="search">
+			<!-- <div id="search">
 				<input type="text" id="search_box" placeholder="search">
-				<img id="search_img" alt="search" src="../img/search.png" width="17" height="17">	<!-- 검색 버튼 : 이벤트 추가 -->
-			</div>
+				<img id="search_img" alt="search" src="../img/search.png" width="17" height="17">
+			</div> -->
 			
 			<!-- 아이콘 -->
-			<div id="icon">
-				<a href="#"><img alt="star" src="../img/star.jpg" width="33" height="33"></a>
+			<!-- 세션 id값이 없으면 alert창 띄우기 -->
+			<div id="icon">			
+				<a href="../orderlist/orderlist.do"><img alt="orderlist" src="../img/list.png" width="25" height="27"></a>
 				<a href="#"><img alt="user" src="../img/user.jpg" width="33" height="33"></a>
-				<a href="#"><img alt="cart" src="../img/shopping-cart.jpg" width="33" height="33"></a>
+				<a href="../item/cartList.do"><img alt="cart" src="../img/shopping-cart.jpg" width="33" height="33"></a>
+				<a href="../item/inquiryList.do"><img alt="inquiry" src="../img/conversation.png" width="27" height="30"></a>	
+				<c:if test="">
+					
+				</c:if>
+				<a href="#"><img alt="logout" src="../img/logout.png" width="28" height="27"></a>	<!-- 위에 넣기 -->
 			</div>		
-	
+
 		<!-- 하위 메뉴 카테고리 : 신발 의류 용품 -->
 		<div class="menu_pan">
 			<div class="c">
