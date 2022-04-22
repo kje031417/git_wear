@@ -30,11 +30,11 @@ public class OrderController {
 		dto.setOrd_time(request.getParameter("ord_time"));
 		dto.setOrd_number(request.getParameter("ord_number"));
 		dto.setUser_id(request.getParameter("user_id"));
-		dto.setItem_name(request.getParameter("item_name"));
-		dto.setItem_image1(request.getParameter("item_image1"));
-		dto.setItem_color(request.getParameter("item_color"));
-		dto.setItem_size(request.getParameter("item_size"));
-		dto.setItem_price(Integer.parseInt(request.getParameter("item_price")));
+		//dto.setItem_name(request.getParameter("item_name"));
+		//dto.setItem_image1(request.getParameter("item_image1"));
+		//dto.setItem_color(request.getParameter("item_color"));
+		//dto.setItem_size(request.getParameter("item_size"));
+		//dto.setItem_price(Integer.parseInt(request.getParameter("item_price")));
 		dto.setOrd_qty(Integer.parseInt(request.getParameter("ord_qty")));
 		dto.setOrd_totalprice(Integer.parseInt(request.getParameter("ord_totalprice")));
 		dto.setUser_post(request.getParameter("user_post"));
