@@ -17,7 +17,24 @@ public class OrderDTO {
 	private String user_post; // 우편번호
 	private String user_addr1; // 주소
 	private String user_addr2; // 상세주소
+	private String user_phone; // 전화번호
 	private String ord_payment; // 결제 수단
+
+	public String getUser_phone() {
+		return user_phone;
+	}
+
+	public void setUser_phone(String user_phone) {
+		this.user_phone = user_phone;
+	}
+
+	public String getItem_image1() {
+		return item_image1;
+	}
+
+	public void setItem_image1(String item_image1) {
+		this.item_image1 = item_image1;
+	}
 
 	public String getOrd_date() {
 		return ord_date;

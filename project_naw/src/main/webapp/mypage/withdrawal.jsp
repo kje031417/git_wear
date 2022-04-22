@@ -15,19 +15,24 @@
 	function close_ok(){ 
 		var dialog = document.getElementById("myMsgDialog"); 
 		dialog.close(); 
-		location.href="../main/index.jsp";
+		location.href="mypageForm.do";
 	} 
 </script>
 </head>
 <body>
-	<dialog id="myMsgDialog">		
-		<c:if test="${result > 0 }">
-			<p>회원 정보를 수정하였습니다.</p>
-		</c:if>
-		<c:if test="${result == 0}">
-			<p>회원 정보를 수정하지 못했습니다.</p>
-		</c:if>
-		<input type="button" id="btn_ok" value="확인" onclick="close_ok()">
-	</dialog>
+	<c:if test="${result > 0}">
+		<dialog id="myMsgDialog"> 
+			<h3>회원 탈퇴 성공</h3> 
+			<input type="button" id="btn_ok" onclick="close_ok()" 
+			value=" 확 인 " > 
+		</dialog>
+	</c:if>
+	<c:if test="${result == 0}">
+		<dialog id="myMsgDialog"> 
+			<h3>회원 탈퇴 실패</h3> 
+			<input type="button" id="btn_ok" onclick="close_ok()" 
+			value=" 확 인 " > 
+		</dialog>
+	</c:if>
 </body>
 </html>

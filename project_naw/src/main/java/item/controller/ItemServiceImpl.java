@@ -20,11 +20,6 @@ public class ItemServiceImpl implements ItemService {
 	}
 
 	@Override
-	public int getTotalA() {
-		return dao.getTotalA();
-	}
-
-	@Override
 	public ItemDTO itemView() {
 		return dao.itemView();
 	}

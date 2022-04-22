@@ -4,6 +4,7 @@ create table order_page(
     ord_number varchar(20) not null,               -- 주문 번호
     user_id	varchar2(15) not null,                 -- 회원 id
     item_name varchar2(100) not null,              -- 상품 이름
+    item_image1	varchar2(100),                     -- 이미지 1(메인 이미지)
     item_color varchar(20) not null,               -- 색상
     item_size varchar(20) not null,                -- 사이즈
     item_price number(20) not null,                -- 상품 개별 금액
@@ -12,6 +13,7 @@ create table order_page(
     user_post varchar2(10) not null,               -- 우편번호
     user_addr1 varchar2(150) not null,             -- 주소
     user_addr2 varchar2(150) not null,             -- 상세주소
+    user_phone varchar2(15) not null,	           --전화번호
     ord_payment	varchar(20) not null,              -- 결제 수단
     primary key (ord_number)
 );
@@ -30,11 +32,15 @@ create sequence seq_order nocache nocycle;
 drop sequence seq_order;
 
 insert into order_page values(sysdate, '15:25', '250430', '1234', '나이키머큐리얼에어줌베이퍼14프로'
-, 'white', '265', 55000, 1, 57000, '13570', '서울시', '마포구', 'payco');
+, '나이키머큐리얼에어줌베이퍼14프로', 'white', '265', 55000, 1, 57000, '13570', '서울시', '마포구','010-1234-5678' ,'payco');
 
 select count(*) as cnt from order_page;
 
 select * from order_page;
+
+select ord_date, ord_time, ord_number, user_id, ord_name, item_image1,ord_color, 
+ord_size, ord_price, ord_qty, ord_totalprice, user_post, user_addr1, user_addr2
+from order_page;
 
 select * from
 (select rownum rn, tt. * from
