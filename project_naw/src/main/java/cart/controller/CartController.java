@@ -20,8 +20,6 @@ import order.controller.OrderService;
 public class CartController {
 	@Autowired
 	private CartService cartService;
-	@Autowired
-	private OrderService orderService;
 	
 	@RequestMapping(value="/item/cartList.do")
 	public ModelAndView cartList(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -123,7 +121,7 @@ public class CartController {
 		for(int i=0; i<list.size(); i++) {
 			dto = new OrderDTO();
 			dto.setUser_id(user_id);
-			dto.setCart_seq(list.get(i).getCart_seq());
+			//dto.setCart_seq(list.get(i).getCart_seq());
 			dto.setOrd_code(list.get(i).getItem_code());
 			dto.setOrd_name(list.get(i).getItem_name());
 			dto.setOrd_color(list.get(i).getItem_color());
@@ -134,8 +132,6 @@ public class CartController {
 			
 			list_result.add(dto);
 		}
-		
-		
 		
 		/* 화면 네비게이션 */
 		ModelAndView modelAndView = new ModelAndView();

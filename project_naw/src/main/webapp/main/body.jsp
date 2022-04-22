@@ -105,15 +105,15 @@
 		<p class="title">추천상품</p><br>
 		
 			<div class="recommend_item">
-				<a href="#"><img alt="1" src="../img/나이키머큐리얼에어줌베이퍼14프로TF_footballgrey_1.jpg" width="200" height="200"></a>
+				<a href="#"><img alt="1" src="../storage/나이키머큐리얼에어줌베이퍼14프로TF_footballgrey_1.jpg" width="200" height="200"></a>
 				<p>나이키 머큐리얼 에어<br>줌 베이퍼 14 프로 TF</p>
 			</div>					
 			<div class="recommend_item">	
-				<a href="#"><img alt="2" src="../img/w_shoes_011_a.png" width="200" height="200"></a>
+				<a href="#"><img alt="2" src="../storage/w_shoes_011_a.png" width="200" height="200"></a>
 				<p>나이키 와플 데뷰</p>
 			</div>			
 			<div class="recommend_item">
-				<a href="#"><img alt="3" src="../img/조던시리즈ES_sail_1.jpg" width="200" height="200"></a>
+				<a href="#"><img alt="3" src="../storage/조던시리즈ES_sail_1.jpg" width="200" height="200"></a>
 				<p>조던 시리즈 ES</p>
 			</div>
 		</div>
@@ -132,11 +132,11 @@
 				<p>넉넉한 핏과 가벼운 소재의 조화로 날씨에 따라<br>티셔츠 또는 스웨트셔츠 위로 편안하게 레이어드할 수 있습니다.</p>
 			</div>
 			<div class="best_img">
-				<img alt="" src="../img/w_cloth_001_a.png" width="500px" height="500px">
+				<img src="../storage/w_cloth_001_a.png" width="500px" height="500px">
 			</div>
 			
 			<div class="best_img">
-				<img alt="" src="../img/나이키스포츠웨어스우시_남성풀집리버서블재킷AS_hotcurry_1.jpg" width="500px" height="500px">
+				<img src="../storage/나이키스포츠웨어스우시_남성풀집리버서블재킷AS_hotcurry_1.jpg" width="500px" height="500px">
 			</div>
 			<div class="best_content">
 				<p style="font-size: 30px; font-weight: bold;"><span style="font-size: 55px;">추</span>운 날씨를 위한 스테이트먼트 룩</p>

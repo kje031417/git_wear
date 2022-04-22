@@ -5,14 +5,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>NAW-Welcome Back</title>
+<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="../script/ProfileSigninScript.js"></script>
+<script type="text/javascript">
+	$();
+</script>
 <link rel="stylesheet" href="../css/profileSignin.css">
-<body>
+<body id="signinFormBody">
 	<form action="signin.do" method="post" name="form" id="form"
 		onsubmit="check(); return false;">
-		<div>
+		<div id="signinForm_container">
 			<h4>WELCOME BACK</h4>
 			<h5>Sign in with your id and password.</h5>
 			<div class="insert_id_pw">
@@ -50,7 +54,10 @@
 							id="user_pwd"><br> </span>
 					</div>
 				</div>
-				<a href="../mypage/mypageForm.do">*Forgot Password? > </a><br>
+				<!-- 입력검사 추가 필요 -->
+				<div id="">
+				<a href="../forgetprofile/findPwdForm.do">*Forgot Password? > </a><br>
+				</div>
 				<p></p>
 
 				<div class="form-footer remember-me" data-remember-me="false">

@@ -136,5 +136,4 @@ public class ItemDTO {
 	public void setItem_date(String item_date) {
 		this.item_date = item_date;
 	}
-
 }

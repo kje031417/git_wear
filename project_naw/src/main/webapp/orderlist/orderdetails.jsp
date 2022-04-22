@@ -96,7 +96,7 @@
 							<h3 class="is-strong">shipping address</h3>
 							<div class="has-space">
 								<p class="has-no-margin"
-									data-test="lblShippingAddress_OrderDetails">GilDong Hong</p>
+									data-test="lblShippingAddress_OrderDetails">${dto.user_name }</p>
 
 								<p class="has-no-margin">${dto.user_addr2 }</p>
 								<p class="has-no-margin">${dto.user_addr1 }</p>
@@ -124,7 +124,7 @@
 							<h3 class="is-strong">billing address</h3>
 							<div class="has-space">
 								<p class="has-no-margin"
-									data-test="lblBillingAddress_OrderDetails">GilDong Hong</p>
+									data-test="lblBillingAddress_OrderDetails">${dto.user_name }</p>
 
 								<p class="has-no-margin">${dto.user_addr2 }</p>
 								<p class="has-no-margin">${dto.user_addr1 }</p>

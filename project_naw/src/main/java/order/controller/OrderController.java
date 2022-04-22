@@ -28,19 +28,19 @@ public class OrderController {
 		OrderDTO dto = new OrderDTO();
 		dto.setOrd_date(request.getParameter("ord_date"));
 		dto.setOrd_time(request.getParameter("ord_time"));
-		dto.setOrd_number(request.getParameter("ord_number"));
+		dto.setOrd_number(Integer.parseInt(request.getParameter("ord_number")));
 		dto.setUser_id(request.getParameter("user_id"));
-		dto.setItem_name(request.getParameter("item_name"));
-		dto.setItem_image1(request.getParameter("item_image1"));
-		dto.setItem_color(request.getParameter("item_color"));
-		dto.setItem_size(request.getParameter("item_size"));
-		dto.setItem_price(Integer.parseInt(request.getParameter("item_price")));	// String -> int 변환에서 문제...
+		dto.setOrd_name(request.getParameter("item_name"));
+		dto.setOrd_image(request.getParameter("item_image1"));
+		dto.setOrd_color(request.getParameter("item_color"));
+		dto.setOrd_size(request.getParameter("item_size"));
+		dto.setOrd_price(Integer.parseInt(request.getParameter("item_price")));	// String -> int 변환에서 문제...
 		dto.setOrd_qty(Integer.parseInt(request.getParameter("ord_qty")));			// String -> int 변환에서 문제...
 		dto.setOrd_totalprice(Integer.parseInt(request.getParameter("ord_totalprice")));	// String -> int 변환에서 문제...
-		dto.setUser_post(request.getParameter("user_post"));
-		dto.setUser_addr1(request.getParameter("user_addr1"));
-		dto.setUser_addr2(request.getParameter("user_addr2"));
-		dto.setUser_phone(request.getParameter("user_phone"));
+		dto.setOrd_post(request.getParameter("user_post"));
+		dto.setOrd_addr1(request.getParameter("user_addr1"));
+		dto.setOrd_addr2(request.getParameter("user_addr2"));
+		dto.setOrd_phone(request.getParameter("user_phone"));
 		
 		int result = orderService.order_info(dto);
 		

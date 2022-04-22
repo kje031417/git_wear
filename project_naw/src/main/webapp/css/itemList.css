@@ -1,13 +1,12 @@
 @charset "UTF-8";
-body {
+#itemList_body {
 	width: 1350px;
 	background: #fff;
-	margin: 40px 0;
 	padding: 0;
 	height: 100%;
-	font-family: 'Trebuchet MS', serif;
+	font-family: 'Trebuchet MS', 'NanumSquareAcb', serif;
 }
-aside {
+#itemList_aside {
 	width: 200px;
 	height: 50%;
 	float: left;
@@ -15,24 +14,14 @@ aside {
 	left: 0;
 	right: 0;
 }
-main {
+#itemList_main {
 	width: 1100px;
 	height: 60%;
-	float: right;
 	padding: 0;
 }
 
 .container1 {
-	background-color: ;
-	display: inline-flex;
-	flex-direction: row;
-	justify-content: space-between;
 	width: 100%;
-	background: #fff;
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
 }
 
 .category_bar > li {
@@ -42,15 +31,15 @@ main {
 	font-size: 20px;
 	padding: 5px;
 }
-.menu > li {
+.itemList_menu > li {
 	list-style-type: none;
 	display: inline;
 	outline: 0px;
 	margin-left: 30px;
 	text-align: center;
 }
-.filter {
-	text-align: center;
+.itemList_filter {
+	text-align: right;
 }
 .filter_bar > * {
 	list-style-type: none;
@@ -69,12 +58,12 @@ main {
 	color: black;
 }
 
-.category a {
+.itemList_category a {
 	text-decoration: none;
 	color: #262222;
 	font-size: 30px;
 }
-.menu a {
+.itemList_menu a {
 	text-decoration: none;
 	color: #262222;
 }
@@ -86,7 +75,7 @@ main {
 	text-decoration: none;
 	color: #262222;
 }
-img {
+.itemList_img {
 	width: 200px;
 	height: 200px;
 }
@@ -104,13 +93,17 @@ img {
 	text-decoration: none;
 	color: black;
 }
-
+#itemView_main {
+	width: 100%;
+	margin: auto;
+}
 .container3 {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	grid-template-rows: repeat(3, minmax(100px, auto));
 	row-gap: 50px;
 	column-gap: 50px;
+	margin: auto;
 }
 button {
 	width: 200px;
@@ -125,12 +118,11 @@ button {
 }
 
 .button-group li {
-		margin: 0 auto;
-		list-style-type: none;
+	margin: 0 auto;
+	list-style-type: none;
 }
 
-select {
-	font-family: 'Trebuchet MS', serif;
+#rank_list {
 	border: none;
 	border-radius: 0;
 	-webkit-appearance: none;
@@ -139,6 +131,15 @@ select {
 }
 
 .item_info {
-		padding: 5px;
-		background: lightgreen;
+	padding: 5px;
+	width: 100%;
+	background: F9F7F5;
+}
+.itemList_table {
+	width: 600px;
+	height: 500px;
+	padding: 10px;
+	border-spacing: 0 10px;
+	margin-left: auto;
+	margin-right: auto;
 }

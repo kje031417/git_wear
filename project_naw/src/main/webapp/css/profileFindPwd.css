@@ -1,19 +1,20 @@
 @charset "UTF-8";
-body {
-	margin-top: 100px;
-	font-family: 'Trebuchet MS', serif;
+#forgetPwdBody {
+	font-family: 'Trebuchet MS', 'NanumSquareAcb', serif;
 	line-height: 1.6;
-	text-align: center;
-	display: flex;
-	justify-content: center;
 	align-items: center;
 }
-
-.container {
-	width: 500px;
+#findPwd_container {
 	margin: 0 auto;
+	text-align: center;
+	width: 500px;
+	height: 700px;
 }
-
+.reset-password {
+	margin:auto;
+	padding: 10px;
+	height: 550px;
+}
 .insert_id_pw {
 	text-align: left;
 }

@@ -22,10 +22,10 @@ public class OrderServiceImpl implements OrderService {
 	public OrderDTO order_check(int seq) {
 		return dao.order_check(seq);
 	}
-
+	
 	@Override
 	public List<OrderDTO> getOrderList(int startNum, int endNum, String user_id) {
-		return dao.getOrderList(startNum, endNum, user_id);
+		return null;
 	}
 
 	@Override

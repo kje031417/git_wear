@@ -16,7 +16,7 @@ public class ProfileDAO {
 
 	// id가 있는 지 검사
 	public boolean isExistId(String user_id) {
-		ProfileDTO profileDTO = sqlSession.selectOne("mybatis.memberMapper.isExistId", user_id);
+		ProfileDTO profileDTO = sqlSession.selectOne("mybatis.profileMapper.isExistId", user_id);
 		boolean result = false;   // true : id있음, false : id 없음
 		if(profileDTO != null) {  // 데이터가 있으면 => id가 존재함을 의미함
 				result = true;
@@ -26,7 +26,7 @@ public class ProfileDAO {
 
 	// (회원가입) 데이터 저장하기 joinProfile
 	public int register(ProfileDTO dto) {
-		return sqlSession.insert("mybatis.profileMapper.joinProfile", dto);
+		return sqlSession.insert("mybatis.profileMapper.register", dto);
 	}
 
 	// (로그인) 로그인
@@ -52,23 +52,23 @@ public class ProfileDAO {
 		map.put("user_name", user_name);
 		map.put("user_email", user_email);
 		
-		ProfileDTO profileDTO = sqlSession.selectOne("mybatis.memberMapper.findPwd", map);
+		ProfileDTO profileDTO = sqlSession.selectOne("mybatis.profileMapper.findPwd", map);
 		boolean result = false;   // true : id있음, false : id 없음
 		if(profileDTO != null) {  // 데이터가 있으면 => id가 존재함을 의미함
-				result = true;
+			result = true;
 		}		
 		return result;
 	}
 
 
 	// (로그인) 비밀번호찾기 정보일치 확인 후 비밀번호 초기화
-		public int findPwdReset(ProfileDTO dto) {
-			return sqlSession.update("mybatis.profileMapper.findPwdReset", dto);
+	public int findPwdReset(ProfileDTO dto) {
+		return sqlSession.update("mybatis.profileMapper.findPwdReset", dto);
 		}
 		
 	// 회원 1명의 데이터 읽어오기
-		public ProfileDTO getMember(String user_id) {		
-			return sqlSession.selectOne("mybatis.memberMapper.getMember", user_id);
+	public ProfileDTO getMember(String user_id) {		
+		return sqlSession.selectOne("mybatis.profileMapper.getMember", user_id);
 	}
 		
 	// (마이페이지) 회원정보수정 modifyProfile
