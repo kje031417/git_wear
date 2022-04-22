@@ -1,6 +1,7 @@
 package order.dao;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -17,6 +18,7 @@ public class OrderDAO {
 	// 주문 정보
 	public int order_info(OrderDTO dto) {
 		Map<String, String> map = new HashMap<String, String>();
+		/*
 		map.put("ord_date", dto.getOrd_date());
 		map.put("ord_time", dto.getOrd_time());
 		map.put("ord_number", dto.getOrd_number());
@@ -30,6 +32,7 @@ public class OrderDAO {
 		map.put("user_post", dto.getUser_post());
 		map.put("user_addr1", dto.getUser_addr1());
 		map.put("user_addr2", dto.getUser_addr2());
+		*/
 		return sqlSession.insert("mybatis.orderMapper.order_info", map);
 	}
 	

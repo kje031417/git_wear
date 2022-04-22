@@ -5,18 +5,20 @@
 <head>
 <meta charset="UTF-8">
 <title>NAW-Welcome Back</title>
+<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="../script/ProfileMainScript.js"></script>
-<link rel="stylesheet" href="../css/signin.css">
+<link rel="stylesheet" href="../css/profileFindMain.css">
 </head>
-<body>
+
+<body id="profileMainBody">
 		<div class="allSignin">
 			<div class="context">
 				<h1 class="heading is-1 has-text-centered"
 					data-test="lblWelcomeMessage_Register">Account</h1>
 			</div>
 
-			<div id="container">
+			<div id="profileMainContainer">
 				<ul class="tabs">
 					<li class="tab-link current" data-tab="tab-1">SIGN IN</li>
 					<li class="tab-link" data-tab="tab-2">REGISTER</li>

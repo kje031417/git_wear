@@ -9,9 +9,9 @@
 <link rel="stylesheet" href="../css/itemView.css">
 <script type="text/javascript" src="../script/jquery-3.6.0.min.js"></script>
 </head>
-<body>
+<body id="itemView_body">
 	<!-- 제품 상세 정보 -->
-		<aside>
+		<aside id="itemView_aside">
 			<div class="container2">
 				<a href="#" class="filtering"><strong>사이즈</strong></a>
 				<div class="bar">
@@ -46,17 +46,15 @@
 			</div>
 		</aside>
 	<!-- 제품 사진 -->
-	<main>
+	<main id="itemView_main">
 		<div class="container3">
-			<c:forEach var="dto" items="${list}">
-				<img alt="${dto.item_name}" src="${dto.item_image1}">
-				<img alt="${dto.item_name}" src="${dto.item_image2}">
-				<label>${item_name}</label>
-				<label>${item_details}</label>
-			</c:forEach>
+			<img alt="${dto.item_name}" src="../storage/${dto.item_image1}" class="itemView_img">
+			<img alt="${dto.item_name}" src="../storage/${dto.item_image2}" class="itemView_img">
+			<label>${item_name}</label>
+			<label>${item_details}</label>
 		</div>
 		
-		<!-- 리뷰, 문의 게시판 -->
+		<!-- 리뷰 게시판 -->
 		<div class="container4">
 			<c:if test="${req_itemView != null }">
 				<jsp:include page="${req_itemView }"/>

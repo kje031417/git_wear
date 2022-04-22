@@ -1,23 +1,18 @@
 @charset "UTF-8";
-body {
-	margin-top: 100px;
-	font-family: 'Trebuchet MS', serif;
+#profileMainBody {
+	font-family: 'Trebuchet MS', 'NanumSquareAcb', serif;
 	line-height: 1.6;
 	text-align: center;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 }
 
-.allFindMain {
-	justify-content: center;
-	align-items: center;
+.allSignin {
 	text-align: center;
 	width: 500px;
-	height: 800px;
+	height: 1300px;		/* 원래 800 */
+	margin: auto;
 }
 
-.container {
+#profileMainContainer {
 	width: 500px;
 	margin: 0 auto;
 }

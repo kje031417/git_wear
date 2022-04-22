@@ -35,6 +35,7 @@ public class ProfileServiceImpl implements ProfileService {
 	public boolean findPwd(String user_id, String user_name, String user_email) {
 		return dao.findPwd(user_id, user_name, user_email);
 	}
+	
 	@Override
 	public int findPwdReset(ProfileDTO dto) {
 		return dao.findPwdReset(dto);
