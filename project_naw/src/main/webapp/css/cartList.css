@@ -25,7 +25,7 @@ body {
 	width: 800px;
 	height: 150px;
 	margin: 0 50px;
-	float: left;
+	
 }
 #cartList_order {
 	width: 30%;
@@ -89,4 +89,8 @@ body {
 .currentPaging {
 	color: #AE4755;
 	font-size: 20px;
+}
+.cart_item_info {
+	float: right;
+	margin-top: 10px;
 }

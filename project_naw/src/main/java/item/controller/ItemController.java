@@ -12,7 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import item.bean.ItemDTO;
 
-
 @Controller
 public class ItemController {
 	@Autowired
@@ -70,14 +69,13 @@ public class ItemController {
 			
 			return modelAndView;
 		}
-/****************************************************************************************/
+
 	// 상품 상세보기
 	@RequestMapping(value = "/item/itemView.do")
 	public ModelAndView itemView(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String item_code = request.getParameter("item_code");
 		
 		ItemDTO dto = itemService.itemView(item_code);
-		//System.out.println(dto.toString());
 		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("dto", dto);

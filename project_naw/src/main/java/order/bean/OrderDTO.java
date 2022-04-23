@@ -2,7 +2,6 @@ package order.bean;
 
 public class OrderDTO {
 	private String ord_date; 		// 주문 날짜
-	private String ord_time;		// 주문 시간
 	private int ord_number; 		// 주문 번호(시퀀스)
 	private String ord_code; 		// 상품 번호
 	private String ord_name; 		// 상품 이름
@@ -14,12 +13,11 @@ public class OrderDTO {
 	private int ord_totalprice; 	// total 금액
 	private String user_id; 		// 회원 id
 	private String user_name; 		// 구매자 이름
-	private String ord_post; 		// 우편번호
 	private String ord_addr1; 		// 주소
 	private String ord_addr2; 		// 상세주소
 	private String ord_phone; 		// 전화번호
 	private String ord_payment; 	// 결제 수단
-	
+
 	// getter / setter
 	public String getOrd_date() {
 		return ord_date;
@@ -27,29 +25,11 @@ public class OrderDTO {
 	public void setOrd_date(String ord_date) {
 		this.ord_date = ord_date;
 	}
-	public String getOrd_time() {
-		return ord_time;
-	}
-	public void setOrd_time(String ord_time) {
-		this.ord_time = ord_time;
-	}
 	public int getOrd_number() {
 		return ord_number;
 	}
 	public void setOrd_number(int ord_number) {
 		this.ord_number = ord_number;
-	}
-	public String getUser_id() {
-		return user_id;
-	}
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
-	}
-	public String getUser_name() {
-		return user_name;
-	}
-	public void setUser_name(String user_name) {
-		this.user_name = user_name;
 	}
 	public String getOrd_code() {
 		return ord_code;
@@ -75,6 +55,12 @@ public class OrderDTO {
 	public void setOrd_size(String ord_size) {
 		this.ord_size = ord_size;
 	}
+	public String getOrd_image() {
+		return ord_image;
+	}
+	public void setOrd_image(String ord_image) {
+		this.ord_image = ord_image;
+	}
 	public int getOrd_price() {
 		return ord_price;
 	}
@@ -93,11 +79,17 @@ public class OrderDTO {
 	public void setOrd_totalprice(int ord_totalprice) {
 		this.ord_totalprice = ord_totalprice;
 	}
-	public String getOrd_post() {
-		return ord_post;
+	public String getUser_id() {
+		return user_id;
 	}
-	public void setOrd_post(String ord_post) {
-		this.ord_post = ord_post;
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
+	public String getUser_name() {
+		return user_name;
+	}
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
 	}
 	public String getOrd_addr1() {
 		return ord_addr1;
@@ -122,11 +114,5 @@ public class OrderDTO {
 	}
 	public void setOrd_payment(String ord_payment) {
 		this.ord_payment = ord_payment;
-	}
-	public String getOrd_image() {
-		return ord_image;
-	}
-	public void setOrd_image(String ord_image) {
-		this.ord_image = ord_image;
 	}
 }

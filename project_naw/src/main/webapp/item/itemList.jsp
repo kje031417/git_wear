@@ -31,6 +31,7 @@
 			}
 		});
 		
+		// 상품 상세 페이지로 이동
 		$(".item_image1").click(function(){
 			var item_code = $(this).parent().find(".itemList_code").val();
 			//alert("item_code= " + item_code);
@@ -44,17 +45,10 @@
 	<div class="container1">
 		<div class="itemList_category">
 			<ul class="category_bar">
-				<li><a href="../main/index.jsp">Product</a></li>
+				<li><a href="#">Product</a></li>
 			</ul>
 		</div>
-		<!-- 메뉴 바 : 신발 의류 용품 -->
-		<!-- <div class="menu_bar">
-				<ul class="itemList_menu">
-					<li><a href="shoes_item.do">신발</a></li>
-					<li><a href="clothes_item.do">의류</a></li>
-					<li><a href="sports_item.do">용품</a></li>
-				</ul>
-			</div> -->	
+		
 			<!-- 필터 버튼 -->
 		<div class="itemList_filter">
 			<ul class="filter_bar">
@@ -71,7 +65,6 @@
 		</div>
 	</div>
 	<!-- 상품 정렬 필터링 -->
-
 	<!-- 필터리스트 -->
 	<aside id="itemList_aside">
 		<div class="container2">
@@ -101,7 +94,7 @@
 			</div>
 		</div>
 	</aside>
-
+<div id="list_itemList_container">
 	<!-- 목록 -->
 	<main id="itemList_main">
 		<div class="container3">
@@ -110,28 +103,18 @@
 						<table class="itemList_table">
 							<tr>
 								<td>
-									<img src="../storage/${dto.item_image1}" width="300" height="300" class="item_image1" style="cursor: pointer;">
+									<img src="../storage/${dto.item_image1}" width="380" height="380" class="item_image1" style="cursor: pointer;">
 									<input type="hidden" value="${dto.item_code }" class="itemList_code">
 								</td>
 							</tr>
 							<tr>
-								<td><label id="item_name" style="color: #444444;">상품명 : ${dto.item_name}</label></td>
-							</tr>
-							<tr>
-								<td style="word-spacing: 3px;"><label id="item_details" style="color: #444444;">
-									&nbsp;&nbsp;${dto.item_details}
-								</label></td>
-							</tr>
-							<tr>
-								<td style="float: right;"><label id="item_size" style="color: #444444;">사이즈 : ${dto.item_size}</label></td>
-							</tr>
-							<tr>
-								<td style="float: right;">색상 : <label id="item_color" style="color: #444444;"><strong>${dto.item_color}</strong></label></td>
+								<td><label id="item_name" style="color: #444444; float:right;">${dto.item_name}</label></td>
 							</tr>
 						</table>
 					</div>
 				</c:forEach>
 		</div>		
 	</main>
+</div>
 </body>
 </html>
