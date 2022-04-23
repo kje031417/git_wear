@@ -29,14 +29,18 @@
 		
 		// 입력
 		$("#review_submit_btn").click(function(){
-			// 입력 검사
-			if(!$("#comment").val()) {
+			// 로그인 확인
+			if(${login_id == null}) {
+				alert("로그인 후 이용가능합니다.");
+				return false;
+			} else if(!$("#comment").val()) {	// 입력검사
 				alert("내용을 입력해주세요.");
 				$("#comment").focus();
 				return false;
 			} 
 			
 			/* DB로 보내기 */
+			var item_code = $(this).parent().find(".item_code").val();
 			var review_content = $("#comment").val();
 			var review_star = 0;
 			for(var i=0; i<5; i++) {
@@ -44,7 +48,9 @@
 					review_star++;
 				}
 			}	
-			location.href="../item/reviewWrite.do?review_content=" + review_content + "&review_star=" + review_star;		
+			//alert("item_code = " + item_code);
+			location.href="../item/reviewWrite.do?review_content=" 
+							+ review_content + "&review_star=" + review_star + "&item_code=" + item_code;		
 		});	
 		
 		// 수정
@@ -57,9 +63,10 @@
 		// on() : 존재하지 않는 태그의 이벤트를 document 내장 객체에 등록하는 것
 		$(".comment_delete").click(function(){
 			if(confirm("정말 선택하신 항목을 삭제하시겠습니까?")) {
+				var item_code = $(this).parent().find(".item_code").val();
 				var review_code = $(this).parent().find(".comment_code").val();
 				// DB로 정보 보내기
-				location.href="../item/reviewDelete.do?review_code=" + review_code;
+				location.href="../item/reviewDelete.do?review_code=" + review_code + "&item_code=" + item_code;
 			} else {
 				return false;
 			}	
@@ -76,6 +83,15 @@
 			}
 		});	
 		
+		// 리뷰가 있을 때와 없을 때
+		if(${list.isEmpty()}) {
+			$(".comment_item_nothing").show();
+			$(".comment_item").hide();
+			
+		} else {
+			$(".comment_item").show();
+			$(".comment_item_nothing").hide();
+		}
 	});
 </script>
 </head>
@@ -98,33 +114,38 @@
 			</div>
 			<div id="review_submit">
 				<img alt="" src="../img/submit.png" id="review_submit_btn" width="23" height="23" style="cursor:pointer;">
+				<input type="hidden" value="${item_code }" class="item_code">
 			</div>
 		</div>		
 		<hr>
-		
+		<div id="review_list_container">
 		<!-- 리뷰 게시판 -->
 		<ul id="review_list">
 		<!-- DB : 기존의 리뷰 내용 불러오기 -->
+			<li class="comment_item_nothing">
+				<span>등록된 리뷰가 없습니다.</span>	<!-- css 수정 필요 -->
+			</li>
+			
 			<!-- c:forEach : 목록 3개씩 -->
 			<c:forEach var="vo" items="${list }">	
 			<li class="comment_item">
 				<span class="comment_id">${vo.user_id }님</span>
 				<span>작성일: ${vo.review_date }</span>
 				<span class="comment_modify" style="cursor:pointer;">수정</span>
-				<span class="comment_delete" style="cursor:pointer;">삭제</span>
-
-				
+				<span class="comment_delete" style="cursor:pointer;">삭제</span>				
 				<p>${vo.review_content }</p>
 				<div class="star_font">
 					<img src="../img/star_active.png" width="20" height="20">
 					<span class="comment_star">${vo.review_star}</span>/5
 				</div>
 				<input type="hidden" value="${vo.review_code }" class="comment_code">
+				<input type="hidden" value="${item_code }" class="item_code">
 			</li>
-			</c:forEach>		
+			</c:forEach>				
 		</ul>
 		
 		<p id="view_more_btn" style="cursor:pointer;">더보기</p>
+		</div>
 	</div>
 </body>
 </html>

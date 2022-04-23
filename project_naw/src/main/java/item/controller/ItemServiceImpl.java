@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import cart.dao.CartDAO;
 import item.bean.ItemDTO;
 import item.dao.ItemDAO;
+import review.dao.ReviewDAO;
 
 @Service("itemService")
 public class ItemServiceImpl implements ItemService {
@@ -32,4 +34,10 @@ public class ItemServiceImpl implements ItemService {
 	public ItemDTO itemView(String item_code) {
 		return dao.itemView(item_code);
 	}
+
+	@Override
+	public List<ItemDTO> itemViewList(String item_code) {
+		return dao.itemViewList(item_code);
+	}
+	
 }

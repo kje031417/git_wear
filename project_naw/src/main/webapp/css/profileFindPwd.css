@@ -3,15 +3,21 @@
 	font-family: 'Trebuchet MS', 'NanumSquareAcb', serif;
 	line-height: 1.6;
 	align-items: center;
+	margin : auto;
 }
-#findPwd_container {
+#findMain_conatiner {
+	width: 1350px;
 	margin: 0 auto;
+	height: 1000px;
+}
+#findMain_container_inner {
+	margin: auto;
 	text-align: center;
 	width: 500px;
 	height: 700px;
 }
 .reset-password {
-	margin:auto;
+	margin: auto;
 	padding: 10px;
 	height: 550px;
 }
@@ -36,6 +42,7 @@ ul.tabs li {
 ul.tabs li.current {
 	background: #ededed;
 	color: #222;
+	margin: 0 auto;	/**/
 }
 
 .tab-content {

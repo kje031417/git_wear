@@ -4,14 +4,18 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import item.bean.ItemDTO;
 import item.controller.ItemService;
 import order.bean.OrderDTO;
+import profile.bean.ProfileDTO;
+import profile.controller.ProfileService;
 
 @Controller
 public class OrderController {
@@ -19,36 +23,31 @@ public class OrderController {
 	private OrderService orderService;
 	@Autowired
 	private ItemService itemService;
+	@Autowired
+	private ProfileService profileService;
 	
-	@RequestMapping(value = "/item/order_info.do")
+	// 주문 정보 페이지 이동 : 바로구매
+	@RequestMapping(value = "/item/order_info_buynow.do")
 	public  ModelAndView order_info(HttpServletRequest request) throws Exception{
-		
+		/* 데이터값 넘기기 */
 		request.setCharacterEncoding("utf-8");
 		
-		OrderDTO dto = new OrderDTO();
-		dto.setOrd_date(request.getParameter("ord_date"));
-		dto.setOrd_time(request.getParameter("ord_time"));
-		dto.setOrd_number(Integer.parseInt(request.getParameter("ord_number")));
-		dto.setUser_id(request.getParameter("user_id"));
-		dto.setOrd_name(request.getParameter("item_name"));
-		dto.setOrd_image(request.getParameter("item_image1"));
-		dto.setOrd_color(request.getParameter("item_color"));
-		dto.setOrd_size(request.getParameter("item_size"));
-		dto.setOrd_price(Integer.parseInt(request.getParameter("item_price")));	// String -> int 변환에서 문제...
-		dto.setOrd_qty(Integer.parseInt(request.getParameter("ord_qty")));			// String -> int 변환에서 문제...
-		dto.setOrd_totalprice(Integer.parseInt(request.getParameter("ord_totalprice")));	// String -> int 변환에서 문제...
-		dto.setOrd_post(request.getParameter("user_post"));
-		dto.setOrd_addr1(request.getParameter("user_addr1"));
-		dto.setOrd_addr2(request.getParameter("user_addr2"));
-		dto.setOrd_phone(request.getParameter("user_phone"));
+		String item_code = request.getParameter("item_code");
+		int item_qty = Integer.parseInt(request.getParameter("item_qty"));
+		// 제품 정보 가져오기 : 리스트
+		List<ItemDTO> list = itemService.itemViewList(item_code);
+		// 회원 정보 가져오기
+		HttpSession session = request.getSession();
+		String user_id = (String)session.getAttribute("login_id");
 		
-		int result = orderService.order_info(dto);
+		ProfileDTO user_dto = profileService.getMember(user_id);
 		
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("result", result);
-		modelAndView.addObject("dto", dto);
+		modelAndView.addObject("list_now", list);
+		modelAndView.addObject("user_dto", user_dto);
+		modelAndView.addObject("item_qty", item_qty);
 		modelAndView.addObject("req", "../item/order_info.jsp");
-		modelAndView.setViewName("../item/itemList.jsp");
+		modelAndView.setViewName("../main/index.jsp");
 		
 		return modelAndView;
 	}
@@ -56,18 +55,46 @@ public class OrderController {
 	// 주문 확인
 	@RequestMapping(value = "/item/order_check.do")
 	public ModelAndView order_check(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		int seq = Integer.parseInt(request.getParameter("seq"));
-		int pg = Integer.parseInt(request.getParameter("pg"));
-
-		OrderDTO dto = orderService.order_check(seq);
-
+		request.setCharacterEncoding("utf-8");
+		
+		String item_code = request.getParameter("item_code");
+		
+		//System.out.println("item_code = " + item_code);
+		
+		int item_qty = Integer.parseInt(request.getParameter("item_qty"));
+		String ord_payment = request.getParameter("ord_payment");
+		
+		// 제품 정보 가져오기
+		ItemDTO dto = itemService.itemView(item_code);
+		
+		// 회원 정보 가져오기
+		HttpSession session = request.getSession();
+		String user_id = (String)session.getAttribute("login_id");
+				
+		ProfileDTO user_dto = profileService.getMember(user_id);
+		
+		// DB 입력
+		OrderDTO orderDTO = new OrderDTO();
+		orderDTO.setOrd_code(item_code);
+		orderDTO.setOrd_name(dto.getItem_name());
+		orderDTO.setOrd_color(dto.getItem_color());
+		orderDTO.setOrd_size(dto.getItem_size());
+		orderDTO.setOrd_image(dto.getItem_image1());
+		orderDTO.setOrd_price(dto.getItem_price());
+		orderDTO.setOrd_qty(item_qty);
+		orderDTO.setOrd_totalprice(item_qty*dto.getItem_price());
+		orderDTO.setUser_id(user_id);
+		orderDTO.setUser_name(user_dto.getUser_name());
+		orderDTO.setOrd_addr1(user_dto.getUser_addr1());
+		orderDTO.setOrd_addr2(user_dto.getUser_addr2());
+		orderDTO.setOrd_payment(ord_payment);
+		
+		int result = orderService.orderInsert(orderDTO);
+		
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("seq", seq);
-		modelAndView.addObject("pg", pg);
-		modelAndView.addObject("dto", dto);
-		modelAndView.addObject("req", "../item/order_check.jsp");
-
-		modelAndView.setViewName("../item/itemList.jsp");
+		modelAndView.addObject("result", result);
+		modelAndView.setViewName("../item/order_check.jsp");
+		
 		return modelAndView;
 	}
 	
@@ -79,9 +106,8 @@ public class OrderController {
 		if(request.getParameter("pg") != null)
 			pg = Integer.parseInt(request.getParameter("pg"));
 		
-		//HttpSession session = request.getSession();
-		//String user_id = (String)session.getAttribute("memId");		//memId의 세션 값 불러오기
-		String user_id = "1234";	// test
+		HttpSession session = request.getSession();
+		String user_id = (String)session.getAttribute("login_id");
 		
 		int totalA = orderService.getTotalA(user_id);				//특정 회원의 장바구니 상품 수
 		int totalP = (totalA + 2) / 3;
@@ -94,13 +120,11 @@ public class OrderController {
 		// 특정 회원의 주문 내역 리스트 가져오기
 		List<OrderDTO> list = orderService.getOrderList(startNum, endNum, user_id);
 		
+		
 		// 3블럭
 		int startPage = (pg - 1) / 3 * 3 + 1;
 		int endPage = startPage + 2;
 		if(endPage > totalP) endPage = totalP;
-		
-		// 상품의 이미지 가져오기 <== 주문 테이블에 변수 추가?
-		String item_img = "";
 		
 		/* 화면 네비게이션 */
 		ModelAndView modelAndView = new ModelAndView();

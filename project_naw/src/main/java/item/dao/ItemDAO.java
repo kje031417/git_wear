@@ -41,4 +41,9 @@ public class ItemDAO {
 	public ItemDTO itemView(String item_code) {
 		return sqlSession.selectOne("mybatis.itemMapper.itemView", item_code);
 	}
+	
+	// 상품 1줄 리스트로 가져오기
+	public List<ItemDTO> itemViewList(String item_code) {
+		return sqlSession.selectList("mybatis.itemMapper.itemView", item_code);
+	}
 }

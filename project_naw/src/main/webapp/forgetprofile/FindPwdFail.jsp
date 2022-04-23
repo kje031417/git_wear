@@ -8,7 +8,7 @@
 <script type="text/javascript">
 	window.onload = function(){
 		alert("[NAW] 입력하신 정보가 일치하지 않습니다. 재확인바랍니다.");
-		location.href="../forgetprofile/findPwd.do";
+		location.href="../forgetprofile/findMain.do";
 	}
 </script>
 </head>

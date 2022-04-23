@@ -249,10 +249,20 @@ public class ProfileController {
 		modelAndView.setViewName("../main/index.jsp");
 		return modelAndView;
 	}
-	
+/****************************************************************************************************/
+	// 아이디/ 비번 찾기 폼
+	@RequestMapping(value = "/forgetprofile/findMain.do")
+	public ModelAndView findMain() {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("req", "../forgetprofile/findMain.jsp");
+		modelAndView.setViewName("../main/index.jsp");
 
+		return modelAndView;	
+	}
+	
+	
 	// 아이디찾기 폼 findIdForm
-	@RequestMapping(value = "../forgetprofile/findIdForm.do")
+	@RequestMapping(value = "/forgetprofile/findIdForm.do")
 	public ModelAndView findIdForm() {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("req", "../forgetprofile/findIdForm.jsp");
@@ -262,33 +272,31 @@ public class ProfileController {
 	}
 	
 	// 아이디찾기 findId
-	@RequestMapping(value = "../forgetprofile/findId.do")
+	@RequestMapping(value = "/forgetprofile/findId.do")
 	public ModelAndView login(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		/* 데이터 처리 */
 		request.setCharacterEncoding("utf-8");
-
+		System.out.println("진입성공");
 		// 브라우저로부터 전달된 데이터 읽기
 		String user_name = request.getParameter("user_name");
 		String user_email = request.getParameter("user_email");
 
 		// DB처리
 		String user_id = profileService.findId(user_name, user_email);
-
+		System.out.println("진입성공2");
 		/* 화면 네비게이션 */
 		ModelAndView modelAndView = new ModelAndView();
 		
 		// 페이지 이동
 		if (user_id != null) {
 			modelAndView.addObject("user_id", user_id);
-			modelAndView.addObject("req", "../forgetprofile/findId.jsp");
 			modelAndView.setViewName("../forgetprofile/findId.jsp");
 		} else { // 일치정보 없음
-			modelAndView.addObject("req", "../forgetprofile/FindIdFail.jsp");
 			modelAndView.setViewName("../forgetprofile/FindIdFail.jsp");
 		}
 		return modelAndView;
 	}
-/****************************************************************************************************/	
+
 	 //비밀번호찾기 폼 findPwdForm
 	 @RequestMapping(value="/forgetprofile/findPwdForm.do")
 	 public ModelAndView findPwdForm() {

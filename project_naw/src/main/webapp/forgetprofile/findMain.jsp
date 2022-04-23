@@ -9,14 +9,15 @@
 <script type="text/javascript" src="../script/ProfileFindMainScript.js"></script>
 <link rel="stylesheet" href="../css/profileFindMain.css">
 </head>
-<body>
+<body id="profileMainBody">
+	<div id="profileMain_container">
 		<div class="allFindMain">
-			<div class="context">
+			<div class="context" style="text-align: center;">
 				<h1 class="heading is-1 has-text-centered"
 					data-test="lblWelcomeMessage_Register">Forget Account </h1>
 			</div>
 
-			<div id="container">
+			<div id="findMain_container">
 				<ul class="tabs">
 					<li class="tab-link current" data-tab="tab-1">FIND ID</li>
 					<li class="tab-link" data-tab="tab-2">FIND PASSWORD</li>
@@ -32,5 +33,6 @@
 				
 			</div>	
 		</div>
+	</div>
 </body>
 </html>

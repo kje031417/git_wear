@@ -54,9 +54,9 @@
 							id="user_pwd"><br> </span>
 					</div>
 				</div>
-				<!-- 입력검사 추가 필요 -->
+				
 				<div id="">
-				<a href="../forgetprofile/findPwdForm.do">*Forgot Password? > </a><br>
+				<a href="../forgetprofile/findMain.do">*Forgot Password? > </a><br>
 				</div>
 				<p></p>
 
@@ -86,7 +86,7 @@
 								aria-live="polite" id=""
 								data-screenset-element-id="__gig_template_element_4_1649292160346"
 								data-screenset-element-id-publish="false"
-								data-screenset-roles="instance">
+								data-screenset-roles="instance" style="cursor: pointer;">
 								<span class="button__wrapper"> <span> Sign in </span>
 								</span>
 							</button>
