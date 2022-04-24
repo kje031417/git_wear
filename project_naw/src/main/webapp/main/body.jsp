@@ -98,50 +98,56 @@
 		<div id="first_notice">
 			<p>공지 : <a href="#">$</a> &nbsp;&nbsp; 등록일 : $</p>
 		</div>
-	</div>
+	</div><br>
+	
 	<!-- 추천상품 : 이미지 3개 -->
 	<div id="recommend">
 		<div id="recommend_inner">
-		<p class="title">추천상품</p><br>
+		<p class="title">Best Product</p><br>
 		
 			<div class="recommend_item">
-				<a href="#"><img alt="1" src="../storage/나이키머큐리얼에어줌베이퍼14프로TF_footballgrey_1.jpg" width="200" height="200"></a>
+				<a href="#"><img alt="1" src="../storage/나이키머큐리얼에어줌베이퍼14프로TF_footballgrey_1.jpg" width="400" height="400"></a>
 				<p>나이키 머큐리얼 에어<br>줌 베이퍼 14 프로 TF</p>
 			</div>					
 			<div class="recommend_item">	
-				<a href="#"><img alt="2" src="../storage/w_shoes_011_a.png" width="200" height="200"></a>
+				<a href="#"><img alt="2" src="../storage/w_shoes_011_a.png" width="400" height="400"></a>
 				<p>나이키 와플 데뷰</p>
 			</div>			
 			<div class="recommend_item">
-				<a href="#"><img alt="3" src="../storage/조던시리즈ES_sail_1.jpg" width="200" height="200"></a>
+				<a href="#"><img alt="3" src="../storage/조던시리즈ES_sail_1.jpg" width="400" height="400"></a>
 				<p>조던 시리즈 ES</p>
 			</div>
 		</div>
-	</div>
+	</div><br>
 	
 	<!-- 인기상품소개 -->
 	<div id="best">
 		<div id="best_inner">
-		<p class="title">인기상품</p><br>
+		<p class="title"></p><br>
 		
 		<div id="best_item">
 			<!-- 6:4 -->
+			<div>
 			<div class="best_content">
-				<p style="font-size: 30px; font-weight: bold;"><span style="font-size: 55px;">3</span>-스트라이프로 이어진 전 세계</p>
-				<p>아디다스 커뮤니티와 하나로 연결하는 화합의 힘을 담아낸 클래식 윈드브레이커입니다.</p>
-				<p>넉넉한 핏과 가벼운 소재의 조화로 날씨에 따라<br>티셔츠 또는 스웨트셔츠 위로 편안하게 레이어드할 수 있습니다.</p>
+				<p style="font-size: 40px; font-weight: bold;"><span style="font-size: 55px;">3</span>-스트라이프로 이어진 전 세계</p>
+				<p style="font-size: 20px;">아디다스 커뮤니티와 하나로 연결하는 화합의 힘을 담아낸 클래식 윈드브레이커입니다.</p>
+				<p style="font-size: 20px;">넉넉한 핏과 가벼운 소재의 조화로 날씨에 따라<br>티셔츠 또는 스웨트셔츠 위로 편안하게 레이어드할 수 있습니다.</p>
 			</div>
 			<div class="best_img">
 				<img src="../storage/w_cloth_001_a.png" width="500px" height="500px">
 			</div>
+			</div>
+			<p></p>
 			
+			<div>
 			<div class="best_img">
 				<img src="../storage/나이키스포츠웨어스우시_남성풀집리버서블재킷AS_hotcurry_1.jpg" width="500px" height="500px">
 			</div>
 			<div class="best_content">
-				<p style="font-size: 30px; font-weight: bold;"><span style="font-size: 55px;">추</span>운 날씨를 위한 스테이트먼트 룩</p>
-				<p>나이키 스포츠웨어 재킷은 뒤집을 수 있는 디자인의 오버사이즈 로고로 개성을 표현하고,<br>이동 중에도 룩을 바꿀 수 있습니다.</p> 
-				<p>프렌치 테리와 태피터 소재를 사용하여 쌀쌀한 날씨에 보온성을 제공합니다.</p>
+				<p style="font-size: 40px; font-weight: bold;"><span style="font-size: 55px;">추</span>운 날씨를 위한 스테이트먼트 룩</p>
+				<p style="font-size: 22px;">나이키 스포츠웨어 재킷은 뒤집을 수 있는 디자인의 오버사이즈 로고로 개성을 표현하고,<br>이동 중에도 룩을 바꿀 수 있습니다.</p> 
+				<p style="font-size: 22px;">프렌치 테리와 태피터 소재를 사용하여 쌀쌀한 날씨에 보온성을 제공합니다.</p>
+			</div>
 			</div>
 		</div>
 	</div>
