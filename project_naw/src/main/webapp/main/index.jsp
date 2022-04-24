@@ -44,7 +44,7 @@
 			<!-- 로고 이미지 -->
 			<div id="logo">
 				<a href="../main/index.jsp">
-					<img alt="NAW" src="../img/NAW_main.jpg" width="80" height="80">
+					<img alt="NAW" src="../img/NAW_main.jpg" width="110" height="100">
 				</a>
 			</div>
 			<!-- 메뉴 바 : MEN WOMEN KIDS -->
