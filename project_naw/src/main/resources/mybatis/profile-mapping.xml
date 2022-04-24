@@ -42,11 +42,11 @@
    
       <!-- (마이페이지) 회원정보수정 -->
    <update id="mypage" parameterType="profileDTO">
-      <![CDATA[update profile set user_pwd= #{user_pwd}, user_phone=#{user_phone}, user_email=#{user_email}, user_addr1=#{user_addr1}, user_addr2=#{user_addr2} where user_id=#{user_id} and user_pwd=#{user_pwd}]]>
+      <![CDATA[update profile set user_pwd= #{user_pwd}, user_phone=#{user_phone}, user_email=#{user_email}, user_addr1=#{user_addr1}, user_addr2=#{user_addr2} where user_id=#{user_id}]]>
    </update>
    
       <!-- (마이페이지) 회원탈퇴-->
-   <delete id="withdrawal" parameterType="int">
+   <delete id="withdrawal" parameterType="String">
       <![CDATA[delete profile where user_id=#{user_id}]]>
    </delete>
    

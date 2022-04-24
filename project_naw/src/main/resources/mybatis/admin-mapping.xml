@@ -7,7 +7,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- item -->
 	
 	<insert id="itemWrite" parameterType="itemDTO">
-		<![CDATA[insert into itemView values
+		<![CDATA[insert into itemView 
+		(item_code, item_seq, item_category1, item_category2, item_category3, 
+		item_name, item_image1, item_image2, item_details, item_size, item_color, 
+		cart_qty, item_price, item_date)
+		values
 		(#{item_code}, seq_item.nextval, #{item_category1}, #{item_category2}, #{item_category3}, 
 		#{item_name}, #{item_image1}, #{item_image2}, #{item_details}, 
 		#{item_size}, #{item_color}, #{cart_qty}, #{item_price}, sysdate)]]>

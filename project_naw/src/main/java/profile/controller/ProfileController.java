@@ -152,7 +152,7 @@ public class ProfileController {
 
 		//return modelAndView;
 	//}
-/****************************************************************************************************/
+
 	// 마이페이지 수정폼 mypageForm
 	@RequestMapping(value = "/mypage/mypageForm.do")
 	public ModelAndView mypageForm(HttpServletRequest request) {
@@ -215,7 +215,7 @@ public class ProfileController {
 		
 		
 	// 회원탈퇴 withdrawalForm
-	@RequestMapping(value = "/mypage/withdrawalForm.do")
+		@RequestMapping(value = "/mypage/withdrawalForm.do")
 	public ModelAndView withdrawalForm() {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("req", "../mypage/withdrawalForm.jsp");
@@ -249,7 +249,7 @@ public class ProfileController {
 		modelAndView.setViewName("../main/index.jsp");
 		return modelAndView;
 	}
-/****************************************************************************************************/
+
 	// 아이디/ 비번 찾기 폼
 	@RequestMapping(value = "/forgetprofile/findMain.do")
 	public ModelAndView findMain() {
@@ -276,14 +276,14 @@ public class ProfileController {
 	public ModelAndView login(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		/* 데이터 처리 */
 		request.setCharacterEncoding("utf-8");
-		System.out.println("진입성공");
+		
 		// 브라우저로부터 전달된 데이터 읽기
 		String user_name = request.getParameter("user_name");
 		String user_email = request.getParameter("user_email");
 
 		// DB처리
 		String user_id = profileService.findId(user_name, user_email);
-		System.out.println("진입성공2");
+		
 		/* 화면 네비게이션 */
 		ModelAndView modelAndView = new ModelAndView();
 		

@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	window.onload = function(){	
-		if(user_id != null) {
+		if(${user_id != null}) {
 			alert("[NAW] 고객님의 아이디는 ${user_id}입니다.");
 			location.href="../signin/profileMain.do";
 		} else {

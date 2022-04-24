@@ -119,8 +119,7 @@ public class OrderController {
 		
 		// 특정 회원의 주문 내역 리스트 가져오기
 		List<OrderDTO> list = orderService.getOrderList(startNum, endNum, user_id);
-		
-		
+				
 		// 3블럭
 		int startPage = (pg - 1) / 3 * 3 + 1;
 		int endPage = startPage + 2;

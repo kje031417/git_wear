@@ -79,8 +79,8 @@ public class NoticeController {
 	public ModelAndView noticeList(HttpServletRequest request) {
 		// 세션에 저장된 데이터 받기
 		HttpSession session = request.getSession();
-		String sessionName = (String)session.getAttribute("sessionName");
-		String sessionId = (String)session.getAttribute("sessionId");
+		String sessionName = (String)session.getAttribute("login_name");
+		String sessionId = (String)session.getAttribute("login_id");
 		
 		/* 데이터 처리 */
 		int pg = 1;
@@ -107,7 +107,7 @@ public class NoticeController {
 			endPage = totalP;
 		
 		// 가장 최근 공지글 데이터 얻어오기
-		NoticeDTO nlvDTO = noticeService.noticeLatestView();
+		//NoticeDTO nlvDTO = noticeService.noticeLatestView();
 		
 		/* 화면 네비게이션 */
 		ModelAndView modelAndView = new ModelAndView();
@@ -122,9 +122,6 @@ public class NoticeController {
 		modelAndView.addObject("totalP", totalP);
 		modelAndView.addObject("req", "../notice/noticeList.jsp");
 		
-		modelAndView.addObject("nlvDTO", nlvDTO);
-		modelAndView.addObject("req_notice_latest_view", "../notice/noticeLatestView.jsp");
-		
 		modelAndView.setViewName("../main/index.jsp");
 		
 		return modelAndView;
@@ -134,9 +131,7 @@ public class NoticeController {
 	@RequestMapping(value = "/notice/noticeWriteForm.do")
 	public ModelAndView noticeWriteForm() {
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("req", "../notice/noticeList.jsp");
-		modelAndView.addObject("req_notice", "../notice/noticeWriteForm.jsp");
-		modelAndView.setViewName("noticeList.do");
+		modelAndView.setViewName("../notice/noticeWriteForm.jsp");
 
 		return modelAndView;
 	}
@@ -150,9 +145,9 @@ public class NoticeController {
 		String notice_title = request.getParameter("notice_title");
 		String notice_content = request.getParameter("notice_content").replace("\r\n","<br>");
 		// 세션에 저장된 데이터 받기
-		//HttpSession session = request.getSession();
-		//String admin_name = (String)session.getAttribute("adminName");
-		//String admin_id = (String)session.getAttribute("adminId");
+		HttpSession session = request.getSession();
+		String admin_name = (String)session.getAttribute("login_name");
+		String admin_id = (String)session.getAttribute("login_id");
 
 		// DB 처리
 		NoticeDTO dto = new NoticeDTO();
@@ -167,7 +162,7 @@ public class NoticeController {
 		modelAndView.addObject("result", result);
 		//modelAndView.addObject("req", "../notice/noticeList.jsp");
 		//modelAndView.addObject("req_notice", "../notice/noticeWrite.jsp");
-		modelAndView.setViewName("noticeWrite.jsp");
+		modelAndView.setViewName("../notice/noticeWrite.jsp");
 		return modelAndView;
 	}
 	
@@ -177,14 +172,12 @@ public class NoticeController {
 		
 		// 가장 최근 공지글 데이터 얻어오기
 		NoticeDTO dto = noticeService.noticeLatestView();
-		System.out.println("dto:"+dto.getNotice_title());
+		//System.out.println("dto:"+dto.getNotice_title());
 		/* 화면 네비게이션 */
 		ModelAndView modelAndView = new ModelAndView();
 
 		modelAndView.addObject("dto", dto);
-		modelAndView.addObject("req", "../notice/noticeList.jsp");
-		modelAndView.addObject("req_notice_latest_view", "../notice/noticeLatestView.jsp");
-		modelAndView.setViewName("/notice/noticeList.do");
+		modelAndView.setViewName("../notice/noticeLatestView.jsp");
 		
 		return modelAndView;
 	}
@@ -205,7 +198,7 @@ public class NoticeController {
 		modelAndView.addObject("dto", dto);
 		modelAndView.addObject("seq", seq);
 		modelAndView.addObject("pg", pg);
-		modelAndView.addObject("req", "../notice/noticeList.jsp");
+		modelAndView.addObject("req", "../notice/noticeList.do");
 		modelAndView.addObject("req_notice", "../notice/noticeView.jsp");
 		modelAndView.setViewName("../main/index.jsp");
 		
@@ -227,7 +220,7 @@ public class NoticeController {
 		modelAndView.addObject("seq", seq);
 		modelAndView.addObject("pg", pg);
 		modelAndView.addObject("dto", dto);
-		modelAndView.addObject("req_notice_latest_view", "../notice/noticeModifyForm.jsp");
+		modelAndView.addObject("req", "../notice/noticeModifyForm.jsp");
 		modelAndView.setViewName("../main/index.jsp");
 		
 		return modelAndView;
@@ -240,7 +233,7 @@ public class NoticeController {
 		request.setCharacterEncoding("utf-8");
 
 		int seq = Integer.parseInt(request.getParameter("seq"));
-		int pg = Integer.parseInt(request.getParameter("pg"));
+		//int pg = Integer.parseInt(request.getParameter("pg"));
 		String notice_title = request.getParameter("notice_title");
 		String notice_content = request.getParameter("notice_content").replace("\r\n","<br>");
 		
@@ -253,13 +246,10 @@ public class NoticeController {
 		int result = noticeService.noticeModify(dto);
 		
 		/* 화면 네비게이션 */
-		ModelAndView modelAndView = new ModelAndView();
-		
-		modelAndView.addObject("seq", seq);
-		modelAndView.addObject("pg", pg);
+		ModelAndView modelAndView = new ModelAndView();	
 		modelAndView.addObject("result", result);
-		modelAndView.addObject("req_notice_latest_view", "../notice/noticeModify.jsp");
-		modelAndView.setViewName("../main/index.jsp");
+		modelAndView.setViewName("../notice/noticeModify.jsp");
+		
 		return modelAndView;
 	}
 	
@@ -278,8 +268,23 @@ public class NoticeController {
 		modelAndView.addObject("seq", seq);
 		//modelAndView.addObject("pg", pg);
 		modelAndView.addObject("result", result);
-		modelAndView.addObject("req_notice_latest_view", "../notice/noticeDelete.jsp");
-		modelAndView.setViewName("/notice/noticeList.do");
+		modelAndView.setViewName("../notice/noticeDelete.jsp");
+		
+		return modelAndView;
+	}
+	
+	// bodyNotice
+	@RequestMapping(value="/main/bodyNotice.do")
+	public ModelAndView bodyNotice() {
+		// 가장 최근 공지글 데이터 얻어오기
+		NoticeDTO dto = noticeService.noticeLatestView();
+		
+		/* 화면 네비게이션 */
+		ModelAndView modelAndView = new ModelAndView();
+
+		modelAndView.addObject("dto", dto);
+		modelAndView.setViewName("../main/bodyNotice.jsp");
+				
 		return modelAndView;
 	}
 }

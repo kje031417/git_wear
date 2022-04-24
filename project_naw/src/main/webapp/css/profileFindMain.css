@@ -3,12 +3,11 @@
 	font-family: 'Trebuchet MS', 'NanumSquareAcb', serif;
 	line-height: 1.6;
 	text-align: center;
-	margin : auto;
-	height: 1000px;
+	width: 100%;
 }
 #profileMain_container {
-	width: 1350px;
-	margin: auto;
+	width: 500px;
+	margin: 50px auto;
 }
 .allFindMain {
 	width: 500px;

@@ -1,6 +1,5 @@
 package cart.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -202,6 +201,9 @@ public class CartController {
 			dto.setOrd_payment(ord_payment);
 			
 			result = orderService.orderInsert(dto);
+			
+			// 장바구니에서 삭제
+			cartService.deleteCart(list.get(i).getCart_seq());
 		}
 		
 		/* 화면 네비게이션 */

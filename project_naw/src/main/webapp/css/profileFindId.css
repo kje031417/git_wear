@@ -1,18 +1,21 @@
 @charset "UTF-8";
 #findId_body {
-	margin: 0 auto;
+	width: 100%;
 	font-family: 'Trebuchet MS', 'NanumSquareAcb', serif;
 	line-height: 1.6;
 	text-align: center;
 }
-
+#findId_container {
+	width: 500px;
+	height: 500px;
+	margin: 50px auto;
+}
 .findId {
 	text-align: center;
 	width: 500px;
-	height: 800px;
+	height: 500px;
 	margin: auto;
 }
-
 
 .find_id {
 	text-align: left;

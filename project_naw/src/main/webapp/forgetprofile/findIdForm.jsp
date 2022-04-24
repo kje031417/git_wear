@@ -9,14 +9,15 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="../script/ProfileFindIdScript.js"></script>
-<link rel="stylesheet" href="../css/profileFindId.css">
+<link rel="stylesheet" href="../css/profileFindId.css?after">
 <body id="findId_body">
 	<form action="../forgetprofile/findId.do" method="post" name="form" id="form"
 		onsubmit="check(); return false;">
+		<div id="findId_container">
 		<div style="margin: auto;">
 			<h4 style="text-align: center;">WELCOME BACK</h4>
 			<h5 style="text-align: center;">You can find ID by entering your Name and Email !</h5>
-			<div class="fint_id">
+			<div class="find_id">
 				<div class="field">
 					<div class="label-input js-label-input is-ready">
 						<label class="label-input__label">Name</label> <input
@@ -59,6 +60,7 @@
 						</span>					</button>
 				</div>
 			</div>
+		</div>
 		</div>
 	</form>
 </body>

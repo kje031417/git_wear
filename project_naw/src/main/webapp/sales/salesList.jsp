@@ -164,9 +164,7 @@ $(function(){
 </head>
 <body>
 	<!------------ admin menu ------------>
-	<!--<c:if test="${sessionId == admin }">-->
-		<jsp:include page="../admin/adminMenu.jsp"/>
-	<!--</c:if>-->
+	<jsp:include page="../admin/adminMenu.jsp"/>
 	
 	<div id="sales_list_wrap">
 		<div id="sales_list_wrap_inner">

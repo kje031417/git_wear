@@ -92,21 +92,21 @@
 			
 			<div id="notice_view_title_date_div">
 				<div id="notice_view_title_div">
-					${nlvDTO.notice_title }
+					${dto.notice_title }
 				</div>
 				<div id="notice_view_date_div">
-					${nlvDTO.notice_date }
+					${dto.notice_date }
 				</div>
 			</div>
 			
 			<div id="notice_view_content_div">
-				${nlvDTO.notice_content }
+				${dto.notice_content }
 			</div>
 			
-			<c:if test="${sessionId == admin }">
+			<c:if test="${login_id == 'admin' }">
 				<div id="notice_view_buttons_div">
-					<button id="notice_modify_button">공지 수정</button>
-					<button id="notice_delete_button" onclick="location.href='noticeDelete.do?seq=${nlvDTO.notice_seq }&pg=${pg }'">공지 삭제</button>
+					<button id="notice_modify_button" onclick="location.href='noticeModifyForm.do?seq=${dto.notice_seq }&pg=${pg }'">공지 수정</button>
+					<button id="notice_delete_button" onclick="location.href='noticeDelete.do?seq=${dto.notice_seq }&pg=${pg }'">공지 삭제</button>
 				</div>
 			</c:if>
 			

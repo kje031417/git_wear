@@ -2,7 +2,6 @@
 create table inquiry (
     inquiry_code number,	                        --문의글 번호
 	user_id varchar2(15) not null,	                --회원 id
-    item_code varchar2(100) not null,               --상품 번호
 	inquiry_subject varchar2(100) not null,	        --제목
 	inquiry_content varchar2(100) not null,	        --내용
 	re_ref number not null,	                        --관련 글 번호
@@ -27,11 +26,11 @@ drop sequence inquiry_code;
 
 -- 6) 데이터 저장하기
 insert into inquiry 
-values(inquiry_code.nextval, 'hong1234', '002',  'test', 'content', 
+values(inquiry_code.nextval, 'hong1234', 'subject', 'content', 
 inquiry_code.currval, 0, 0, 0, sysdate);    -- currval : 현재 시퀀스값 읽어오기
 
 -- 7) 전체 내용 확인
-select * from inquiry order by inquiry_code desc;
+select * from inquiry order by inquiry_code asc;
 
 -- 8) 상세 데이터 1줄 뽑아오기
 select * from inquiry where inquiry_code=1;
@@ -55,21 +54,21 @@ where inquiry_code=1;
 -- 14) 답글 저장
 ---- 1.기존글의 re_seq값 정리 : 원글보다 큰 re_seq값을 1씩 증가
 update inquiry set re_seq = re_seq + 1
-where re_ref=0 and re_seq>0 and item_code='001';
+where re_ref=0 and re_seq>0;
 
 ---- 2.답글 저장
 ---- re_ref = 원글의 re_ref
 ---- re_lev = 원글의 re_lev + 1
 ---- re_seq = 원글의 re_seq + 1
 insert into inquiry values
-(seq_num.nextval, '답글작성자id', '상품번호', '제목', '내용', 1, 1, 1, 0, sysdate);
+(inquiry_code.nextval, 'id', '상품번호', '제목', '내용', 1, 1, 1, 0, sysdate);
 
 -- 16) 답글에 대한 인덱스 뷰
 ---- => re_ref 기준 내림차순, 같은 값들은 re_seq 기준 오름차순으로 정렬시킴
 select * from
 (select rownum rn, tt.* from
 (select * from inquiry order by re_ref desc, re_seq asc) tt)
-where rn>=1 and rn<=5 and item_code='002';
+where rn>=1 and rn<=3;
 
--- 17) 특정 상품의 문의글 개수 구하기
-select count(*) as cnt from inquiry where item_code='002';
+-- 19) 삭제하기
+delete inquiry where inquiry_code=127;

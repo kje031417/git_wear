@@ -78,6 +78,6 @@ public class ProfileDAO {
 
 	// (마이페이지) 회원탈퇴 withdrawalProfile
 	public int withdrawalProfile(String user_id) {
-		return sqlSession.delete("mybatis.profileMapper.withdrawalProfile", user_id);
+		return sqlSession.delete("mybatis.profileMapper.withdrawal", user_id);
 	}
 }

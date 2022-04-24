@@ -64,19 +64,22 @@ public class ReviewController {
 		
 		return modelAndView;
 	}
-/*****************************************************************************/	
+
 	@RequestMapping(value="/item/reviewModifyForm.do")
 	public ModelAndView reviewModifyForm(HttpServletRequest request, HttpServletResponse response) {
 		/* 데이터 처리 */
 		int review_code = Integer.parseInt(request.getParameter("review_code"));
+		String item_code = request.getParameter("item_code");
 		
 		// 상세 데이터 1줄 가져오기
 		ReviewDTO dto = reviewService.getReviewDetail(review_code);
 		
 		/* 화면 네비게이션 */
 		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("item_code", item_code);
 		modelAndView.addObject("dto", dto);
-		modelAndView.setViewName("../item/reviewModifyForm.jsp");
+		modelAndView.addObject("req", "../item/reviewModifyForm.jsp");
+		modelAndView.setViewName("../main/index.jsp");
 		
 		return modelAndView;
 	}
@@ -87,17 +90,19 @@ public class ReviewController {
 		int review_code = Integer.parseInt(request.getParameter("review_code"));
 		String review_content = request.getParameter("review_content");
 		int review_start = Integer.parseInt(request.getParameter("review_star"));
+		String item_code = request.getParameter("item_code");
 		
 		int result = reviewService.modifyReview(review_content, review_start, review_code);
 		
 		/* 화면 네비게이션 */
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("result", result);
+		modelAndView.addObject("item_code", item_code);
 		modelAndView.setViewName("../item/reviewModify.jsp");
 		
 		return modelAndView;
 	}
-/*****************************************************************************/	
+
 	@RequestMapping(value="/item/reviewDelete.do")
 	public ModelAndView reviewDelete(HttpServletRequest request, HttpServletResponse response) {
 		/* 데이터 처리 */
