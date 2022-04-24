@@ -30,58 +30,11 @@
 <script type="text/javascript" src="../script/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 $(function(){
-	$.ajax({
-		url: "noticeListJson.do",
-		type: "post",
-		data: {"pg": "${pg}"},
-		traditional : true,
-		dataType: "json",
-		success: function(json){
-			//alert(json);
-			$.each(json.items, function(index, item){
-				// 태그 생성
-				var tr1 = $("<tr>", {align: "center"});
-				var td11 = $("<td>").html(item.notice_date);
-				var td12 = $("<td>").append($("<a>", {
-					class: "notice_title",
-					href: "#",
-					text: item.notice_title
-					//onclick: "return false;"
-				}));
-				//var tr2 = $("<tr>", {align: "center"}).hide();
-				//var td21 = $("<td>");
-				//var td22 = $("<td>").html(item.notice_content).attr('class','leaderDescription');
-				
-				// 조립
-				tr1.append(td11).append(td12);
-				//tr2.append(td21).append(td22);
-				
-				// 출력
-				$("#notice_list_tbody").append(tr1);
-			});
-		},
-		error: function(xhr, textStatus, errorThrown) {
-			alert("[Error] " + xhr.status);
-		}
-	});
-	
-	// pagination
-	$.ajax({
-		url: "noticeList.do?pg=${startPage - 1 }",
-		type: "get",
-		data: {"startPage": "${startPage}"},
-		dataType: "html",
-		success: function(json){
-			$('#notice_list').html(data);
-		},
-		error: function(xhr, textStatus, errorThrown) {
-			alert("[Error] " + xhr.status);
-		}
-	});
-	
-	
-	
+	// 4개 중복되서 나옴 ㅠㅠ
 	$(document).ready(function(){
+		// 글 작성 폼 숨기기
+		$("#noticeWriteForm").hide();
+		
 		$('.leaderDescription').hide();
 		$(".notice_title").click(function(){
 			var descriptionDiv = $(".leaderDescription");
@@ -132,6 +85,12 @@ $(function(){
 		
 	});
 	
+	// 글 작성
+	$("#notice_write_button").on("click", function(){
+		$("#noticeWriteForm").fadeIn();
+		$("#noticeLatestView").fadeOut();
+	});
+	
 });
 
 
@@ -139,16 +98,14 @@ $(function(){
 </head>
 <body>
 	<!------------ admin menu ------------>
-	<jsp:include page="../admin/adminMenu.jsp"/>
-
+	<c:if test="${login_id == 'admin' }">
+		<jsp:include page="../admin/adminMenu.jsp"/>
+	</c:if>
 	<!------------ notice write form ------------>
-	<jsp:include page="${req_notice }" />	<!-- noticeView.jsp 파트 -->
-
+	<span id="noticeWriteForm"><jsp:include page="noticeWriteForm.do"/></span>
 	
 	<!------------ notice view ------------>
-	<c:if test="${req_notice == null }">
-		<jsp:include page="${req_notice_latest_view }" />
-	</c:if>
+	<span id="noticeLatestView"><jsp:include page="noticeLatestView.do"/></span>
 	
 	<!------------ notice list ------------>
 	
@@ -163,7 +120,7 @@ $(function(){
 				<!-- 공지 목록 출력 -->
 			</tbody>
 			
-			
+
 			<c:forEach var="dto" items="${list }">
 				<tr>
 					<td>${dto.notice_date }</td>
@@ -202,7 +159,8 @@ $(function(){
 	
 	<c:if test="${login_id == 'admin' }">
 		<div id="notice_write_button_div">
-			<button type="submit" id="notice_write_button" onclick="location.href='noticeWriteForm.do'">새 공지</button>
+			<!-- 누르면 숨겨진 글 작성 창이 뜸 -->
+			<button type="submit" id="notice_write_button">새 공지</button>
 		</div>
 	</c:if>
 </body>

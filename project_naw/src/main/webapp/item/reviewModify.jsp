@@ -9,7 +9,7 @@
 	window.onload = function() {
 		if(${result > 0}) {
 			alert("선택하신 글을 수정했습니다.");
-			location.href= "../item/reviewList.do";
+			location.href= "../item/itemView.do?item_code=${item_code}";
 		} else {
 			alert("수정에 실패했습니다.");
 			location.href= history.back();

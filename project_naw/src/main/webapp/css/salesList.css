@@ -1,14 +1,14 @@
 @charset "UTF-8";
 #sales_list_wrap {
 	width: 100%;
-	height: 550px;
-	display: inline-flex;
-	justify-content: center;
+	height: 1000px;
+	/*display: inline-flex;*/
+	/*justify-content: center;*/
 	margin-bottom: 20px;
 }
 #sales_list_wrap_inner {
 	width: 80%;
-	height: 399px;
+	height: 700px;
 	border-collapse: collapse;
 }
 #sales_list_label_div {
@@ -52,6 +52,7 @@
 #sales_search_span_div {
 	display: inline;
 	height: 100%;
+	margin-bottom: 50px;
 }
 
 #sales_search_by_word_input_div > input[type="text"] {

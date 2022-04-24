@@ -80,9 +80,7 @@ $(function(){
 </head>
 <body>
 	<!------------ admin menu ------------>
-	<!--<c:if test="${sessionId == admin }">-->
-		<jsp:include page="adminMenu.jsp"/>
-	<!--</c:if>-->
+	<jsp:include page="adminMenu.jsp"/>
 	
 	<div id="item_write_wrap">
 		<div id="item_write_wrap_inner">

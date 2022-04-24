@@ -5,6 +5,19 @@
 <head>
 <meta charset="UTF-8">
 <title>NAW(관리자) - 공지수정</title>
+<script type="text/javascript" src="../script/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#submit_button").click(function(){
+			var title = $("#notice_title").val();
+			var content = $("#notice_content").text();
+			
+			location.href="../notice/noticeModify.do?notice_title=" 
+					+ title + "&notice_content=" + content + "&seq=${seq}";
+		});
+	});
+
+</script>
 <style type="text/css">
 #notice_modify_form {
 	width: 100%;
@@ -81,14 +94,14 @@
 		</div>
 	
 		<div class="notice_modify_field" id="notice_title_div">
-			<input type="text" id="notice_title" name="notice_title" value="put title value">
+			<input type="text" id="notice_title" name="notice_title" value="${dto.notice_title }">
 		</div>
 		<div class="notice_modify_field" id="content_div">
-			<textarea id="notice_content" name="notice_content">put content value</textarea>
+			<textarea id="notice_content" name="notice_content">${dto.notice_content }</textarea>
 		</div>
 		<div id="notice_modify_form_buttons_div">
 			<button type="submit" id="submit_button">공지 수정</button>
-			<button type="reset" id="reset_button">등록 취소</button>
+			<button type="reset" id="reset_button" onclick="history.back()">등록 취소</button>
 		</div>
 	</div>
 </div>

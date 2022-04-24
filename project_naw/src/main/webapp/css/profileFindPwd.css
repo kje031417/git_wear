@@ -7,14 +7,14 @@
 }
 #findMain_conatiner {
 	width: 500px;
-	height: 900px;
+	height: 700px;
 	margin: 50px auto;
 }
 #findMain_container_inner {
 	margin: auto;
 	text-align: center;
 	width: 500px;
-	height: 700px;
+	height: 500px;
 }
 .reset-password {
 	margin: auto;

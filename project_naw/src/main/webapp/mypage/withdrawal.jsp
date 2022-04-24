@@ -9,13 +9,13 @@
 <script type="text/javascript">
 	window.onload = function(){	
 		var dialog = document.getElementById("myMsgDialog"); 
-		dialog.showModal();
+		dialog.showModal();	
 	}
 	
 	function close_ok(){ 
 		var dialog = document.getElementById("myMsgDialog"); 
 		dialog.close(); 
-		location.href="mypageForm.do";
+		location.href="../main/index.jsp";
 	} 
 </script>
 </head>

@@ -54,9 +54,11 @@
 		});	
 		
 		// 수정
-		$(".comment_modify").click(function(){
+		$(".comment_modify").on("click", function(){
+			var item_code = $(this).parent().find(".item_code").val();
 			var review_code = $(this).parent().find(".comment_code").val();		
-			location.href="../item/reviewModifyForm.do?review_code=" + review_code;
+			location.href="../item/reviewModifyForm.do?review_code=" + review_code 
+								+ "&item_code=" + item_code;
 		});
 		
 		// 삭제 버튼 클릭시의 동작을 미리 설정
@@ -133,7 +135,7 @@
 				<span>작성일: ${vo.review_date }</span>
 				<span class="comment_modify" style="cursor:pointer;">수정</span>
 				<span class="comment_delete" style="cursor:pointer;">삭제</span>				
-				<p>${vo.review_content }</p>
+				<p><span class="comment_content">${vo.review_content }</span></p>
 				<div class="star_font">
 					<img src="../img/star_active.png" width="20" height="20">
 					<span class="comment_star">${vo.review_star}</span>/5

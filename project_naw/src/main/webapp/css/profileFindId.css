@@ -7,16 +7,15 @@
 }
 #findId_container {
 	width: 500px;
-	height: 1000px;
+	height: 500px;
 	margin: 50px auto;
 }
 .findId {
 	text-align: center;
 	width: 500px;
-	height: 800px;
+	height: 500px;
 	margin: auto;
 }
-
 
 .find_id {
 	text-align: left;
