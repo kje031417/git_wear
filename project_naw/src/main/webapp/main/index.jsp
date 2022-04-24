@@ -138,9 +138,9 @@
 				<!-- KIDS 하위 메뉴 -->
 				<div class="menu_sub">
 					<div class="category"><a href="../item/itemList_category2.do?item_category1=KIDS&item_category2=신발">신발</a></div>
-					<div class="category"><a href="../item/itemList_category3.do?item_category1=KIDS&item_category2=신발&item_category3=big">big</a></div>
-					<div class="category"><a href="../item/itemList_category3.do?item_category1=KIDS&item_category2=신발&item_category3=little">little</a></div>
-					<div class="category"><a href="../item/itemList_category3.do?item_category1=KIDS&item_category2=신발&item_category3=babies">babies</a></div>
+					<div class="category"><a href="../item/itemList_category3.do?item_category1=KIDS&item_category2=신발&item_category3=Big">big</a></div>
+					<div class="category"><a href="../item/itemList_category3.do?item_category1=KIDS&item_category2=신발&item_category3=Little">little</a></div>
+					<div class="category"><a href="../item/itemList_category3.do?item_category1=KIDS&item_category2=신발&item_category3=Babies">babies</a></div>
 					<div class="category"><a href="../item/itemList_category3.do?item_category1=KIDS&item_category2=신발&item_category3=Running">Running</a></div>
 				</div>
 								
@@ -167,12 +167,26 @@
 	<div id="indexContainer">
 		<!-- view -->
 		<div id="indexSection">
-			<c:if test="${req == null }">
-				<jsp:include page="../main/body.jsp"/>
+			<!-- 관리자 페이지 아이디 : admin, 비밀번호 : admin -->
+			<c:if test="${login_id == 'admin'}">			
+				<c:if test="${req == null }">
+					<jsp:include page="../admin/adminBody.jsp"/>
+				</c:if>
+				<!-- req로 정보 보내기 -->
+				<c:if test="${req != null }">
+					<jsp:include page="${req }"/>
+				</c:if>	
 			</c:if>
-			<!-- req로 정보 보내기 -->
-			<c:if test="${req != null }">
-				<jsp:include page="${req }"/>
+			
+			<!-- 고객 페이지 -->
+			<c:if test="${login_id != 'admin'}">
+				<c:if test="${req == null }">
+					<jsp:include page="../main/body.jsp"/>		<!-- 공지 최신글 받아오려면 .do -->
+				</c:if>
+				<!-- req로 정보 보내기 -->
+				<c:if test="${req != null }">
+					<jsp:include page="${req }"/>
+				</c:if>	
 			</c:if>
 		</div>
 	</div>

@@ -139,21 +139,16 @@ $(function(){
 </head>
 <body>
 	<!------------ admin menu ------------>
-	<!--<c:if test="${sessionId == admin }">-->
-		<jsp:include page="../admin/adminMenu.jsp"/>
-	<!--</c:if>-->
-	
+	<jsp:include page="../admin/adminMenu.jsp"/>
+
 	<!------------ notice write form ------------>
-	<!--<c:if test="${sessionId == admin }">-->
-		<jsp:include page="${req_notice }" />
-	<!--</c:if>-->
+	<jsp:include page="${req_notice }" />	<!-- noticeView.jsp 파트 -->
+
 	
 	<!------------ notice view ------------>
 	<c:if test="${req_notice == null }">
 		<jsp:include page="${req_notice_latest_view }" />
 	</c:if>
-	
-	
 	
 	<!------------ notice list ------------>
 	
@@ -168,7 +163,7 @@ $(function(){
 				<!-- 공지 목록 출력 -->
 			</tbody>
 			
-			<!-- 
+			
 			<c:forEach var="dto" items="${list }">
 				<tr>
 					<td>${dto.notice_date }</td>
@@ -180,7 +175,7 @@ $(function(){
 					</td>
 				</tr>
 			</c:forEach>
-			 -->
+			
 			
 		</table>
 	</div>
@@ -205,7 +200,7 @@ $(function(){
 		</c:if>		
 	</div>
 	
-	<c:if test="${sessionId == admin }">
+	<c:if test="${login_id == 'admin' }">
 		<div id="notice_write_button_div">
 			<button type="submit" id="notice_write_button" onclick="location.href='noticeWriteForm.do'">새 공지</button>
 		</div>

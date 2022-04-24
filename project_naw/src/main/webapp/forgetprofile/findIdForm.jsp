@@ -13,6 +13,7 @@
 <body id="findId_body">
 	<form action="../forgetprofile/findId.do" method="post" name="form" id="form"
 		onsubmit="check(); return false;">
+		<div id="findId_container">
 		<div style="margin: auto;">
 			<h4 style="text-align: center;">WELCOME BACK</h4>
 			<h5 style="text-align: center;">You can find ID by entering your Name and Email !</h5>
@@ -59,6 +60,7 @@
 						</span>					</button>
 				</div>
 			</div>
+		</div>
 		</div>
 	</form>
 </body>

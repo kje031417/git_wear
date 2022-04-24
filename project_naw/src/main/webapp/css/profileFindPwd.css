@@ -3,12 +3,12 @@
 	font-family: 'Trebuchet MS', 'NanumSquareAcb', serif;
 	line-height: 1.6;
 	align-items: center;
-	margin : auto;
+	width: 100%;
 }
 #findMain_conatiner {
-	width: 1350px;
-	margin: 0 auto;
-	height: 1000px;
+	width: 500px;
+	height: 900px;
+	margin: 50px auto;
 }
 #findMain_container_inner {
 	margin: auto;

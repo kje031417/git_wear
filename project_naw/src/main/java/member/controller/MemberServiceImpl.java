@@ -1,4 +1,4 @@
-package member.bean;
+package member.controller;
 
 import java.util.List;
 

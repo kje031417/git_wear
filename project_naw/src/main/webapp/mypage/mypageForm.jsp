@@ -10,14 +10,14 @@
 <script type="text/javascript" src="../script/MypageScript.js"></script>
 <link rel="stylesheet" href="../css/mypage.css">
 </head>
-<body>
+<body id="mypage_body">
 	<form action="mypage.do" method="post" name="form" id="form"
 		onsubmit="check(); return false;">
 		
-	<h1 class="heading is-1 " data-test="lblMyDetails">MY INFORMATION</h1>
+	<h1 class="heading is-1 " data-test="lblMyDetails" style="text-align: center;">MY INFORMATION</h1>
 	
 	<div class="allMypage">
-	<div id="container" style="text-align: left;">
+	<div id="mypage_container" style="text-align: left;">
 		<div data-form-fieldset="generic">
 			<div class="heading-block-has-thin-separator-title">
 				<h3>PROFILE</h3>

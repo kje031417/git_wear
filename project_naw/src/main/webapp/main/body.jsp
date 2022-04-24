@@ -96,7 +96,7 @@
 	<!-- 공지 (include) 최신 글 하나 보여주기 -->
 	<div id="notice">
 		<div id="first_notice">
-			<p>공지 : <a href="#">$</a> &nbsp;&nbsp; 등록일 : $</p>
+			<p>공지 : <a href="../notice/noticeList.do"> 최신글 제목 </a></p>
 		</div>
 	</div>
 	<!-- 추천상품 : 이미지 3개 -->

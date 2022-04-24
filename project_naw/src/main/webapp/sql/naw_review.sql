@@ -29,7 +29,12 @@ values(review_code.nextval, 'hong1234', '002', 'content', 5, sysdate);
 select * from review order by review_code desc;
 
 -- 8) 특정 상품 하나의 리뷰글 모아보기
-select * from review where item_code=002;
+select * from review where item_code=002 order by review_code desc ;
+
+select * from
+(select rownum rn, tt.* from
+(select * from review order by review_code desc) tt)
+where rn>=1 and rn<=3 and item_code='002';
 
 -- 9) 데이터 수정(보류)
 update review 
@@ -53,4 +58,7 @@ where rn>=1 and rn<=5;
 select count(*) as cnt from review;
 
 -- 14) 상품당 리뷰글 수 뽑아오기
-select count(*) as cnt from review;
+select count(*) as cnt from review where item_code='002';
+
+-- 15) -- 상세 데이터 뽑아오기
+select * from review where review_code='2';

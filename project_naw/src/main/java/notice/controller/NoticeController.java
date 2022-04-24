@@ -123,7 +123,7 @@ public class NoticeController {
 		modelAndView.addObject("req", "../notice/noticeList.jsp");
 		
 		modelAndView.addObject("nlvDTO", nlvDTO);
-		modelAndView.addObject("req_notice_latest_view", "../notice/noticeLatestView.jsp");
+		modelAndView.addObject("req", "../notice/noticeLatestView.jsp");
 		
 		modelAndView.setViewName("../main/index.jsp");
 		
