@@ -12,6 +12,8 @@
 </head>
 
 <body id="profileMainBody">
+
+	<div id="profileMain_container">
 		<div class="allSignin">
 			<div class="context">
 				<h1 class="heading is-1 has-text-centered"
@@ -33,6 +35,7 @@
 				</div>
 				
 			</div>	
+		</div>
 		</div>
 </body>
 </html>

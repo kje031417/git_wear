@@ -57,7 +57,7 @@
 				class="nike-unite-gender-buttons gender nike-unite-component">
 				<label for="5c341b7c-13ae-4e4b-95ed-a61dec34c81a">Gender</label>
 				<input class="label-input__input " type="text" name="user_gender" disabled/>
-				
+			</div>
 			<div class="field has-no-margin is-relative">
 				<div class="label-input js-label-input is-ready">
 					<label class="label-input__label"
@@ -172,7 +172,6 @@
 			</section>
 			</div>
 		</div>
-	</div>
 	</div>
 	</form>
 </body>

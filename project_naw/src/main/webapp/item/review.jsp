@@ -115,6 +115,7 @@
 		<!-- 리뷰 게시판 -->
 		<ul id="review_list">
 		<!-- DB : 기존의 리뷰 내용 불러오기 -->
+
 		<c:if test="${list.size() == 0 }">
 			<li class="comment_item_nothing">
 				<span>등록된 리뷰가 없습니다.</span>	<!-- css 수정 필요 -->
@@ -122,6 +123,7 @@
 		</c:if>	
 		
 		<c:if test="${list.size() > 0 }">
+
 			<!-- c:forEach : 목록 3개씩 -->
 			<c:forEach var="vo" items="${list }">	
 			<li class="comment_item">
@@ -139,6 +141,7 @@
 			</li>
 			</c:forEach>	
 		</c:if>			
+
 		</ul>
 		
 		<p id="view_more_btn" style="cursor:pointer;">더보기</p>
