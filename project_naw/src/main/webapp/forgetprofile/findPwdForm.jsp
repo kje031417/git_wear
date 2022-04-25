@@ -14,7 +14,7 @@
 		onsubmit="check(); return false;">
 		<div id="findPwd_container">
 		<div id="find-pwd-title" style="text-align: center;">
-			<h4>WE WILL SEND THE PASSWORD BY EMAIL</h4>
+			<h4>RESET YOUR NEW PASSWORD</h4>
 			<h5>You can find ID by entering your Name and Email !</h5>
 		</div>
 
