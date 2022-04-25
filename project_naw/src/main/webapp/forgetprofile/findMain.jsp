@@ -14,7 +14,7 @@
 		<div class="allFindMain">
 			<div class="context" style="text-align: center;">
 				<h1 class="heading is-1 has-text-centered"
-					data-test="lblWelcomeMessage_Register">Forget Account </h1>
+					data-test="lblWelcomeMessage_Register">Forgot Account </h1>
 			</div>
 
 			<div id="findMain_container">
