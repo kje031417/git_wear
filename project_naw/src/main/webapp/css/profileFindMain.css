@@ -1,25 +1,29 @@
 @charset "UTF-8";
-body {
-	margin-top: 100px;
-	font-family: 'Trebuchet MS', serif;
+#profileMainBody {
+	font-family: 'Trebuchet MS', 'NanumSquareAcb', serif;
 	line-height: 1.6;
 	text-align: center;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	width: 100%;
 }
-
+#profileMain_container {
+	width: 500px;
+	margin: 50px auto;
+}
 .allFindMain {
-	justify-content: center;
-	align-items: center;
+	width: 500px;
+	marign: auto;
+}
+.allSignin {
 	text-align: center;
 	width: 500px;
-	height: 800px;
+	height: 1200px;		/* 더 이상 건드리면 안됨! */
+	margin: auto;
 }
 
-.container {
+#profileMainContainer {
 	width: 500px;
 	margin: 0 auto;
+	height: 1000px;
 }
 
 .insert_id_pw {
@@ -27,8 +31,6 @@ body {
 }
 
 ul.tabs {
-	margin: 0px;
-	padding: 0px;
 	list-style: none;
 }
 
@@ -53,6 +55,7 @@ ul.tabs li.current {
 
 .tab-content.current {
 	display: inherit;
+	margin: auto;
 }
 
 input {

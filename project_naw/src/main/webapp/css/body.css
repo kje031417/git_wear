@@ -5,12 +5,13 @@
 }
 #new_release { /* 신상품 */
 	width: 100%;
-	height: 500px;
+	height: 600px;
 	display: table;
 }
 .title {		/* 타이틀 */
-	font-size: 24px;
+	font-size: 40px;
 	font-weight: bold;
+	font-family: 'Trebuchet MS'
 }
 
 #new_release_img {
@@ -58,16 +59,19 @@
 }
 #notice {
 	width: 100%;
+	height: 20px;
 	text-align: center;
+	margin-botton: 50px;
 }
 #first_notice {
 	width: 700px;
-	background: #ccc;
-	margin: auto;
+	height: 20px;
+	margin: 0 auto;
 }
 #recommend { /* 추천상품 */
 	display: table;
 	margin: auto;
+	width: 1400px;
 }
 
 #recommend_inner {

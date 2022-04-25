@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.profileMapper">
+
+   <!-- (회원가입) ID중복 확인 -->
+   <select id="isExistId" parameterType="boolean" resultType="profileDTO">
+      <![CDATA[select * from profile where user_id=#{user_id}]]>
+   </select>
+   
+   <!-- (회원가입) 데이터 저장하기 -->
+   <insert id="register" parameterType="profileDTO">
+      <![CDATA[insert into profile values (#{user_id}, #{user_pwd}, #{user_name}, #{user_phone}, #{user_email}, #{user_addr1}, #{user_addr2}, sysdate, #{user_gender}, To_Date(#{user_birth}, 'yyyy-mm-dd'))]]>
+   </insert>
+   
+   <!-- 회원 정보 가져오기 -->
+   <select id="getMember" parameterType="String" resultType="profileDTO">
+      <![CDATA[select * from profile where user_id=#{user_id}]]>
+   </select>
+   
+   <!-- (로그인) 로그인(ID&PW확인)-->
+   <select id="signin" parameterType="java.util.Map" resultType="String">
+      <![CDATA[SELECT user_name from profile WHERE user_id=#{user_id} and user_pwd=#{user_pwd}]]>
+   </select>
+   
+   <!-- (로그인) 아이디 찾기 -->
+   <select id="findId" parameterType="java.util.Map" resultType="String">
+      <![CDATA[select user_id from profile where user_name=#{user_name} and user_email=#{user_email}]]>
+   </select>
+   
+   <!-- (로그인) 비밀번호 찾기 정보일치여부 확인-->
+   <select id="findPwd" parameterType="java.util.Map" resultType="profileDTO">
+      <![CDATA[select * from profile where user_id = #{user_id} and user_name = #{user_name} and user_email = #{user_email}]]>
+   </select>
+   
+   <!-- (로그인) 비밀번호찾기 정보일치 확인 후 비밀번호 초기화 -->
+   <update id="findPwdReset" parameterType="profileDTO">
+  	 <![CDATA[update profile set user_pwd=#{user_pwd} where user_id=#{user_id}]]>
+   </update>
+   
+      <!-- (마이페이지) 회원정보수정 -->
+   <update id="mypage" parameterType="profileDTO">
+      <![CDATA[update profile set user_pwd= #{user_pwd}, user_phone=#{user_phone}, user_email=#{user_email}, user_addr1=#{user_addr1}, user_addr2=#{user_addr2} where user_id=#{user_id}]]>
+   </update>
+   
+      <!-- (마이페이지) 회원탈퇴-->
+   <delete id="withdrawal" parameterType="String">
+      <![CDATA[delete profile where user_id=#{user_id}]]>
+   </delete>
+   
+</mapper>

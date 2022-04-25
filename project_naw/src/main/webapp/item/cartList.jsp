@@ -68,7 +68,7 @@
 				<tr>
 					<!-- 상품이미지 -->
 					<td rowspan="3" width="170">
-						<img id="cartList_item_img" src="../img/${dto.item_image }" width="150" height="150">
+						<img id="cartList_item_img" src="../storage/${dto.item_image }" width="150" height="150">
 					</td>
 					<td width="230" style="font-weight: bold; font-size: 18px;">
 						${dto.item_name }							<!-- 상품명 -->
@@ -107,19 +107,19 @@
 				</tr>
 				<tr>
 					<td>상품 금액</td>
-					<td>${totalPrice }원</td>
+					<td class="cart_item_info">${totalPrice }원</td>
 				</tr>
 				<tr>
 					<td>예상 배송비</td>
-					<td>3000원</td>
+					<td class="cart_item_info">3000원</td>
 				</tr>
 				<tr>
 					<td>상품 할인 금액</td>
-					<td>0원</td>
+					<td class="cart_item_info">0원</td>
 				</tr>
 				<tr>
 					<td>주문 할인 금액</td>
-					<td>0원</td>
+					<td class="cart_item_info">0원</td>
 				</tr>
 				<tr>
 					<td colspan="2" height="50" id="order_cost_btn" style="cursor:pointer;">
@@ -157,27 +157,27 @@
 			<p class="cartList_recommend_title">추천상품</p><br>
 			<div class="cartList_recommend_item">
 				<a href="#">
-				<img alt="" src="../img/나이키머큐리얼에어줌베이퍼14프로TF_footballgrey_1.jpg" width="200" height="200"></a>
+				<img alt="" src="../storage/나이키스포츠웨어스우시_남성풀집리버서블재킷AS_hotcurry_4.jpg" width="200" height="200"></a>
 				<p>나이키 머큐리얼 에어<br>줌 베이퍼 14 프로 TF</p>	<!-- 상품명 -->
 			</div>
 			<div class="cartList_recommend_item">	
 				<a href="#">
-				<img alt="2" src="../img/w_shoes_011_a.png" width="200" height="200"></a>
+				<img alt="2" src="../storage/w_shoes_011_a.png" width="200" height="200"></a>
 				<p>나이키 와플 데뷰</p>
 			</div>			
 			<div class="cartList_recommend_item">
 				<a href="#">
-				<img alt="3" src="../img/조던시리즈ES_sail_1.jpg" width="200" height="200"></a>
+				<img alt="3" src="../storage/줌프릭3_greyfog_1.jpg" width="200" height="200"></a>
 				<p>조던 시리즈 ES</p>
 			</div>	
 			<div class="cartList_recommend_item">	
 				<a href="#">
-				<img alt="2" src="../img/w_shoes_011_a.png" width="200" height="200"></a>
+				<img alt="2" src="../storage/w_cloth_013_a.png" width="200" height="200"></a>
 				<p>나이키 와플 데뷰</p>
 			</div>			
 			<div class="cartList_recommend_item">
 				<a href="#">
-				<img alt="3" src="../img/조던시리즈ES_sail_1.jpg" width="200" height="200"></a>
+				<img alt="3" src="../storage/Running_2_스타러너3_핑크_1.PNG" width="200" height="200"></a>
 				<p>조던 시리즈 ES</p>
 			</div>	
 						

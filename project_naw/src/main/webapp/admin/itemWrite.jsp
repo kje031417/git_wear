@@ -14,7 +14,7 @@
 	function close_ok() {
 		var dialog = document.getElementById("write_dialog");
 		dialog.close();
-		location.href = "../item/itemList.do";
+		location.href = "../admin/itemWriteForm.do";
 	}
 </script>
 </head>

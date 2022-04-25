@@ -5,13 +5,23 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>NAW-Welcome Back</title>
+<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="../script/ProfileRegisterScript.js"></script>
 <link rel="stylesheet" href="../css/profileRegister.css">
-<body>
+<script type="text/javascript">
+	$(function(){
+		$(".button-gender").click(function(){
+			var user_gender = $(this).val();
+			$("#user_gender_hidden").attr("value", user_gender);	
+		});
+	});
+</script>
+<body id="profileRegisterBody">
 	<form action="register.do" method="post" name="form" id="form"
 		onsubmit="check(); return false;">
+		<div id="registerForm_container">
 		<div id="register-second-title" style="text-align: center;">
 			<h4>BECOME A NAW MEMBER</h4>
 			<h5>Create an account and benefit from a more personal shopping
@@ -154,6 +164,8 @@
 					<input style="display: inline-block;" type="button"
 						class="button-gender" id="F" value="female"
 						name="user_gender">
+					<!-- 히든으로 값 보내기 -->
+					<input type="hidden" name="user_gender_val" id="user_gender_hidden">
 				</div>
 
 				<p class="is-privacy-text">
@@ -225,6 +237,7 @@
 				</button>
 			</div>
 			
+		</div>
 		</div>
 	</form>
 </body>

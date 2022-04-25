@@ -24,7 +24,7 @@
 				<ol class="cart-product-list">
 					<li class="account-order-item">
 						<div class="cart-product__media" style="display: inline-block; margin-top: 20px;">
-							<img src="" width="220" height="220">
+							<img src="../storage/${dto.ord_image }" width="220" height="220">
 						</div>
 
 						<div class="cart-product__content" data-test="secProducts_Count" style="display: inline-block;">
@@ -78,7 +78,6 @@
 								</tr>
 							</tbody>
 						</table>
-
 					</div>
 				</div>
 			</div>
@@ -96,10 +95,10 @@
 							<h3 class="is-strong">shipping address</h3>
 							<div class="has-space">
 								<p class="has-no-margin"
-									data-test="lblShippingAddress_OrderDetails">GilDong Hong</p>
+									data-test="lblShippingAddress_OrderDetails">${dto.user_name }</p>
 
-								<p class="has-no-margin">${dto.user_addr2 }</p>
-								<p class="has-no-margin">${dto.user_addr1 }</p>
+								<p class="has-no-margin">${dto.ord_addr2 }</p>
+								<p class="has-no-margin">${dto.ord_addr1 }</p>
 								<p class="has-no-margin"></p>
 
 								
@@ -124,10 +123,9 @@
 							<h3 class="is-strong">billing address</h3>
 							<div class="has-space">
 								<p class="has-no-margin"
-									data-test="lblBillingAddress_OrderDetails">GilDong Hong</p>
-
-								<p class="has-no-margin">${dto.user_addr2 }</p>
-								<p class="has-no-margin">${dto.user_addr1 }</p>
+									data-test="lblBillingAddress_OrderDetails">${dto.user_name }</p>
+								<p class="has-no-margin">${dto.ord_addr2 }</p>
+								<p class="has-no-margin">${dto.ord_addr1 }</p>
 								<p class="has-no-margin"></p>
 
 							</div>

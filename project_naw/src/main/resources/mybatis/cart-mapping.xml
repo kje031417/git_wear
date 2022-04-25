@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.cartMapper">
+	<!-- select: 특정 회원의 인덱스 뷰 -->
+	<select id="getCartList" parameterType="java.util.Map" resultType="cartDTO">
+		<![CDATA[select * from
+		(select rownum rn, tt.* from
+		(select * from cart order by cart_seq desc) tt)
+		where rn>=#{startNum} and rn<=#{endNum} and user_id=#{user_id}]]>
+	</select>
+	
+	<!-- select: 특정 상품 데이터 1줄 가져오기 -->
+	<select id="getCartDetail" parameterType="int" resultType="cartDTO">
+		<![CDATA[select * from cart where cart_seq=#{cart_seq}]]>
+	</select>
+	
+	<!-- select: 특정 회원의 주문할 장바구니 목록 가져오기 -->
+	<select id="getCartListOrder" parameterType="String" resultType="cartDTO">
+		<![CDATA[select * from cart where user_id=#{user_id}]]>
+	</select>
+	
+	<!-- select: 특정 회원의 장바구니 상품 개수 구하기 -->
+	<select id="getTotalA" parameterType="String" resultType="int">
+		<![CDATA[select count(*) as cnt from cart where user_id=#{user_id}]]>
+	</select>
+	
+	<!-- select: 특정 회원의 장바구니 총 상품 금액 구하기 -->
+	<select id="getTotalprice" parameterType="String" resultType="int">
+		<![CDATA[select sum(cart_totalprice) from cart where user_id=#{user_id}]]>
+	</select>
+	
+	<!-- insert: 저장 -->
+	<insert id="insertCart" parameterType="cartDTO">
+		<![CDATA[insert into cart 
+		values(#{user_id}, cart_seq.nextval, #{item_code}, 
+		#{item_name}, #{item_color}, #{item_size}, #{item_image},
+		#{item_price}, #{cart_qty}, #{cart_totalprice})]]>
+	</insert>
+	
+	<!-- update: 옵션 변경 -->
+	<update id="modifyCart" parameterType="java.util.Map">
+		<![CDATA[update cart 
+		set cart_qty=#{cart_qty}, cart_totalprice=#{cart_totalprice}
+		where cart_seq=#{cart_seq}]]>
+	</update>
+	
+	<!-- delete: 삭제 -->
+	<delete id="deleteCart" parameterType="int">
+		<![CDATA[delete cart where cart_seq=#{cart_seq}]]>
+	</delete>
+</mapper>

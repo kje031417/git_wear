@@ -9,7 +9,7 @@
 	window.onload = function() {
 		if(${result > 0}) {
 			alert("리뷰글이 작성되었습니다.");
-			location.href= "../item/reviewList.do";
+			location.href= "../item/itemView.do?item_code=${item_code}";
 		} else {
 			alert("리뷰글 작성에 실패했습니다.");
 			location.href= history.back();

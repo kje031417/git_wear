@@ -12,124 +12,76 @@ import org.springframework.web.servlet.ModelAndView;
 
 import item.bean.ItemDTO;
 
-
 @Controller
 public class ItemController {
 	@Autowired
 	private ItemService itemService;
 
-	// 상품 목록
-	@RequestMapping("/item/itemList.do")
-	public ModelAndView ItemList(HttpServletRequest request) {
-
-		int pg = 1;
-		if (request.getParameter("pg") != null)
-			pg = Integer.parseInt(request.getParameter("pg"));
-
-		List<ItemDTO> list = itemService.itemList();
-
-		// 화면 네비게이션
-		ModelAndView modelAndView = new ModelAndView();
-		// 공유 데이터 저장
-		modelAndView.addObject("pg", pg);
-		modelAndView.addObject("list", list);
-		// view 처리 파일명 저장
-		modelAndView.addObject("req", "../item/shoes_item.jsp");
-		modelAndView.setViewName("itemList.jsp");
-		return modelAndView;
-	}
-
-	// 신발 분류 목록
-	@RequestMapping("/item/shoes_item.do")
-	public ModelAndView ShoesList(HttpServletRequest request) {
+	// 상품 목록 : 카테고리 1
+	@RequestMapping("/item/itemList_category1.do")
+	public ModelAndView ItemList_category1(HttpServletRequest request) {
+		String item_category1 = request.getParameter("item_category1");
+		//System.out.println("item_category1 = " + item_category1);
 		
-		int pg = 1;
-		
-		if (request.getParameter("pg") != null)
-			pg = Integer.parseInt(request.getParameter("pg"));
-		
-		List<ItemDTO> list = itemService.itemList();
-		ItemDTO dto = new ItemDTO();
-		dto.setItem_name("item_name");
-		dto.setItem_image1("item_image1");
-		dto.setItem_details("item_details");
-		list.add(dto);
+		List<ItemDTO> list = itemService.itemList_category1(item_category1);
 		
 		// 화면 네비게이션
 		ModelAndView modelAndView = new ModelAndView();
-		// view 처리 파일명 저장
-		modelAndView.addObject("req", "../item/shoes_item.jsp");
 		modelAndView.addObject("list", list);
-		modelAndView.addObject("pg", pg);
-		modelAndView.setViewName("itemList.jsp");
+		modelAndView.addObject("req", "../item/itemList.jsp");
+		modelAndView.setViewName("../main/index.jsp");
+		
 		return modelAndView;
 	}
 
-	// 의류 분류 목록
-	@RequestMapping(value = "/item/clothes_item.do")
-	public ModelAndView ClothesList(HttpServletRequest request) {
+	// 상품 목록 : 카테고리 2
+	@RequestMapping("/item/itemList_category2.do")
+	public ModelAndView ItemList_category2(HttpServletRequest request) {
+		String item_category1 = request.getParameter("item_category1");
+		String item_category2 = request.getParameter("item_category2");
+		//System.out.println("item_category1 = " + item_category1);
+		
+		List<ItemDTO> list = itemService.itemList_category2(item_category1, item_category2);
 
-		int pg = 1;
-		
-		if (request.getParameter("pg") != null)
-			pg = Integer.parseInt(request.getParameter("pg"));
-		
-		List<ItemDTO> list = itemService.itemList();
-		ItemDTO dto = new ItemDTO();
-		dto.setItem_name("item_name");
-		dto.setItem_image1("item_image1");
-		dto.setItem_details("item_details");
-		list.add(dto);
 		// 화면 네비게이션
 		ModelAndView modelAndView = new ModelAndView();
-		// view 처리 파일명 저장
-		modelAndView.addObject("req", "../item/clothes_item.jsp");
-		modelAndView.addObject("pg", pg);
 		modelAndView.addObject("list", list);
-		modelAndView.setViewName("itemList.jsp");
+		modelAndView.addObject("req", "../item/itemList.jsp");
+		modelAndView.setViewName("../main/index.jsp");
+		
 		return modelAndView;
 	}
+	
+	// 상품 목록 : 카테고리 3
+		@RequestMapping("/item/itemList_category3.do")
+		public ModelAndView ItemList_category3(HttpServletRequest request) {
+			String item_category1 = request.getParameter("item_category1");
+			String item_category2 = request.getParameter("item_category2");
+			String item_category3 = request.getParameter("item_category3");
+			
+			List<ItemDTO> list = itemService.itemList_category3(item_category1, item_category2, item_category3);
 
-	// 용품 분류 목록
-	@RequestMapping(value = "/item/sports_item.do")
-	public ModelAndView SportsList(HttpServletRequest request) {
-
-		int pg = 1;
-		
-		if (request.getParameter("pg") != null)
-			pg = Integer.parseInt(request.getParameter("pg"));
-		
-		List<ItemDTO> list = itemService.itemList();
-		ItemDTO dto = new ItemDTO();
-		dto.setItem_name("item_name");
-		dto.setItem_image1("item_image1");
-		dto.setItem_details("item_details");
-		list.add(dto);
-		// 화면 네비게이션
-		ModelAndView modelAndView = new ModelAndView();
-		// view 처리 파일명 저장
-		modelAndView.addObject("req", "../item/sports_item.jsp");
-		modelAndView.addObject("list", list);
-		modelAndView.addObject("pg", pg);
-		modelAndView.setViewName("itemList.jsp");
-		return modelAndView;
-	}
+			// 화면 네비게이션
+			ModelAndView modelAndView = new ModelAndView();
+			modelAndView.addObject("list", list);
+			modelAndView.addObject("req", "../item/itemList.jsp");
+			modelAndView.setViewName("../main/index.jsp");
+			
+			return modelAndView;
+		}
 
 	// 상품 상세보기
 	@RequestMapping(value = "/item/itemView.do")
 	public ModelAndView itemView(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		int seq = Integer.parseInt(request.getParameter("seq"));
-		int pg = Integer.parseInt(request.getParameter("pg"));
-
-		ItemDTO dto = itemService.itemView();
-
+		String item_code = request.getParameter("item_code");
+		
+		ItemDTO dto = itemService.itemView(item_code);
+		
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("seq", seq);
-		modelAndView.addObject("pg", pg);
 		modelAndView.addObject("dto", dto);
 		modelAndView.addObject("req", "../item/itemView.jsp");
-
-		modelAndView.setViewName("itemlist.jsp");
+		modelAndView.setViewName("../main/index.jsp");
+		
 		return modelAndView;
 	}
 

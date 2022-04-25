@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
 <link rel="stylesheet" href="../css/itemList.css">
 <script type="text/javascript" src="../script/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
@@ -29,45 +30,43 @@
 				$(".container2").animate({width : "toggle"}, 0);
 			}
 		});
+		
+		// 상품 상세 페이지로 이동
+		$(".item_image1").click(function(){
+			var item_code = $(this).parent().find(".itemList_code").val();
+			//alert("item_code= " + item_code);
+			location.href= "../item/itemView.do?item_code=" + item_code;
+		});
 	});
 </script>
 </head>
-<body>
+<body id="itemList_body">
 	<!---- HEADER ---->
-	<header class="container1">
-		<div class="category">
+	<div class="container1">
+		<div class="itemList_category">
 			<ul class="category_bar">
-				<li><a href="../main/index.jsp">Product</a></li>
+				<li><a href="#">Product</a></li>
 			</ul>
 		</div>
-		<!-- 메뉴 바 : 신발 의류 용품 -->
-			<div class="menu_bar">
-				<ul class="menu">
-					<li><a href="shoes_item.do">신발</a></li>
-					<li><a href="clothes_item.do">의류</a></li>
-					<li><a href="sports_item.do">용품</a></li>
-				</ul>
-			</div>
+		
 			<!-- 필터 버튼 -->
-			<div class="filter">
-				<ul class="filter_bar">
-					<li><a href="#" id="filter_tool">필터</a></li>
-					<div id="new_list">
-						<select id="list">
-							<option value="신상품순">신상품순</option>
-							<option value="높은 가격순">높은 가격순</option>
-							<option value="낮은 가격순">낮은 가격순</option>
-							<option value="추천순">추천순</option>
-						</select>
-					</div>
-				</ul>
-			</div>
-	</header>
+		<div class="itemList_filter">
+			<ul class="filter_bar">
+				<li><a href="#" id="filter_tool">필터</a></li>
+				<div id="new_list">
+					<select id="rank_list">
+						<option value="신상품순">신상품순</option>
+						<option value="높은 가격순">높은 가격순</option>
+						<option value="낮은 가격순">낮은 가격순</option>
+						<option value="추천순">추천순</option>
+					</select>
+				</div>
+			</ul>
+		</div>
+	</div>
 	<!-- 상품 정렬 필터링 -->
-
-
 	<!-- 필터리스트 -->
-	<aside>
+	<aside id="itemList_aside">
 		<div class="container2">
 		<br>
 			<a href="#" class="filtering">사이즈</a>
@@ -95,40 +94,27 @@
 			</div>
 		</div>
 	</aside>
-
+<div id="list_itemList_container">
 	<!-- 목록 -->
-	<main>
+	<main id="itemList_main">
 		<div class="container3">
-			<div class="section">
-				<c:if test="${req == null}">
-					<jsp:include page="clothes_item.jsp" />
-				</c:if>
-				<c:if test="${req != null}">
-					<jsp:include page="${req}" />
-				</c:if>
-			</div>
-		</div>
-		<!-- 페이지 표시 -->
-		<!-- 
-		<div style="text-align: center;">
-			<c:if test="${startPage > 3 }">
-				[<a class="paging" href="itemList.do?pg=${startPage - 1 }">이전</a>]
-			</c:if>
-		
-			<c:forEach var="i" begin="${startPage }" end="${endPage }" step="1">
-				<c:if test="${pg == i }">
-					[<a class="currentPaging" href="itemList.do?pg=${i }">${i }</a>]
-				</c:if>
-				<c:if test="${pg != i }">
-					[<a class="paging" href="itemList.do?pg=${i }">${i }</a>]
-				</c:if>		
-			</c:forEach>
-		
-			<c:if test="${endPage < totalP }">
-				[<a class="paging" href="itemList.do?pg=${endPage + 1 }">다음</a>]
-			</c:if>		
-		</div> 
-		 -->
+				<c:forEach var="dto" items="${list}">
+					<div class="item_info">
+						<table class="itemList_table">
+							<tr>
+								<td>
+									<img src="../storage/${dto.item_image1}" width="380" height="380" class="item_image1" style="cursor: pointer;">
+									<input type="hidden" value="${dto.item_code }" class="itemList_code">
+								</td>
+							</tr>
+							<tr>
+								<td><label id="item_name" style="color: #444444; float:right;">${dto.item_name}</label></td>
+							</tr>
+						</table>
+					</div>
+				</c:forEach>
+		</div>		
 	</main>
+</div>
 </body>
 </html>

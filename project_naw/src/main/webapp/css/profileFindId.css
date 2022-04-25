@@ -1,29 +1,25 @@
 @charset "UTF-8";
-body {
-	margin-top: 100px;
-	font-family: 'Trebuchet MS', serif;
+#findId_body {
+	width: 100%;
+	font-family: 'Trebuchet MS', 'NanumSquareAcb', serif;
 	line-height: 1.6;
 	text-align: center;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 }
-
+#findId_container {
+	width: 500px;
+	height: 500px;
+	margin: 50px auto;
+}
 .findId {
-	justify-content: center;
-	align-items: center;
 	text-align: center;
 	width: 500px;
-	height: 800px;
+	height: 500px;
+	margin: auto;
 }
 
-.container {
-	width: 500px;
-	margin: 0 auto;
-}
-
-.fint_id {
+.find_id {
 	text-align: left;
+	margin: auto;
 }
 
 ul.tabs {

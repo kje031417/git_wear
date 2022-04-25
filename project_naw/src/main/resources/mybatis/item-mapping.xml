@@ -3,20 +3,27 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mybatis.itemMapper">
-
-	<select id="itemList" resultType="dto">
-		<![CDATA[
-		select item_code,item_seq, item_category1, item_category2, item_category3, 
-		item_name, item_image1, item_details, item_size, item_color, item_price, item_date 
-		from itemView
-		]]>
+<!-- 목록은 4개씩, 더보기 기능 -->
+	<!-- 상품 목록 : 카테고리1 -->
+	<select id="itemList_category1" parameterType="String" resultType="itemDTO">
+		<![CDATA[select * from itemView where item_category1=#{item_category1}]]>
 	</select>
 	
-	<select id="itemView" resultType="dto">
-	<![CDATA[
-		select user_id, item_code, item_category1, item_category2, item_category3, item_name, 
-		item_image1, item_image2, item_details, item_size, item_color, cart_qty, item_price  
-		from itemView
-		]]>
+	<!-- 상품 목록 : 카테고리2 -->
+	<select id="itemList_category2" parameterType="java.util.Map" resultType="itemDTO">
+		<![CDATA[select * from itemView 
+		where item_category1=#{item_category1} and item_category2=#{item_category2}]]>
+	</select>
+	
+	<!-- 상품 목록 : 카테고리3 -->
+	<select id="itemList_category3" parameterType="java.util.Map" resultType="itemDTO">
+		<![CDATA[select * from itemView 
+		where item_category1=#{item_category1} 
+		and item_category2=#{item_category2} and item_category3=#{item_category3}]]>
+	</select>
+	
+	<!-- 상품 상세 정보 -->
+	<select id="itemView" parameterType="String" resultType="itemDTO">
+		<![CDATA[select * from itemView where item_code=#{item_code}]]>
 	</select>
 </mapper>

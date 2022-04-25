@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>NAW(관리자) - 매출관리</title>
 <link rel="stylesheet" href="../css/adminBody.css">
-<link rel="stylesheet" href="../css/salesList.css">
+<link rel="stylesheet" href="../css/salesList.css?v=1">
 <style type="text/css">
 #admin_sales_button {
 	background-color: black;
@@ -164,9 +164,7 @@ $(function(){
 </head>
 <body>
 	<!------------ admin menu ------------>
-	<!--<c:if test="${sessionId == admin }">-->
-		<jsp:include page="../admin/adminMenu.jsp"/>
-	<!--</c:if>-->
+	<jsp:include page="../admin/adminMenu.jsp"/>
 	
 	<div id="sales_list_wrap">
 		<div id="sales_list_wrap_inner">

@@ -35,7 +35,7 @@
 							data-trigger-context="true" tabindex="-1">
 								<div class="order_info_inner">
 									<div class="rs-ol-tile-image">
-										<img src="../img/" width="200" height="200">
+										<img src="../storage/${vo.ord_image }" width="200" height="200">
 									</div>
 									<div class="rs-ol-tile-info">	
 										<div class="rs-ol-item-name">

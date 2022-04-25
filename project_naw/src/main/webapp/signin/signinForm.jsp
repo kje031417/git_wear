@@ -5,14 +5,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>NAW-Welcome Back</title>
+<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="../script/ProfileSigninScript.js"></script>
+<script type="text/javascript">
+	$();
+</script>
 <link rel="stylesheet" href="../css/profileSignin.css">
-<body>
+<body id="signinFormBody">
 	<form action="signin.do" method="post" name="form" id="form"
 		onsubmit="check(); return false;">
-		<div>
+		<div id="signinForm_container">
 			<h4>WELCOME BACK</h4>
 			<h5>Sign in with your id and password.</h5>
 			<div class="insert_id_pw">
@@ -50,8 +54,11 @@
 							id="user_pwd"><br> </span>
 					</div>
 				</div>
-				<a href="../mypage/mypageForm.do">*Forgot Password? > </a><br>
-				<p></p>
+				
+				<div id="">
+				<a href="../forgetprofile/findMain.do">*Forgot Password? > </a><br>
+				</div>
+				<p></p><br>
 
 				<div class="form-footer remember-me" data-remember-me="false">
 					<div class="field is-not-spaced">
@@ -79,7 +86,7 @@
 								aria-live="polite" id=""
 								data-screenset-element-id="__gig_template_element_4_1649292160346"
 								data-screenset-element-id-publish="false"
-								data-screenset-roles="instance">
+								data-screenset-roles="instance" style="cursor: pointer;">
 								<span class="button__wrapper"> <span> Sign in </span>
 								</span>
 							</button>

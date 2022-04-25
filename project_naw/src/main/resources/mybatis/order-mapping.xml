@@ -2,32 +2,20 @@
 <!DOCTYPE mapper
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="mybatis.orderMapper">
-
-	<select id="order_info" parameterType="java.util.Map" resultType="OrderDTO"> <!-- order_check에서 item_seq만 추가된 것 -->
-		<![CDATA[
-		insert into order_page values(#{ord_date}, #{ord_time}, #{ord_number}, #{user_id},
-		 #{item_name}, #{item_color}, #{item_size}, #{item_price}, #{ord_qty}, 
-		 #{ord_totalprice}, #{user_post}, #{user_addr1}, #{user_addr2}, #{user_phone})
-		
-		]]>
-	</select>
-	
-	<select id="order_check" resultType="OrderDTO">
-	<![CDATA[
-		select ord_date, ord_time, ord_number, user_id,
-		 item_name, item_color, item_size, item_price, ord_qty, 
-		 ord_totalprice, user_post, user_phone ,user_addr1, user_addr2
-		from order_page
-		]]>
-	</select>
- -->	
+<mapper namespace="mybatis.orderMapper">	
+	<!-- 바로구매 => 주문 정보 페이지  -->
+	<insert id="orderInsert" parameterType="orderDTO">
+		<![CDATA[insert into order_page 
+		values (sysdate, seq_order.nextval, #{ord_code}, #{ord_name}, 
+		#{ord_color}, #{ord_size}, #{ord_image}, #{ord_price}, #{ord_qty}, 
+		#{ord_totalprice}, #{user_id}, #{user_name}, #{ord_addr1}, #{ord_addr2}, #{ord_payment})]]>
+	</insert>
  
  	<!-- 주문내역 불러오기 -->
  	<select id="getOrderList" parameterType="java.util.Map" resultType="orderDTO">
  		<![CDATA[select * from
 		(select rownum rn, tt.* from
-		(select * from order_page order by ord_date desc) tt)
+		(select * from order_page order by ord_number desc) tt)
 		where rn>=#{startNum} and rn<=#{endNum} and user_id=#{user_id}]]>
  	</select>
  	

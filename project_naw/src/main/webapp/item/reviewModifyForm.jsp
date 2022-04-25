@@ -44,13 +44,13 @@
 				}
 			}			
 			location.href="../item/reviewModify.do?review_content=" + review_content +
-								"&review_star=" + review_star + "&review_code=" + review_code;
+								"&review_star=" + review_star + "&review_code=" + review_code + "&item_code=${item_code}";
 		});
 	});
 </script>
 <style type="text/css">
-#review_modify_container {width: 500px; padding: 30px 20px;}
-#reviewModifyForm_body {font-family: 'Trebuchet MS', 'NanumSquareAcb', serif;}
+#review_modify_container {width: 500px; padding: 30px 20px; margin: 50px auto;}
+#reviewModifyForm_body {font-family: 'Trebuchet MS', 'NanumSquareAcb', serif; width: 100%;}
 #review_modify_write {padding: 20px 15px; border-bottom: 1px solid #c0c0c0;}
 #review_modify_info {font-size: 14px;text-align: center;}
 #stars_all {padding: 10px 0 0 0;text-align: right;}

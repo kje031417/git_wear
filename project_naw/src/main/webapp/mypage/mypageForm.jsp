@@ -8,16 +8,24 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="../script/MypageScript.js"></script>
+<script type="text/javascript">
+	$(function(){
+		// 탈퇴 버튼
+		$(".withdrawal_btn").click(function(){
+			location.href="../mypage/withdrawalForm.do";			
+		});
+	});
+</script>
 <link rel="stylesheet" href="../css/mypage.css">
 </head>
-<body>
-	<form action="mypage.do" method="post" name="form" id="form"
+<body id="mypage_body">
+	<form action="../mypage/mypage.do" method="post" name="form" id="form"
 		onsubmit="check(); return false;">
 		
-	<h1 class="heading is-1 " data-test="lblMyDetails">MY INFORMATION</h1>
+	<h1 class="heading is-1 " data-test="lblMyDetails" style="text-align: center;">MY INFORMATION</h1>
 	
 	<div class="allMypage">
-	<div id="container" style="text-align: left;">
+	<div id="mypage_container" style="text-align: left;">
 		<div data-form-fieldset="generic">
 			<div class="heading-block-has-thin-separator-title">
 				<h3>PROFILE</h3>
@@ -144,7 +152,7 @@
 
 			<div class="form-buttons__item"
 						data-test="btnContinueShippingOptions">
-						<button type="submit" class="button-is-primary-is-block" >
+						<button type="submit" class="button-is-primary-is-block" style="cursor: pointer;">
 							<span class="button__wrapper">
 							<span> Profile Update</span>
 							</span>
@@ -157,8 +165,8 @@
 			        <h2 class="heading is-5">NAW Membership Withdrawal</h2>
 			      </div>
 			      <p>NAW 회원 탈퇴 시 패션, 슈즈, 악세사리 등의 온라인 및 오프라인 회원 정보 및 구매 정보 등 모든 정보가 삭제 됩니다.</p>
-			      <button type="submit" class="button-is-primary-is-block" onclick="withdrawal(); return false;">
-							<span class="button__wrapper"><span> NAW Membership Withdrawal</span></span>
+			      <button type="button" class="button-is-primary-is-block" style="cursor: pointer;">
+							<span class="button__wrapper"><span class="withdrawal_btn"> NAW Membership Withdrawal</span></span>
 						</button>
 			    </div>
 			</section>

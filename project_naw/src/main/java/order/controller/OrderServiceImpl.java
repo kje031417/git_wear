@@ -11,18 +11,13 @@ import order.dao.OrderDAO;
 @Service("orderService")
 public class OrderServiceImpl implements OrderService {
 	@Autowired
-	OrderDAO dao;
+	private OrderDAO dao;
+
+	@Override
+	public int orderInsert(OrderDTO dto) {
+		return dao.orderInsert(dto);
+	}	
 	
-	@Override
-	public int order_info(OrderDTO dto) {
-		return dao.order_info(dto);
-	}
-
-	@Override
-	public OrderDTO order_check(int seq) {
-		return dao.order_check(seq);
-	}
-
 	@Override
 	public List<OrderDTO> getOrderList(int startNum, int endNum, String user_id) {
 		return dao.getOrderList(startNum, endNum, user_id);
@@ -36,5 +31,5 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public OrderDTO getOrderDetail(String ord_number) {
 		return dao.getOrderDetail(ord_number);
-	}	
+	}
 }

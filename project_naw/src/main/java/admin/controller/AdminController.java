@@ -48,17 +48,17 @@ public class AdminController {
 		String filePath = request.getSession().getServletContext().getRealPath("/storage/");
 		String fileName1 = item_image1.getOriginalFilename();
 		String fileName2 = item_image2.getOriginalFilename();
-		System.out.println("image1: "+item_image1);
-		System.out.println("image2: "+item_image2);
-		System.out.println("filePath = " + filePath);
-		System.out.println("fileName1: "+fileName1);
-		System.out.println("fileName2: "+fileName2);
+		//System.out.println("image1: "+item_image1);
+		//System.out.println("image2: "+item_image2);
+		//System.out.println("filePath = " + filePath);
+		//System.out.println("fileName1: "+fileName1);
+		//System.out.println("fileName2: "+fileName2);
 		
 		File file1 = new File(filePath, fileName1);
 		File file2 = new File(filePath, fileName2);
 		
-		System.out.println("file1: "+file1);
-		System.out.println("file2: "+file2);
+		//System.out.println("file1: "+file1);
+		//System.out.println("file2: "+file2);
 		
 		try {
 			FileCopyUtils.copy(item_image1.getInputStream(), new FileOutputStream(file1));
@@ -74,17 +74,11 @@ public class AdminController {
 		String item_category2 = request.getParameter("item_category2");
 		String item_category3 = request.getParameter("item_category3");
 		String item_name = request.getParameter("item_name");
-		//String item_image1 = request.getParameter("item_image1");
-		//String item_image2 = request.getParameter("item_image2");
 		String item_details = request.getParameter("item_details").replace("\r\n","<br>");
 		int cart_qty = Integer.parseInt(request.getParameter("cart_qty"));
 		String item_size = request.getParameter("item_size");
 		String item_color = request.getParameter("item_color");
 		int item_price = Integer.parseInt(request.getParameter("item_price"));
-		
-		System.out.println("item_category1:"+item_category1);
-		System.out.println("item_category2:"+item_category2);
-		System.out.println("item_category3:"+item_category3);
 		
 		// DB 처리
 		ItemDTO dto = new ItemDTO();

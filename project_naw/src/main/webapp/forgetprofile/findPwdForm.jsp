@@ -9,9 +9,10 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="../script/ProfileFindPwdScript.js"></script>
 <link rel="stylesheet" href="../css/profileFindPwd.css">
-<body>
-	<form action="ffndPwd.do" method="post" name="form" id="form"
+<body id="forgetPwdBody">
+	<form action="../forgetprofile/findPwd.do" method="post" name="form" id="form"
 		onsubmit="check(); return false;">
+		<div id="findPwd_container">
 		<div id="find-pwd-title" style="text-align: center;">
 			<h4>WE WILL SEND THE PASSWORD BY EMAIL</h4>
 			<h5>You can find ID by entering your Name and Email !</h5>
@@ -76,6 +77,7 @@
 					</button>
 				</div>
 			</div>
+		</div>
 		</div>
 	</form>
 </body>
