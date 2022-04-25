@@ -85,15 +85,6 @@
 			}
 		});	
 		
-		// 리뷰가 있을 때와 없을 때
-		if(${list.isEmpty()}) {
-			$(".comment_item_nothing").show();
-			$(".comment_item").hide();
-			
-		} else {
-			$(".comment_item").show();
-			$(".comment_item_nothing").hide();
-		}
 	});
 </script>
 </head>
@@ -124,10 +115,15 @@
 		<!-- 리뷰 게시판 -->
 		<ul id="review_list">
 		<!-- DB : 기존의 리뷰 내용 불러오기 -->
+
+		<c:if test="${list.size() == 0 }">
 			<li class="comment_item_nothing">
 				<span>등록된 리뷰가 없습니다.</span>	<!-- css 수정 필요 -->
 			</li>
-			
+		</c:if>	
+		
+		<c:if test="${list.size() > 0 }">
+
 			<!-- c:forEach : 목록 3개씩 -->
 			<c:forEach var="vo" items="${list }">	
 			<li class="comment_item">
@@ -143,7 +139,9 @@
 				<input type="hidden" value="${vo.review_code }" class="comment_code">
 				<input type="hidden" value="${item_code }" class="item_code">
 			</li>
-			</c:forEach>				
+			</c:forEach>	
+		</c:if>			
+
 		</ul>
 		
 		<p id="view_more_btn" style="cursor:pointer;">더보기</p>
