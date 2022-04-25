@@ -1,12 +1,9 @@
 @charset "UTF-8";
-body {
-	margin-top: 100px;
+#mypage_body {
+	width: 100%;
 	font-family: 'Trebuchet MS', serif;
 	line-height: 1.6;
 	text-align: center;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 }
 
 .allMypage {
@@ -14,9 +11,15 @@ body {
 	align-items: center;
 	text-align: center;
 	width: 500px;
-	height : 1000px;
+	height : 1100px;
 	background: #ededed;
 	padding : 15px;
+	margin: 50px auto;
+}
+
+#mypage_container{
+	margin:auto;
+	height: 1300px;
 }
 
 .heading-block-has-thin-separator-title {
