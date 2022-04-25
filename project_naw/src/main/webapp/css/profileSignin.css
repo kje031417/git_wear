@@ -3,11 +3,12 @@
 	font-family: 'Trebuchet MS', 'NanumSquareAcb', serif;
 	line-height: 1.6;
 	text-align: center;
+	width: 100%;
 }
 #signinForm_container {
 	text-align: center;
 	width: 470px;
-	height: 420px;
+	height: 430px;
 	/*margin: 0 auto;*/
 }
 
