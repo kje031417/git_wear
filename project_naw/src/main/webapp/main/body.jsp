@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>메인</title> 
 <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
-<link rel="stylesheet" href="../css/body.css">
+<link rel="stylesheet" href="../css/body.css?after2">
 <script type="text/javascript" src="../script/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="../script/jquery.bxslider.js"></script>
 <script type="text/javascript">
@@ -93,10 +93,10 @@
 		</div>
 	</div>
 	
-	<!-- 공지 (include) 최신 글 하나 보여주기 -->
+	<!-- 공지 (include) 최신 글 하나 보여주기 : include -->
 	<div id="notice">
 		<div id="first_notice">
-			<p>공지 : <a href="../notice/noticeList.do"> 최신글 제목 </a></p>
+			<jsp:include page="bodyNotice.do"/>
 		</div>
 	</div><br>
 	
@@ -106,15 +106,15 @@
 		<p class="title">Best Product</p><br>
 		
 			<div class="recommend_item">
-				<a href="#"><img alt="1" src="../storage/나이키머큐리얼에어줌베이퍼14프로TF_footballgrey_1.jpg" width="400" height="400"></a>
+				<a href="../item/itemView.do?item_code=3004"><img alt="1" src="../storage/나이키머큐리얼에어줌베이퍼14프로TF_footballgrey_1.jpg" width="380" height="380"></a>
 				<p>나이키 머큐리얼 에어<br>줌 베이퍼 14 프로 TF</p>
 			</div>					
 			<div class="recommend_item">	
-				<a href="#"><img alt="2" src="../storage/w_shoes_011_a.png" width="400" height="400"></a>
+				<a href="../item/itemView.do?item_code=2010"><img alt="2" src="../storage/w_shoes_011_a.png" width="380" height="380"></a>
 				<p>나이키 와플 데뷰</p>
 			</div>			
 			<div class="recommend_item">
-				<a href="#"><img alt="3" src="../storage/조던시리즈ES_sail_1.jpg" width="400" height="400"></a>
+				<a href="../item/itemView.do?item_code=3002"><img alt="3" src="../storage/조던시리즈ES_black_1.jpg" width="380" height="380"></a>
 				<p>조던 시리즈 ES</p>
 			</div>
 		</div>
