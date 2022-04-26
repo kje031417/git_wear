@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -77,9 +78,9 @@ public class InquiryController {
 	@RequestMapping(value="/item/inquiryWrite.do")
 	public ModelAndView inquiryWrite(HttpServletRequest request, HttpServletResponse response) {
 		/* 데이터 처리 */
-		//HttpSession session = request.getSession();
-		//String user_id = (String)session.getAttribute("memId");		//memId의 세션 값 불러오기
-		String user_id = "lee303";	// test
+		HttpSession session = request.getSession();
+		String user_id = (String)session.getAttribute("login_id");		
+		
 		String inquiry_subject = request.getParameter("inquiry_subject");
 		String inquiry_content = request.getParameter("inquiry_content");
 		
@@ -166,9 +167,9 @@ public class InquiryController {
 		int inquiry_code = Integer.parseInt(request.getParameter("inquiry_code"));
 		int pg = Integer.parseInt(request.getParameter("pg"));
 		// 답글 내용
-		//HttpSession session = request.getSession();
-		//String user_id = (String)session.getAttribute("memId");		//memId의 세션 값 불러오기
-		String user_id = "admin111";	// test
+		HttpSession session = request.getSession();
+		String user_id = (String)session.getAttribute("login_id");
+		
 		String inquiry_subject = request.getParameter("inquiry_subject");
 		String inquiry_content = request.getParameter("inquiry_content");
 		

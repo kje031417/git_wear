@@ -118,7 +118,7 @@
 
 		<c:if test="${list.size() == 0 }">
 			<li class="comment_item_nothing">
-				<span>등록된 리뷰가 없습니다.</span>	<!-- css 수정 필요 -->
+				<span>등록된 리뷰가 없습니다.</span>
 			</li>
 		</c:if>	
 		
@@ -129,8 +129,10 @@
 			<li class="comment_item">
 				<span class="comment_id">${vo.user_id }님</span>
 				<span>작성일: ${vo.review_date }</span>
+				<c:if test="${login_id == vo.user_id }">
 				<span class="comment_modify" style="cursor:pointer;">수정</span>
-				<span class="comment_delete" style="cursor:pointer;">삭제</span>				
+				<span class="comment_delete" style="cursor:pointer;">삭제</span>	
+				</c:if>			
 				<p><span class="comment_content">${vo.review_content }</span></p>
 				<div class="star_font">
 					<img src="../img/star_active.png" width="20" height="20">
