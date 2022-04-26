@@ -91,17 +91,15 @@
 		<div id="view_content">
 			${dto.inquiry_content }
 		</div>
-		<!-- 세션아이디와 작성자id가 일치 -->
-		<!--<c:if test="${memId == dto.user_id }">	
-			
-		</c:if>-->
+	
 		<div class="inquiry_view_btn">
 			<div id="inquiry_view_btn1">
-				<!-- 수정(test) -->
+			<c:if test="${login_id == dto.user_id }">
+				<!-- 수정 -->
 				<a href="../item/inquiryModifyForm.do?pg=${pg }&inquiry_code=${dto.inquiry_code }">수정</a>&nbsp;&nbsp;
-				<!-- 삭제(test) -->
+				<!-- 삭제 -->
 				<a href="../item/inquiryDelete.do?pg=${pg }&inquiry_code=${dto.inquiry_code }">삭제</a>&nbsp;&nbsp;
-				
+			</c:if>	
 				<!-- 답글 : 누르면 밑에 답글 작성 폼이 나타남 -->
 				<span id="reply_btn" style="cursor:pointer;">답글</span>	
 				
