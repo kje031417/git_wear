@@ -6,6 +6,16 @@
 	text-align: center;
 }
 
+#form {
+	height: 2000px;
+	margin: 50px auto;
+}
+
+#mypage_container{
+	margin:auto;
+	height: 1000px;
+}
+
 .allMypage {
 	justify-content: center;
 	align-items: center;
@@ -15,11 +25,6 @@
 	background: #ededed;
 	padding : 15px;
 	margin: 50px auto;
-}
-
-#mypage_container{
-	margin:auto;
-	height: 1300px;
 }
 
 .heading-block-has-thin-separator-title {

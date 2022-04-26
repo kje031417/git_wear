@@ -3,10 +3,15 @@
 	font-family: 'Trebuchet MS', 'NanumSquareAcb', serif;
 	line-height: 1.6;
 	align-items: center;
+	height: 100%;
 }
 #registerForm_container{
 	margin:auto;
 	height: 900px;
+}
+#register-insert {
+	margin:auto;
+	height: 1200px;
 }
 input {
 	border: none;
